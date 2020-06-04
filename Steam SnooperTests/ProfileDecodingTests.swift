@@ -19,7 +19,7 @@ final class ProfileDecodingTests: XCTestCase {
 
         let decodedProfile = try decoder.decode(Profile.self, from: data)
 
-        XCTAssertEqual(decodedProfile.steamID, "76561198007277374")
+        XCTAssertEqual(decodedProfile.id, "76561198007277374")
         XCTAssertEqual(decodedProfile.status, .offline)
         XCTAssertEqual(decodedProfile.name, "AJ")
     }

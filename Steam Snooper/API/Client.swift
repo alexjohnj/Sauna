@@ -12,7 +12,7 @@ import Requests
 
 struct SteamAPI: RequestProviding {
 
-    let baseURL = URL("http://api.steampowered.com")
+    let baseURL = URL("https://api.steampowered.com")
     var apiKey: String
 
     func getFriendsList(forPlayerID steamID: SteamID) -> Request<SteamAPI, FriendsListResponse> {
@@ -30,7 +30,7 @@ struct SteamAPI: RequestProviding {
 
 struct SteamClient {
 
-    struct Failure: LocalizedError {
+    struct Failure: LocalizedError, Equatable {
         var failureReason: String?
     }
 

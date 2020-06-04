@@ -7,17 +7,39 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct ContentView: View {
+
+    let store: Store<AppState, AppAction>
+
     var body: some View {
-        Text("Hello, World!")
+        WithViewStore(store) { (viewStore: ViewStore<AppState, AppAction>) in
+            Group {
+                if viewStore.friendsList.isLoading {
+                    Text("Loading Friends…")
+                        .foregroundColor(.secondary)
+                        .padding()
+                } else if viewStore.friendsList.error != nil {
+                    Text(viewStore.friendsList.error!)
+                        .foregroundColor(.secondary)
+                        .padding()
+                } else if viewStore.friendsList.data != nil {
+                    FriendsList(friends: viewStore.friendsList.data!.elements)
+                }
+            }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
     }
 }
 
+struct FriendsList: View {
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    let friends: [Profile]
+
+    var body: some View {
+        List(friends) { friend in
+            Text(friend.name)
+        }
     }
 }

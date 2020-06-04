@@ -8,19 +8,19 @@
 
 import Foundation
 
-struct Profile: Codable, Hashable {
+struct Profile: Codable, Hashable, Identifiable {
 
     // MARK: - Nested Types
 
     private enum CodingKeys: String, CodingKey {
-        case steamID = "steamid"
+        case id = "steamid"
         case name = "personaname"
         case status = "personastate"
     }
 
     // MARK: - Public Properties
 
-    var steamID: SteamID
+    var id: SteamID
     var name: String
 
     /// If the player's profile is private, this will always be "0" [offline], except if the user has set their status to looking

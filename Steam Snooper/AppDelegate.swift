@@ -9,6 +9,8 @@
 import Cocoa
 import SwiftUI
 
+import ComposableArchitecture
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -17,7 +19,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
+        let store = Store(
+            initialState: AppState(userID: kMySteamID),
+            reducer: appReducer,
+            environment: AppEnvironment(
+                client: .live(.shared),
+                mainScheduler: DispatchQueue.main.eraseToAnyScheduler(),
+                date: Date.init
+            )
+        )
+
+        let contentView = ContentView(store: store)
 
         // Create the window and set the content view. 
         window = NSWindow(
@@ -28,6 +40,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.setFrameAutosaveName("Main Window")
         window.contentView = NSHostingView(rootView: contentView)
         window.makeKeyAndOrderFront(nil)
+
+        ViewStore(store).send(.reloadFriendsList)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
