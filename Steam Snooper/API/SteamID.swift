@@ -9,3 +9,9 @@
 struct SteamID: Hashable, RawRepresentable, Codable {
     let rawValue: String
 }
+
+extension SteamID: ExpressibleByStringLiteral {
+    init(stringLiteral value: StringLiteralType) {
+        self.init(rawValue: value)
+    }
+}
