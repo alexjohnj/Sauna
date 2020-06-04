@@ -29,6 +29,7 @@
 		FA82C9262489333900C5EFBE /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C9252489333900C5EFBE /* Loadable.swift */; };
 		FA82C92B24894A3500C5EFBE /* FriendRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92A24894A3500C5EFBE /* FriendRow.swift */; };
 		FA82C92D24895BAA00C5EFBE /* StatusBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92C24895BAA00C5EFBE /* StatusBadge.swift */; };
+		FA82C92F24895EED00C5EFBE /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92E24895EED00C5EFBE /* FriendsList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		FA82C9252489333900C5EFBE /* Loadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		FA82C92A24894A3500C5EFBE /* FriendRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRow.swift; sourceTree = "<group>"; };
 		FA82C92C24895BAA00C5EFBE /* StatusBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBadge.swift; sourceTree = "<group>"; };
+		FA82C92E24895EED00C5EFBE /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 			children = (
 				FA82C92A24894A3500C5EFBE /* FriendRow.swift */,
 				FA82C92C24895BAA00C5EFBE /* StatusBadge.swift */,
+				FA82C92E24895EED00C5EFBE /* FriendsList.swift */,
 			);
 			path = "Friends List";
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				FA54FEEC24892771004D21A7 /* Profile.swift in Sources */,
 				FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */,
 				FA54FED424891FBD004D21A7 /* AppState.swift in Sources */,
+				FA82C92F24895EED00C5EFBE /* FriendsList.swift in Sources */,
 				FA82C92224892F1B00C5EFBE /* UserProfilesResponse.swift in Sources */,
 				FA82C9262489333900C5EFBE /* Loadable.swift in Sources */,
 				FA54FED824892332004D21A7 /* FriendsListResponse.swift in Sources */,

@@ -32,27 +32,26 @@ struct FriendView: View {
         HStack(alignment: .center) {
             StatusBadge(status: friendProfile.status)
                 .frame(width: 16, height: 16)
+            FriendDetailsView(name: friendProfile.name, statusText: statusText)
+                .layoutPriority(1)
+        }
+    }
+}
 
-            VStack(alignment: .leading) {
-                Text(friendProfile.name)
-                statusText.map {
-                    Text($0)
-                        .foregroundColor(Color.secondary)
-                        .controlSize(.small)
-                }
+private struct FriendDetailsView: View {
+
+    var name: String
+    var statusText: String?
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(name)
+            statusText.map {
+                Text($0)
+                    .foregroundColor(Color.secondary)
+                    .controlSize(.small)
             }
-            .layoutPriority(1)
         }
     }
 }
 
-struct FriendView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            FriendView(friendProfile: .fixture())
-            FriendView(friendProfile: .fixture(status: .offline, currentGame: nil))
-            FriendView(friendProfile: .fixture(status: .away, currentGame: nil))
-        }
-        .padding()
-    }
-}

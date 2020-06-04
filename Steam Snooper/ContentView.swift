@@ -28,20 +28,8 @@ struct ContentView: View {
                     FriendsList(friends: viewStore.friendsList.data!.elements)
                 }
             }
-            .frame(maxWidth: 400, maxHeight: .infinity)
+            .frame(minWidth: 400, maxWidth: 400, maxHeight: .infinity)
             .onAppear { viewStore.send(.windowAppeared) }
-        }
-    }
-}
-
-struct FriendsList: View {
-
-    let friends: [Profile]
-
-    var body: some View {
-        List(friends) { friendProfile in
-            FriendView(friendProfile: friendProfile)
-                .padding([.top, .bottom], 4)
         }
     }
 }
