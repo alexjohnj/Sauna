@@ -26,6 +26,7 @@
 		FA82C92024892C8C00C5EFBE /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C91F24892C8C00C5EFBE /* Client.swift */; };
 		FA82C92224892F1B00C5EFBE /* UserProfilesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92124892F1B00C5EFBE /* UserProfilesResponse.swift */; };
 		FA82C92424892F3D00C5EFBE /* UserProfilesResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92324892F3D00C5EFBE /* UserProfilesResponseTests.swift */; };
+		FA82C9262489333900C5EFBE /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C9252489333900C5EFBE /* Loadable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		FA82C91F24892C8C00C5EFBE /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		FA82C92124892F1B00C5EFBE /* UserProfilesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilesResponse.swift; sourceTree = "<group>"; };
 		FA82C92324892F3D00C5EFBE /* UserProfilesResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilesResponseTests.swift; sourceTree = "<group>"; };
+		FA82C9252489333900C5EFBE /* Loadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,15 +106,16 @@
 		FA54FEB724891ED8004D21A7 /* Steam Snooper */ = {
 			isa = PBXGroup;
 			children = (
-				FA54FED524892309004D21A7 /* API */,
+				FA54FEC524891EDA004D21A7 /* Steam_Snooper.entitlements */,
+				FA54FEC424891EDA004D21A7 /* Info.plist */,
 				FA54FEB824891ED8004D21A7 /* AppDelegate.swift */,
-				FA54FED124891F81004D21A7 /* Secrets.swift */,
 				FA54FED324891FBD004D21A7 /* AppState.swift */,
 				FA54FEBA24891ED8004D21A7 /* ContentView.swift */,
+				FA82C9252489333900C5EFBE /* Loadable.swift */,
+				FA54FED124891F81004D21A7 /* Secrets.swift */,
 				FA54FEBC24891EDA004D21A7 /* Assets.xcassets */,
+				FA54FED524892309004D21A7 /* API */,
 				FA54FEC124891EDA004D21A7 /* Main.storyboard */,
-				FA54FEC424891EDA004D21A7 /* Info.plist */,
-				FA54FEC524891EDA004D21A7 /* Steam_Snooper.entitlements */,
 				FA54FEBE24891EDA004D21A7 /* Preview Content */,
 			);
 			path = "Steam Snooper";
@@ -276,6 +279,7 @@
 				FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */,
 				FA54FED424891FBD004D21A7 /* AppState.swift in Sources */,
 				FA82C92224892F1B00C5EFBE /* UserProfilesResponse.swift in Sources */,
+				FA82C9262489333900C5EFBE /* Loadable.swift in Sources */,
 				FA54FED824892332004D21A7 /* FriendsListResponse.swift in Sources */,
 				FA82C92024892C8C00C5EFBE /* Client.swift in Sources */,
 			);
