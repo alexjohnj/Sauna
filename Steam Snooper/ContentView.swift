@@ -28,7 +28,8 @@ struct ContentView: View {
                     FriendsList(friends: viewStore.friendsList.data!.elements)
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .frame(maxWidth: 400, maxHeight: .infinity)
+            .onAppear { viewStore.send(.windowAppeared) }
         }
     }
 }
@@ -38,8 +39,9 @@ struct FriendsList: View {
     let friends: [Profile]
 
     var body: some View {
-        List(friends) { friend in
-            Text(friend.name)
+        List(friends) { friendProfile in
+            FriendView(friendProfile: friendProfile)
+                .padding([.top, .bottom], 4)
         }
     }
 }

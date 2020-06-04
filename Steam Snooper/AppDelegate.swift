@@ -40,8 +40,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.setFrameAutosaveName("Main Window")
         window.contentView = NSHostingView(rootView: contentView)
         window.makeKeyAndOrderFront(nil)
-
-        ViewStore(store).send(.reloadFriendsList)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

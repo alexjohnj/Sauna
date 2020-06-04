@@ -16,6 +16,7 @@ struct Profile: Codable, Hashable, Identifiable {
         case id = "steamid"
         case name = "personaname"
         case status = "personastate"
+        case currentGame = "gameextrainfo"
     }
 
     // MARK: - Public Properties
@@ -26,4 +27,17 @@ struct Profile: Codable, Hashable, Identifiable {
     /// If the player's profile is private, this will always be "0" [offline], except if the user has set their status to looking
     /// to trade or looking to play, because a bug makes those status appear even if the profile is private.
     var status: Status
+
+    var currentGame: String?
+}
+
+extension Profile {
+    static func fixture(
+        id: SteamID = "1",
+        name: String = "AJ",
+        status: Status = .online,
+        currentGame: String? = "Civilization VI"
+    ) -> Profile {
+        Profile(id: id, name: name, status: status, currentGame: currentGame)
+    }
 }

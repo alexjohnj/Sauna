@@ -16,6 +16,7 @@ struct AppState: Equatable {
 }
 
 enum AppAction: Equatable {
+    case windowAppeared
     case reloadFriendsList
     case profilesLoaded(Result<[Profile], SteamClient.Failure>)
 }
@@ -28,6 +29,11 @@ struct AppEnvironment {
 
 let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, action, env in
     switch action {
+    case .windowAppeared where state.friendsList.isLoaded == false:
+        return Effect(value: .reloadFriendsList)
+    case .windowAppeared:
+        return .none
+
     case .reloadFriendsList where state.friendsList.isLoading == false:
         state.friendsList = .loading
         return env.client.getFriendsList(state.userID)

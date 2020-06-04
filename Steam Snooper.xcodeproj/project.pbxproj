@@ -27,6 +27,8 @@
 		FA82C92224892F1B00C5EFBE /* UserProfilesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92124892F1B00C5EFBE /* UserProfilesResponse.swift */; };
 		FA82C92424892F3D00C5EFBE /* UserProfilesResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92324892F3D00C5EFBE /* UserProfilesResponseTests.swift */; };
 		FA82C9262489333900C5EFBE /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C9252489333900C5EFBE /* Loadable.swift */; };
+		FA82C92B24894A3500C5EFBE /* FriendRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92A24894A3500C5EFBE /* FriendRow.swift */; };
+		FA82C92D24895BAA00C5EFBE /* StatusBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92C24895BAA00C5EFBE /* StatusBadge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		FA82C92124892F1B00C5EFBE /* UserProfilesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilesResponse.swift; sourceTree = "<group>"; };
 		FA82C92324892F3D00C5EFBE /* UserProfilesResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilesResponseTests.swift; sourceTree = "<group>"; };
 		FA82C9252489333900C5EFBE /* Loadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
+		FA82C92A24894A3500C5EFBE /* FriendRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRow.swift; sourceTree = "<group>"; };
+		FA82C92C24895BAA00C5EFBE /* StatusBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBadge.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 		FA54FEB724891ED8004D21A7 /* Steam Snooper */ = {
 			isa = PBXGroup;
 			children = (
+				FA82C92924894A2B00C5EFBE /* Friends List */,
 				FA54FEC524891EDA004D21A7 /* Steam_Snooper.entitlements */,
 				FA54FEC424891EDA004D21A7 /* Info.plist */,
 				FA54FEB824891ED8004D21A7 /* AppDelegate.swift */,
@@ -160,6 +165,15 @@
 				FA82C92324892F3D00C5EFBE /* UserProfilesResponseTests.swift */,
 			);
 			path = "Steam SnooperTests";
+			sourceTree = "<group>";
+		};
+		FA82C92924894A2B00C5EFBE /* Friends List */ = {
+			isa = PBXGroup;
+			children = (
+				FA82C92A24894A3500C5EFBE /* FriendRow.swift */,
+				FA82C92C24895BAA00C5EFBE /* StatusBadge.swift */,
+			);
+			path = "Friends List";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +295,8 @@
 				FA82C92224892F1B00C5EFBE /* UserProfilesResponse.swift in Sources */,
 				FA82C9262489333900C5EFBE /* Loadable.swift in Sources */,
 				FA54FED824892332004D21A7 /* FriendsListResponse.swift in Sources */,
+				FA82C92D24895BAA00C5EFBE /* StatusBadge.swift in Sources */,
+				FA82C92B24894A3500C5EFBE /* FriendRow.swift in Sources */,
 				FA82C92024892C8C00C5EFBE /* Client.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
