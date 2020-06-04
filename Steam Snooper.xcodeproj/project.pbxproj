@@ -15,7 +15,22 @@
 		FA54FECD24891F3D004D21A7 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = FA54FECC24891F3D004D21A7 /* ComposableArchitecture */; };
 		FA54FED024891F5B004D21A7 /* Requests in Frameworks */ = {isa = PBXBuildFile; productRef = FA54FECF24891F5B004D21A7 /* Requests */; };
 		FA54FED224891F81004D21A7 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FED124891F81004D21A7 /* Secrets.swift */; };
+		FA54FED424891FBD004D21A7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FED324891FBD004D21A7 /* AppState.swift */; };
+		FA54FED824892332004D21A7 /* FriendsListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FED724892332004D21A7 /* FriendsListResponse.swift */; };
+		FA54FEDA248924D0004D21A7 /* SteamID.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FED9248924D0004D21A7 /* SteamID.swift */; };
+		FA54FEE224892539004D21A7 /* Steam_SnooperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEE124892539004D21A7 /* Steam_SnooperTests.swift */; };
+		FA54FEEA24892547004D21A7 /* FriendsListResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEE924892547004D21A7 /* FriendsListResponseTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA54FEE424892539004D21A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA54FEAD24891ED8004D21A7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA54FEB424891ED8004D21A7;
+			remoteInfo = "Steam Snooper";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		FA54FEB524891ED8004D21A7 /* Steam Snooper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Steam Snooper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -27,6 +42,13 @@
 		FA54FEC424891EDA004D21A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA54FEC524891EDA004D21A7 /* Steam_Snooper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Steam_Snooper.entitlements; sourceTree = "<group>"; };
 		FA54FED124891F81004D21A7 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		FA54FED324891FBD004D21A7 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		FA54FED724892332004D21A7 /* FriendsListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListResponse.swift; sourceTree = "<group>"; };
+		FA54FED9248924D0004D21A7 /* SteamID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamID.swift; sourceTree = "<group>"; };
+		FA54FEDF24892539004D21A7 /* Steam SnooperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Steam SnooperTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA54FEE124892539004D21A7 /* Steam_SnooperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steam_SnooperTests.swift; sourceTree = "<group>"; };
+		FA54FEE324892539004D21A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA54FEE924892547004D21A7 /* FriendsListResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListResponseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +61,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA54FEDC24892539004D21A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -46,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				FA54FEB724891ED8004D21A7 /* Steam Snooper */,
+				FA54FEE024892539004D21A7 /* Steam SnooperTests */,
 				FA54FEB624891ED8004D21A7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				FA54FEB524891ED8004D21A7 /* Steam Snooper.app */,
+				FA54FEDF24892539004D21A7 /* Steam SnooperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,8 +92,10 @@
 		FA54FEB724891ED8004D21A7 /* Steam Snooper */ = {
 			isa = PBXGroup;
 			children = (
+				FA54FED524892309004D21A7 /* API */,
 				FA54FEB824891ED8004D21A7 /* AppDelegate.swift */,
 				FA54FED124891F81004D21A7 /* Secrets.swift */,
+				FA54FED324891FBD004D21A7 /* AppState.swift */,
 				FA54FEBA24891ED8004D21A7 /* ContentView.swift */,
 				FA54FEBC24891EDA004D21A7 /* Assets.xcassets */,
 				FA54FEC124891EDA004D21A7 /* Main.storyboard */,
@@ -79,6 +112,33 @@
 				FA54FEBF24891EDA004D21A7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FA54FED524892309004D21A7 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				FA54FED62489230D004D21A7 /* Responses */,
+				FA54FED9248924D0004D21A7 /* SteamID.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		FA54FED62489230D004D21A7 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				FA54FED724892332004D21A7 /* FriendsListResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		FA54FEE024892539004D21A7 /* Steam SnooperTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA54FEE124892539004D21A7 /* Steam_SnooperTests.swift */,
+				FA54FEE324892539004D21A7 /* Info.plist */,
+				FA54FEE924892547004D21A7 /* FriendsListResponseTests.swift */,
+			);
+			path = "Steam SnooperTests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,6 +165,24 @@
 			productReference = FA54FEB524891ED8004D21A7 /* Steam Snooper.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FA54FEDE24892539004D21A7 /* Steam SnooperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA54FEE624892539004D21A7 /* Build configuration list for PBXNativeTarget "Steam SnooperTests" */;
+			buildPhases = (
+				FA54FEDB24892539004D21A7 /* Sources */,
+				FA54FEDC24892539004D21A7 /* Frameworks */,
+				FA54FEDD24892539004D21A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA54FEE524892539004D21A7 /* PBXTargetDependency */,
+			);
+			name = "Steam SnooperTests";
+			productName = "Steam SnooperTests";
+			productReference = FA54FEDF24892539004D21A7 /* Steam SnooperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -117,6 +195,10 @@
 				TargetAttributes = {
 					FA54FEB424891ED8004D21A7 = {
 						CreatedOnToolsVersion = 11.5;
+					};
+					FA54FEDE24892539004D21A7 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = FA54FEB424891ED8004D21A7;
 					};
 				};
 			};
@@ -138,6 +220,7 @@
 			projectRoot = "";
 			targets = (
 				FA54FEB424891ED8004D21A7 /* Steam Snooper */,
+				FA54FEDE24892539004D21A7 /* Steam SnooperTests */,
 			);
 		};
 /* End PBXProject section */
@@ -153,6 +236,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA54FEDD24892539004D21A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -161,12 +251,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA54FEBB24891ED8004D21A7 /* ContentView.swift in Sources */,
+				FA54FEDA248924D0004D21A7 /* SteamID.swift in Sources */,
 				FA54FED224891F81004D21A7 /* Secrets.swift in Sources */,
 				FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */,
+				FA54FED424891FBD004D21A7 /* AppState.swift in Sources */,
+				FA54FED824892332004D21A7 /* FriendsListResponse.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA54FEDB24892539004D21A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA54FEEA24892547004D21A7 /* FriendsListResponseTests.swift in Sources */,
+				FA54FEE224892539004D21A7 /* Steam_SnooperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA54FEE524892539004D21A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA54FEB424891ED8004D21A7 /* Steam Snooper */;
+			targetProxy = FA54FEE424892539004D21A7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FA54FEC124891EDA004D21A7 /* Main.storyboard */ = {
@@ -339,6 +449,46 @@
 			};
 			name = Release;
 		};
+		FA54FEE724892539004D21A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = LMVB86HGC7;
+				INFOPLIST_FILE = "Steam SnooperTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.alexj.Steam-SnooperTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Steam Snooper.app/Contents/MacOS/Steam Snooper";
+			};
+			name = Debug;
+		};
+		FA54FEE824892539004D21A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = LMVB86HGC7;
+				INFOPLIST_FILE = "Steam SnooperTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.alexj.Steam-SnooperTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Steam Snooper.app/Contents/MacOS/Steam Snooper";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -356,6 +506,15 @@
 			buildConfigurations = (
 				FA54FEC924891EDA004D21A7 /* Debug */,
 				FA54FECA24891EDA004D21A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA54FEE624892539004D21A7 /* Build configuration list for PBXNativeTarget "Steam SnooperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA54FEE724892539004D21A7 /* Debug */,
+				FA54FEE824892539004D21A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
