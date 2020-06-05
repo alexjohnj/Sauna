@@ -57,7 +57,6 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, 
         return .none
     }
 }
-.debug()
 
 // MARK: - Helper Functions
 

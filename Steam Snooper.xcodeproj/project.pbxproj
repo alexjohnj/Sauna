@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEB824891ED8004D21A7 /* AppDelegate.swift */; };
-		FA54FEBB24891ED8004D21A7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEBA24891ED8004D21A7 /* ContentView.swift */; };
 		FA54FEBD24891EDA004D21A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA54FEBC24891EDA004D21A7 /* Assets.xcassets */; };
 		FA54FEC024891EDA004D21A7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA54FEBF24891EDA004D21A7 /* Preview Assets.xcassets */; };
 		FA54FEC324891EDA004D21A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA54FEC124891EDA004D21A7 /* Main.storyboard */; };
@@ -27,9 +26,6 @@
 		FA82C92224892F1B00C5EFBE /* UserProfilesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92124892F1B00C5EFBE /* UserProfilesResponse.swift */; };
 		FA82C92424892F3D00C5EFBE /* UserProfilesResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92324892F3D00C5EFBE /* UserProfilesResponseTests.swift */; };
 		FA82C9262489333900C5EFBE /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C9252489333900C5EFBE /* Loadable.swift */; };
-		FA82C92B24894A3500C5EFBE /* FriendRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92A24894A3500C5EFBE /* FriendRow.swift */; };
-		FA82C92D24895BAA00C5EFBE /* StatusBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92C24895BAA00C5EFBE /* StatusBadge.swift */; };
-		FA82C92F24895EED00C5EFBE /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92E24895EED00C5EFBE /* FriendsList.swift */; };
 		FA82C933248968DD00C5EFBE /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C931248968DD00C5EFBE /* MainWindowController.swift */; };
 		FA82C934248968DD00C5EFBE /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA82C932248968DD00C5EFBE /* MainWindowController.xib */; };
 		FA82C936248A46D200C5EFBE /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C935248A46D200C5EFBE /* FriendTableViewCell.swift */; };
@@ -50,7 +46,6 @@
 /* Begin PBXFileReference section */
 		FA54FEB524891ED8004D21A7 /* Steam Snooper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Steam Snooper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA54FEB824891ED8004D21A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FA54FEBA24891ED8004D21A7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FA54FEBC24891EDA004D21A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA54FEBF24891EDA004D21A7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FA54FEC224891EDA004D21A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,9 +66,6 @@
 		FA82C92124892F1B00C5EFBE /* UserProfilesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilesResponse.swift; sourceTree = "<group>"; };
 		FA82C92324892F3D00C5EFBE /* UserProfilesResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilesResponseTests.swift; sourceTree = "<group>"; };
 		FA82C9252489333900C5EFBE /* Loadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
-		FA82C92A24894A3500C5EFBE /* FriendRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRow.swift; sourceTree = "<group>"; };
-		FA82C92C24895BAA00C5EFBE /* StatusBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBadge.swift; sourceTree = "<group>"; };
-		FA82C92E24895EED00C5EFBE /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
 		FA82C931248968DD00C5EFBE /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		FA82C932248968DD00C5EFBE /* MainWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 		FA82C935248A46D200C5EFBE /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
@@ -123,12 +115,10 @@
 			isa = PBXGroup;
 			children = (
 				FA82C930248968C500C5EFBE /* AppKit Friends List */,
-				FA82C92924894A2B00C5EFBE /* Friends List */,
 				FA54FEC524891EDA004D21A7 /* Steam_Snooper.entitlements */,
 				FA54FEC424891EDA004D21A7 /* Info.plist */,
 				FA54FEB824891ED8004D21A7 /* AppDelegate.swift */,
 				FA54FED324891FBD004D21A7 /* AppState.swift */,
-				FA54FEBA24891ED8004D21A7 /* ContentView.swift */,
 				FA82C9252489333900C5EFBE /* Loadable.swift */,
 				FA54FED124891F81004D21A7 /* Secrets.swift */,
 				FA54FEBC24891EDA004D21A7 /* Assets.xcassets */,
@@ -178,16 +168,6 @@
 				FA82C92324892F3D00C5EFBE /* UserProfilesResponseTests.swift */,
 			);
 			path = "Steam SnooperTests";
-			sourceTree = "<group>";
-		};
-		FA82C92924894A2B00C5EFBE /* Friends List */ = {
-			isa = PBXGroup;
-			children = (
-				FA82C92A24894A3500C5EFBE /* FriendRow.swift */,
-				FA82C92C24895BAA00C5EFBE /* StatusBadge.swift */,
-				FA82C92E24895EED00C5EFBE /* FriendsList.swift */,
-			);
-			path = "Friends List";
 			sourceTree = "<group>";
 		};
 		FA82C930248968C500C5EFBE /* AppKit Friends List */ = {
@@ -313,7 +293,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA54FEBB24891ED8004D21A7 /* ContentView.swift in Sources */,
 				FA54FEDA248924D0004D21A7 /* SteamID.swift in Sources */,
 				FA54FEF024892840004D21A7 /* Profile.Status.swift in Sources */,
 				FA54FED224891F81004D21A7 /* Secrets.swift in Sources */,
@@ -321,12 +300,9 @@
 				FAC248F4248A721D00386D70 /* MainWindowState.swift in Sources */,
 				FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */,
 				FA54FED424891FBD004D21A7 /* AppState.swift in Sources */,
-				FA82C92F24895EED00C5EFBE /* FriendsList.swift in Sources */,
 				FA82C92224892F1B00C5EFBE /* UserProfilesResponse.swift in Sources */,
 				FA82C9262489333900C5EFBE /* Loadable.swift in Sources */,
 				FA54FED824892332004D21A7 /* FriendsListResponse.swift in Sources */,
-				FA82C92D24895BAA00C5EFBE /* StatusBadge.swift in Sources */,
-				FA82C92B24894A3500C5EFBE /* FriendRow.swift in Sources */,
 				FA82C92024892C8C00C5EFBE /* Client.swift in Sources */,
 				FA82C933248968DD00C5EFBE /* MainWindowController.swift in Sources */,
 				FA82C936248A46D200C5EFBE /* FriendTableViewCell.swift in Sources */,
