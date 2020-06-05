@@ -114,17 +114,15 @@
 		FA54FEB724891ED8004D21A7 /* Steam Snooper */ = {
 			isa = PBXGroup;
 			children = (
-				FA82C930248968C500C5EFBE /* AppKit Friends List */,
-				FA54FEC524891EDA004D21A7 /* Steam_Snooper.entitlements */,
-				FA54FEC424891EDA004D21A7 /* Info.plist */,
 				FA54FEB824891ED8004D21A7 /* AppDelegate.swift */,
 				FA54FED324891FBD004D21A7 /* AppState.swift */,
 				FA82C9252489333900C5EFBE /* Loadable.swift */,
 				FA54FED124891F81004D21A7 /* Secrets.swift */,
-				FA54FEBC24891EDA004D21A7 /* Assets.xcassets */,
 				FA54FED524892309004D21A7 /* API */,
+				FA82C930248968C500C5EFBE /* AppKit Friends List */,
 				FA54FEC124891EDA004D21A7 /* Main.storyboard */,
 				FA54FEBE24891EDA004D21A7 /* Preview Content */,
+				FAC248F5248A77F600386D70 /* Supporting Files */,
 			);
 			path = "Steam Snooper";
 			sourceTree = "<group>";
@@ -180,6 +178,16 @@
 				FA82C937248A46E100C5EFBE /* FriendTableViewCell.xib */,
 			);
 			path = "AppKit Friends List";
+			sourceTree = "<group>";
+		};
+		FAC248F5248A77F600386D70 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA54FEBC24891EDA004D21A7 /* Assets.xcassets */,
+				FA54FEC524891EDA004D21A7 /* Steam_Snooper.entitlements */,
+				FA54FEC424891EDA004D21A7 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -459,14 +467,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Steam Snooper/Steam_Snooper.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Steam Snooper/Supporting Files/Steam_Snooper.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Steam Snooper/Preview Content\"";
 				DEVELOPMENT_TEAM = LMVB86HGC7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Steam Snooper/Info.plist";
+				INFOPLIST_FILE = "Steam Snooper/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -482,14 +490,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Steam Snooper/Steam_Snooper.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Steam Snooper/Supporting Files/Steam_Snooper.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Steam Snooper/Preview Content\"";
 				DEVELOPMENT_TEAM = LMVB86HGC7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Steam Snooper/Info.plist";
+				INFOPLIST_FILE = "Steam Snooper/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
