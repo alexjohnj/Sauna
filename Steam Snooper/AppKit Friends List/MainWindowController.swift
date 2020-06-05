@@ -76,11 +76,30 @@ extension MainWindowController: NSTableViewDataSource, NSTableViewDelegate {
         viewStore.friendsList.data?.count ?? 0
     }
 
+    func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
+        if case .right? = viewStore.friendsList.data?[row] {
+            return true
+        } else {
+            return false
+        }
+    }
+
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        viewStore.friendsList.data?[row]
+        switch viewStore.friendsList.data?[row] {
+        case .left(let profile):
+            return profile
+        case .right(let group):
+            return group.title
+        case .none:
+            return nil
+        }
     }
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        tableView.makeView(withIdentifier: kRowIdentifier, owner: nil) 
+        if case .right? = viewStore.friendsList.data?[row] {
+            return NSTextField(labelWithString: "")
+        } else {
+            return tableView.makeView(withIdentifier: kRowIdentifier, owner: nil)
+        }
     }
 }

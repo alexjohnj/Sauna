@@ -9,9 +9,17 @@
 import Foundation
 import ComposableArchitecture
 
+struct Group: Equatable {
+    var title: String
+
+    init(profile: Profile) {
+        self.title = "Online"
+    }
+}
+
 struct AppState: Equatable {
     var userID: SteamID
-    var friendsList: Loadable<IdentifiedArray<SteamID, Profile>, String> = .notRequested
+    var friendsList: Loadable<[Either<Profile, Group>], String> = .notRequested
     var lastRefreshDate: Date?
 }
 
@@ -39,7 +47,6 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, 
         return env.client.getFriendsList(state.userID)
             .flatMap(env.client.getProfiles)
             .catchToEffect()
-            .map { $0.map(sortProfiles) }
             .map(AppAction.profilesLoaded)
             .receive(on: env.mainScheduler)
             .eraseToEffect()
@@ -48,7 +55,7 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, 
         return .none
 
     case .profilesLoaded(.success(let profiles)):
-        state.friendsList = .loaded(IdentifiedArray(profiles))
+        state.friendsList = .loaded(sortProfiles(profiles))
         state.lastRefreshDate = env.date()
         return .none
 
@@ -60,8 +67,8 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, 
 
 // MARK: - Helper Functions
 
-private func sortProfiles(_ profiles: [Profile]) -> [Profile] {
-    return profiles.sorted { profile, otherProfile in
+private func sortProfiles(_ profiles: [Profile]) -> [Either<Profile, Group>] {
+    let sortedProfiles = profiles.sorted { profile, otherProfile in
         if profile.status.sortRanking == otherProfile.status.sortRanking {
             // Sort people in a game to the front
             switch (profile.currentGame, otherProfile.currentGame) {
@@ -78,4 +85,21 @@ private func sortProfiles(_ profiles: [Profile]) -> [Profile] {
             return profile.status.sortRanking < otherProfile.status.sortRanking
         }
     }
+
+    struct Result {
+        var currentGroup: Group?
+        var groupedElements: [Either<Profile, Group>] = []
+    }
+
+    let result = sortedProfiles.reduce(into: Result()) { result, profile in
+        let profileGroup = Group(profile: profile)
+        if result.currentGroup != profileGroup {
+            result.currentGroup = profileGroup
+            result.groupedElements.append(.right(profileGroup))
+        }
+
+        result.groupedElements.append(.left(profile))
+    }
+
+    return result.groupedElements
 }
