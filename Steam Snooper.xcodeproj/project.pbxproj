@@ -34,6 +34,7 @@
 		FA82C934248968DD00C5EFBE /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA82C932248968DD00C5EFBE /* MainWindowController.xib */; };
 		FA82C936248A46D200C5EFBE /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C935248A46D200C5EFBE /* FriendTableViewCell.swift */; };
 		FA82C938248A46E100C5EFBE /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA82C937248A46E100C5EFBE /* FriendTableViewCell.xib */; };
+		FAC248F4248A721D00386D70 /* MainWindowState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC248F3248A721D00386D70 /* MainWindowState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		FA82C932248968DD00C5EFBE /* MainWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 		FA82C935248A46D200C5EFBE /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		FA82C937248A46E100C5EFBE /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
+		FAC248F3248A721D00386D70 /* MainWindowState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				FA82C931248968DD00C5EFBE /* MainWindowController.swift */,
+				FAC248F3248A721D00386D70 /* MainWindowState.swift */,
 				FA82C932248968DD00C5EFBE /* MainWindowController.xib */,
 				FA82C935248A46D200C5EFBE /* FriendTableViewCell.swift */,
 				FA82C937248A46E100C5EFBE /* FriendTableViewCell.xib */,
@@ -315,6 +318,7 @@
 				FA54FEF024892840004D21A7 /* Profile.Status.swift in Sources */,
 				FA54FED224891F81004D21A7 /* Secrets.swift in Sources */,
 				FA54FEEC24892771004D21A7 /* Profile.swift in Sources */,
+				FAC248F4248A721D00386D70 /* MainWindowState.swift in Sources */,
 				FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */,
 				FA54FED424891FBD004D21A7 /* AppState.swift in Sources */,
 				FA82C92F24895EED00C5EFBE /* FriendsList.swift in Sources */,

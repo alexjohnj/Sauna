@@ -55,7 +55,19 @@ final class MainWindowController: NSWindowController {
         }
         .store(in: &cancellationBag)
 
+        let windowState = viewStore.publisher.mainWindowState
+        windowState.statusText.assign(to: \.statusLabel.stringValue, on: self)
+            .store(in: &cancellationBag)
+        windowState.isRefreshButtonEnabled.assign(to: \.refreshButton.isEnabled, on: self)
+            .store(in: &cancellationBag)
+
         viewStore.send(.windowAppeared)
+    }
+
+    // MARK: - Actions
+
+    @IBAction private func refresh(_ sender: Any) {
+        viewStore.send(.reloadFriendsList)
     }
 }
 
