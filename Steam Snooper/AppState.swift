@@ -39,6 +39,7 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, 
         return env.client.getFriendsList(state.userID)
             .flatMap(env.client.getProfiles)
             .catchToEffect()
+            .map { $0.map(sortProfiles) }
             .map(AppAction.profilesLoaded)
             .receive(on: env.mainScheduler)
             .eraseToEffect()
@@ -57,3 +58,25 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, 
     }
 }
 .debug()
+
+// MARK: - Helper Functions
+
+private func sortProfiles(_ profiles: [Profile]) -> [Profile] {
+    return profiles.sorted { profile, otherProfile in
+        if profile.status.sortRanking == otherProfile.status.sortRanking {
+            // Sort people in a game to the front
+            switch (profile.currentGame, otherProfile.currentGame) {
+            case (.some, .none):
+                return true
+            case (.none, .some):
+                return false
+            case (.some(let game), .some(let otherGame)):
+                return game < otherGame // This will group people playing the same game together
+            case (.none, .none):
+                return profile.name < otherProfile.name
+            }
+        } else {
+            return profile.status.sortRanking < otherProfile.status.sortRanking
+        }
+    }
+}
