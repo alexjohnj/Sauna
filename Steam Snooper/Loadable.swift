@@ -8,35 +8,67 @@
 
 import Foundation
 
-enum Loadable<T, E> {
-    case notRequested
-    case loading
-    case loaded(T)
-    case failed(E)
-
-    var data: T? {
-        if case .loaded(let data) = self { return data } else { return nil }
+struct Loadable<T, E> {
+    enum State {
+        case notRequested
+        case idle(E?)
+        case loading
     }
 
-    var error: E? {
-        if case .failed(let error) = self { return error } else { return nil }
+    private(set) var state: State = .notRequested
+    private(set) var data: T?
+
+    mutating func startLoading() {
+        state = .loading
     }
 
-    var isRequested: Bool {
-        if case .notRequested = self { return false } else { return true }
+    mutating func complete(_ data: T) {
+        state = .idle(nil)
+        self.data = data
     }
 
-    var isLoading: Bool {
-        if case .loading = self { return true } else { return false }
-    }
-
-    var isLoaded: Bool {
-        if case .loaded = self { return true } else { return false }
-    }
-
-    var isFailed: Bool {
-        if case .failed = self { return true } else { return false }
+    mutating func fail(with error: E) {
+        state = .idle(error)
     }
 }
 
+extension Loadable {
+    /// `true` if the data has at some point been requested.
+    var isRequested: Bool {
+        if case .notRequested = state { return false } else { return true }
+    }
+
+    /// `true` if data is being loaded or re-loaded.
+    var isLoading: Bool {
+        if case .loading = state { return true } else { return false }
+    }
+
+    /// `true` if there is data loaded.
+    var isLoaded: Bool {
+        data != nil
+    }
+
+    /// `true` if the last load failed.
+    var isFailed: Bool {
+        if case .idle(.some) = state { return true } else { return false }
+    }
+
+    /// The error associated with the last load attempt
+    var error: E? {
+        if case .idle(let error) = state { return error } else { return nil }
+    }
+}
+
+extension Loadable where E: Error {
+    mutating func complete(_ result: Result<T, E>) {
+        switch result {
+        case .success(let data):
+            complete(data)
+        case .failure(let error):
+            fail(with: error)
+        }
+    }
+}
+
+extension Loadable.State: Equatable where T: Equatable, E: Equatable { }
 extension Loadable: Equatable where T: Equatable, E: Equatable { }

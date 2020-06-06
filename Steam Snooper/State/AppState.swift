@@ -11,7 +11,7 @@ import ComposableArchitecture
 
 struct AppState: Equatable {
     var userID: SteamID
-    var friendsList: Loadable<[FriendsListRow], String> = .notRequested
+    var friendsList = Loadable<[FriendsListRow], String>()
     var lastRefreshDate: Date?
 }
 
@@ -35,7 +35,8 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, 
         return .none
         
     case .reloadFriendsList where state.friendsList.isLoading == false:
-        state.friendsList = .loading
+        state.friendsList.startLoading()
+
         return env.client.getFriendsList(state.userID)
             .flatMap(env.client.getProfiles)
             .catchToEffect()
@@ -47,12 +48,12 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, 
         return .none
         
     case .profilesLoaded(.success(let profiles)):
-        state.friendsList = .loaded(groupAndSortProfiles(profiles))
+        state.friendsList.complete(groupAndSortProfiles(profiles))
         state.lastRefreshDate = env.date()
         return .none
         
     case .profilesLoaded(.failure(let error)):
-        state.friendsList = .failed(error.failureReason ?? "Failed to load the friends list.")
+        state.friendsList.fail(with: error.failureReason ?? "Failed to load the friends list.")
         return .none
     }
 }

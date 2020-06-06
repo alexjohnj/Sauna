@@ -23,16 +23,22 @@ struct MainWindowState: Equatable {
 extension AppState {
     var mainWindowState: MainWindowState {
         let statusText: String
-        if friendsList.isLoading {
-            statusText = "Loading…"
-        } else if friendsList.isLoaded,
-            let refreshDate = lastRefreshDate {
-            let formattedDate = kUpdateTimeFormatter.string(from: refreshDate)
-            statusText = "Updated at \(formattedDate)"
-        } else if let failureReason = friendsList.error {
-            statusText = failureReason
-        } else {
+        switch friendsList.state {
+        case .notRequested:
             statusText = ""
+
+        case .idle(nil):
+            if let lastRefreshDate = self.lastRefreshDate {
+                statusText = "Updated \(kUpdateTimeFormatter.string(from: lastRefreshDate))"
+            } else {
+                statusText = ""
+            }
+
+        case .idle(let errorMessage?):
+            statusText = errorMessage
+
+        case .loading:
+            statusText = "Updating…"
         }
 
         let isRefreshButtonEnabled = !friendsList.isLoading
