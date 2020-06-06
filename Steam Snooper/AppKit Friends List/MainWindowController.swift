@@ -11,6 +11,7 @@ import Combine
 import ComposableArchitecture
 
 private let kRowIdentifier = NSUserInterfaceItemIdentifier("FriendTableColumn")
+private let kGroupRowIdentifier = NSUserInterfaceItemIdentifier("FriendsGroupRow")
 
 final class MainWindowController: NSWindowController {
 
@@ -48,6 +49,7 @@ final class MainWindowController: NSWindowController {
         super.windowDidLoad()
 
         tableView.register(NSNib(nibNamed: "FriendTableViewCell", bundle: nil), forIdentifier: kRowIdentifier)
+        tableView.register(NSNib(nibNamed: "FriendTableViewGroupCell", bundle: nil), forIdentifier: kGroupRowIdentifier)
 
         viewStore.publisher.friendsList
             .sink { [unowned self] list in
@@ -96,10 +98,20 @@ extension MainWindowController: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        if case .right? = viewStore.friendsList.data?[row] {
-            return NSTextField(labelWithString: "")
+        if case .right(let group)? = viewStore.friendsList.data?[row] {
+            let headerView = tableView.makeView(withIdentifier: kGroupRowIdentifier, owner: self) as! FriendTableViewGroupCell
+            headerView.titleLabel?.stringValue = group.title
+            return headerView
         } else {
-            return tableView.makeView(withIdentifier: kRowIdentifier, owner: nil)
+            return tableView.makeView(withIdentifier: kRowIdentifier, owner: self)
+        }
+    }
+
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        if case .right = viewStore.friendsList.data?[row] {
+            return tableView.rowHeight
+        } else {
+            return 48
         }
     }
 }

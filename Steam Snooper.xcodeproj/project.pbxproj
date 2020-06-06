@@ -32,6 +32,8 @@
 		FA82C938248A46E100C5EFBE /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA82C937248A46E100C5EFBE /* FriendTableViewCell.xib */; };
 		FAC248F4248A721D00386D70 /* MainWindowState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC248F3248A721D00386D70 /* MainWindowState.swift */; };
 		FAC248F7248A78D000386D70 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC248F6248A78D000386D70 /* Either.swift */; };
+		FACA4508248B852400E14C27 /* FriendTableViewGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACA4507248B852400E14C27 /* FriendTableViewGroupCell.xib */; };
+		FACA450C248BAB8700E14C27 /* FriendTableViewGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA450B248BAB8700E14C27 /* FriendTableViewGroupCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		FA82C937248A46E100C5EFBE /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		FAC248F3248A721D00386D70 /* MainWindowState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowState.swift; sourceTree = "<group>"; };
 		FAC248F6248A78D000386D70 /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
+		FACA4507248B852400E14C27 /* FriendTableViewGroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewGroupCell.xib; sourceTree = "<group>"; };
+		FACA450B248BAB8700E14C27 /* FriendTableViewGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewGroupCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +183,8 @@
 				FA82C932248968DD00C5EFBE /* MainWindowController.xib */,
 				FA82C935248A46D200C5EFBE /* FriendTableViewCell.swift */,
 				FA82C937248A46E100C5EFBE /* FriendTableViewCell.xib */,
+				FACA4507248B852400E14C27 /* FriendTableViewGroupCell.xib */,
+				FACA450B248BAB8700E14C27 /* FriendTableViewGroupCell.swift */,
 			);
 			path = "AppKit Friends List";
 			sourceTree = "<group>";
@@ -285,6 +291,7 @@
 				FA82C938248A46E100C5EFBE /* FriendTableViewCell.xib in Resources */,
 				FA54FEC324891EDA004D21A7 /* Main.storyboard in Resources */,
 				FA54FEC024891EDA004D21A7 /* Preview Assets.xcassets in Resources */,
+				FACA4508248B852400E14C27 /* FriendTableViewGroupCell.xib in Resources */,
 				FA82C934248968DD00C5EFBE /* MainWindowController.xib in Resources */,
 				FA54FEBD24891EDA004D21A7 /* Assets.xcassets in Resources */,
 			);
@@ -307,6 +314,7 @@
 				FAC248F7248A78D000386D70 /* Either.swift in Sources */,
 				FA54FEDA248924D0004D21A7 /* SteamID.swift in Sources */,
 				FA54FEF024892840004D21A7 /* Profile.Status.swift in Sources */,
+				FACA450C248BAB8700E14C27 /* FriendTableViewGroupCell.swift in Sources */,
 				FA54FED224891F81004D21A7 /* Secrets.swift in Sources */,
 				FA54FEEC24892771004D21A7 /* Profile.swift in Sources */,
 				FAC248F4248A721D00386D70 /* MainWindowState.swift in Sources */,
