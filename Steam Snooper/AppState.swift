@@ -10,12 +10,12 @@ import Foundation
 import ComposableArchitecture
 
 enum FriendsListRow: Equatable {
-
+    
     enum Group: Equatable {
         case online
         case awayFromKeyboard
         case offline
-
+        
         var localizedDescription: String {
             switch self {
             case .online:
@@ -26,8 +26,19 @@ enum FriendsListRow: Equatable {
                 return "Offline"
             }
         }
+        
+        var sortRanking: Int {
+            switch self {
+            case .online:
+                return .min
+            case .offline:
+                return .max
+            case .awayFromKeyboard:
+                return Group.offline.sortRanking - 1
+            }
+        }
     }
-
+    
     case friend(Profile)
     case groupHeader(Group)
 }
@@ -56,7 +67,7 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, 
         return Effect(value: .reloadFriendsList)
     case .windowAppeared:
         return .none
-
+        
     case .reloadFriendsList where state.friendsList.isLoading == false:
         state.friendsList = .loading
         return env.client.getFriendsList(state.userID)
@@ -65,15 +76,15 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, 
             .map(AppAction.profilesLoaded)
             .receive(on: env.mainScheduler)
             .eraseToEffect()
-
+        
     case .reloadFriendsList:
         return .none
-
+        
     case .profilesLoaded(.success(let profiles)):
-        state.friendsList = .loaded(sortProfiles(profiles))
+        state.friendsList = .loaded(groupAndSortProfiles(profiles))
         state.lastRefreshDate = env.date()
         return .none
-
+        
     case .profilesLoaded(.failure(let error)):
         state.friendsList = .failed(error.failureReason ?? "Failed to load the friends list.")
         return .none
@@ -82,8 +93,18 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, 
 
 // MARK: - Helper Functions
 
-private func sortProfiles(_ profiles: [Profile]) -> [FriendsListRow] {
-    let sortedProfiles = profiles.sorted { profile, otherProfile in
+private func groupAndSortProfiles(_ profiles: [Profile]) -> [FriendsListRow] {
+    return Dictionary<FriendsListRow.Group, [Profile]>(grouping: profiles, by: \.groupName)
+        .mapValues(sortProfiles) // Sort contents of each group
+        .sorted { $0.key.sortRanking < $1.key.sortRanking } // Sort groups
+        .reduce(into: []) { accum, group in // Flatten groups and profiles into single array
+            accum.append(.groupHeader(group.key))
+            accum.append(contentsOf: group.value.map(FriendsListRow.friend))
+    }
+}
+
+private func sortProfiles(_ profiles: [Profile]) -> [Profile] {
+    return profiles.sorted { profile, otherProfile in
         if profile.status.sortRanking == otherProfile.status.sortRanking {
             // Sort people in a game to the front
             switch (profile.currentGame, otherProfile.currentGame) {
@@ -100,22 +121,6 @@ private func sortProfiles(_ profiles: [Profile]) -> [FriendsListRow] {
             return profile.status.sortRanking < otherProfile.status.sortRanking
         }
     }
-
-    struct Result {
-        var currentGroup: FriendsListRow.Group?
-        var groupedElements: [FriendsListRow] = []
-    }
-
-    let result = sortedProfiles.reduce(into: Result()) { result, profile in
-        if result.currentGroup != profile.groupName {
-            result.currentGroup = profile.groupName
-            result.groupedElements.append(.groupHeader(profile.groupName))
-        }
-
-        result.groupedElements.append(.friend(profile))
-    }
-
-    return result.groupedElements
 }
 
 private extension Profile {
@@ -125,12 +130,12 @@ private extension Profile {
              .lookingToPlay,
              .lookingToTrade:
             return .online
-
+            
         case .busy,
              .snooze,
              .away:
             return .awayFromKeyboard
-
+            
         case .offline:
             return .offline
         }
