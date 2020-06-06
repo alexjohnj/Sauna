@@ -9,17 +9,32 @@
 import Foundation
 import ComposableArchitecture
 
-struct Group: Equatable {
-    var title: String
+enum FriendsListRow: Equatable {
 
-    init(profile: Profile) {
-        self.title = "Online"
+    enum Group: Equatable {
+        case online
+        case awayFromKeyboard
+        case offline
+
+        var localizedDescription: String {
+            switch self {
+            case .online:
+                return "Online"
+            case .awayFromKeyboard:
+                return "A.F.K."
+            case .offline:
+                return "Offline"
+            }
+        }
     }
+
+    case friend(Profile)
+    case groupHeader(Group)
 }
 
 struct AppState: Equatable {
     var userID: SteamID
-    var friendsList: Loadable<[Either<Profile, Group>], String> = .notRequested
+    var friendsList: Loadable<[FriendsListRow], String> = .notRequested
     var lastRefreshDate: Date?
 }
 
@@ -67,7 +82,7 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, 
 
 // MARK: - Helper Functions
 
-private func sortProfiles(_ profiles: [Profile]) -> [Either<Profile, Group>] {
+private func sortProfiles(_ profiles: [Profile]) -> [FriendsListRow] {
     let sortedProfiles = profiles.sorted { profile, otherProfile in
         if profile.status.sortRanking == otherProfile.status.sortRanking {
             // Sort people in a game to the front
@@ -87,19 +102,37 @@ private func sortProfiles(_ profiles: [Profile]) -> [Either<Profile, Group>] {
     }
 
     struct Result {
-        var currentGroup: Group?
-        var groupedElements: [Either<Profile, Group>] = []
+        var currentGroup: FriendsListRow.Group?
+        var groupedElements: [FriendsListRow] = []
     }
 
     let result = sortedProfiles.reduce(into: Result()) { result, profile in
-        let profileGroup = Group(profile: profile)
-        if result.currentGroup != profileGroup {
-            result.currentGroup = profileGroup
-            result.groupedElements.append(.right(profileGroup))
+        if result.currentGroup != profile.groupName {
+            result.currentGroup = profile.groupName
+            result.groupedElements.append(.groupHeader(profile.groupName))
         }
 
-        result.groupedElements.append(.left(profile))
+        result.groupedElements.append(.friend(profile))
     }
 
     return result.groupedElements
+}
+
+private extension Profile {
+    var groupName: FriendsListRow.Group {
+        switch status {
+        case .online,
+             .lookingToPlay,
+             .lookingToTrade:
+            return .online
+
+        case .busy,
+             .snooze,
+             .away:
+            return .awayFromKeyboard
+
+        case .offline:
+            return .offline
+        }
+    }
 }

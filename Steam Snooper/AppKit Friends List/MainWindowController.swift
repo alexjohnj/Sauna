@@ -10,8 +10,13 @@ import AppKit
 import Combine
 import ComposableArchitecture
 
+// MARK: - Constants
+
 private let kRowIdentifier = NSUserInterfaceItemIdentifier("FriendTableColumn")
 private let kGroupRowIdentifier = NSUserInterfaceItemIdentifier("FriendsGroupRow")
+
+private let kGroupHeaderRowHeight: CGFloat = 24
+private let kFriendRowHeight: CGFloat = 48
 
 final class MainWindowController: NSWindowController {
 
@@ -50,6 +55,7 @@ final class MainWindowController: NSWindowController {
 
         tableView.register(NSNib(nibNamed: "FriendTableViewCell", bundle: nil), forIdentifier: kRowIdentifier)
         tableView.register(NSNib(nibNamed: "FriendTableViewGroupCell", bundle: nil), forIdentifier: kGroupRowIdentifier)
+        tableView.rowHeight = kFriendRowHeight
 
         viewStore.publisher.friendsList
             .sink { [unowned self] list in
@@ -79,7 +85,7 @@ extension MainWindowController: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
-        if case .right? = viewStore.friendsList.data?[row] {
+        if case .groupHeader? = viewStore.friendsList.data?[row] {
             return true
         } else {
             return false
@@ -88,19 +94,17 @@ extension MainWindowController: NSTableViewDataSource, NSTableViewDelegate {
 
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         switch viewStore.friendsList.data?[row] {
-        case .left(let profile):
+        case .friend(let profile):
             return profile
-        case .right(let group):
-            return group.title
-        case .none:
+        default:
             return nil
         }
     }
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        if case .right(let group)? = viewStore.friendsList.data?[row] {
+        if case .groupHeader(let group)? = viewStore.friendsList.data?[row] {
             let headerView = tableView.makeView(withIdentifier: kGroupRowIdentifier, owner: self) as! FriendTableViewGroupCell
-            headerView.titleLabel?.stringValue = group.title
+            headerView.titleLabel?.stringValue = group.localizedDescription
             return headerView
         } else {
             return tableView.makeView(withIdentifier: kRowIdentifier, owner: self)
@@ -108,10 +112,10 @@ extension MainWindowController: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        if case .right = viewStore.friendsList.data?[row] {
-            return tableView.rowHeight
+        if case .groupHeader = viewStore.friendsList.data?[row] {
+            return kGroupHeaderRowHeight
         } else {
-            return 48
+            return kFriendRowHeight
         }
     }
 }
