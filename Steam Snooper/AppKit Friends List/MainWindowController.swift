@@ -118,4 +118,12 @@ extension MainWindowController: NSTableViewDataSource, NSTableViewDelegate {
             return kFriendRowHeight
         }
     }
+
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        if case .groupHeader = viewStore.friendsList.data?[row] {
+            return false
+        } else {
+            return true
+        }
+    }
 }
