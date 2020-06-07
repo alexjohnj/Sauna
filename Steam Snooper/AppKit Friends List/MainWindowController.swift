@@ -64,9 +64,17 @@ final class MainWindowController: NSWindowController {
         .store(in: &cancellationBag)
 
         let windowState = viewStore.publisher.mainWindowState
-        windowState.statusText.assign(to: \.statusLabel.stringValue, on: self)
+
+        windowState.statusText
+            .removeDuplicates()
+            .throttle(for: .seconds(0.5), scheduler: RunLoop.main, latest: true)
+            .assign(to: \.statusLabel.stringValue, on: self)
             .store(in: &cancellationBag)
-        windowState.isRefreshButtonEnabled.assign(to: \.refreshButton.isEnabled, on: self)
+
+        windowState.isRefreshButtonEnabled
+            .removeDuplicates()
+            .throttle(for: .seconds(0.5), scheduler: RunLoop.main, latest: true)
+            .assign(to: \.refreshButton.isEnabled, on: self)
             .store(in: &cancellationBag)
 
         viewStore.send(.windowAppeared)
