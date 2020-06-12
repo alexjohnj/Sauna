@@ -56,6 +56,8 @@ final class MainWindowController: NSWindowController {
         tableView.register(NSNib(nibNamed: "FriendTableViewCell", bundle: nil), forIdentifier: kRowIdentifier)
         tableView.register(NSNib(nibNamed: "FriendTableViewGroupCell", bundle: nil), forIdentifier: kGroupRowIdentifier)
         tableView.rowHeight = kFriendRowHeight
+        tableView.target = self
+        tableView.doubleAction = #selector(openSelectedProfile(_:))
 
         viewStore.publisher.friendsList
             .sink { [unowned self] list in
@@ -84,6 +86,13 @@ final class MainWindowController: NSWindowController {
 
     @IBAction private func refresh(_ sender: Any) {
         viewStore.send(.reloadFriendsList)
+    }
+
+    @objc private func openSelectedProfile(_ sender: Any) {
+        guard tableView.clickedRow != -1 else { return }
+        guard case .friend(let profile) = viewStore.friendsList.data?[tableView.clickedRow] else { return }
+
+        NSWorkspace.shared.open(profile.url)
     }
 }
 

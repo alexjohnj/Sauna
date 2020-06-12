@@ -17,11 +17,13 @@ struct Profile: Codable, Hashable, Identifiable {
         case name = "personaname"
         case status = "personastate"
         case currentGame = "gameextrainfo"
+        case url = "profileurl"
     }
 
     // MARK: - Public Properties
 
     var id: SteamID
+    var url: URL
     var name: String
 
     /// If the player's profile is private, this will always be "0" [offline], except if the user has set their status to looking
@@ -34,10 +36,11 @@ struct Profile: Codable, Hashable, Identifiable {
 extension Profile {
     static func fixture(
         id: SteamID = "1",
+        url: URL = URL(string: "https://steamcommunity.com/id/Gabe/")!,
         name: String = "AJ",
         status: Status = .online,
         currentGame: String? = "Civilization VI"
     ) -> Profile {
-        Profile(id: id, name: name, status: status, currentGame: currentGame)
+        Profile(id: id, url: url, name: name, status: status, currentGame: currentGame)
     }
 }
