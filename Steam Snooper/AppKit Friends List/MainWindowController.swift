@@ -79,7 +79,7 @@ final class MainWindowController: NSWindowController {
             .assign(to: \.refreshButton.isEnabled, on: self)
             .store(in: &cancellationBag)
 
-        viewStore.send(.windowAppeared)
+        viewStore.send(.windowLoaded)
     }
 
     // MARK: - Actions

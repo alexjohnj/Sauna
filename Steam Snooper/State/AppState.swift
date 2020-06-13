@@ -9,6 +9,8 @@
 import Foundation
 import ComposableArchitecture
 
+let kFriendsListRefreshInterval: TimeInterval = 2 * 60
+
 struct AppState: Equatable {
     var userID: SteamID
     var friendsList = Loadable<[FriendsListRow], String>()
@@ -16,7 +18,7 @@ struct AppState: Equatable {
 }
 
 enum AppAction: Equatable {
-    case windowAppeared
+    case windowLoaded
     case reloadFriendsList
     case profilesLoaded(Result<[Profile], SteamClient.Failure>)
 }
@@ -28,21 +30,26 @@ struct AppEnvironment {
 }
 
 let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, action, env in
+    struct RefreshTimerID: Hashable { }
+    
     switch action {
-    case .windowAppeared where state.friendsList.isLoaded == false:
+    case .windowLoaded where state.friendsList.isLoaded == false:
         return Effect(value: .reloadFriendsList)
-    case .windowAppeared:
+    case .windowLoaded:
         return .none
         
     case .reloadFriendsList where state.friendsList.isLoading == false:
         state.friendsList.startLoading()
 
-        return env.client.getFriendsList(state.userID)
-            .flatMap(env.client.getProfiles)
-            .catchToEffect()
-            .map(AppAction.profilesLoaded)
-            .receive(on: env.mainScheduler)
-            .eraseToEffect()
+        return Effect.merge(
+            Effect.cancel(id: RefreshTimerID()),
+            env.client.getFriendsList(state.userID)
+                .flatMap(env.client.getProfiles)
+                .catchToEffect()
+                .map(AppAction.profilesLoaded)
+                .receive(on: env.mainScheduler)
+                .eraseToEffect()
+        )
         
     case .reloadFriendsList:
         return .none
@@ -50,11 +57,17 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, 
     case .profilesLoaded(.success(let profiles)):
         state.friendsList.complete(groupAndSortProfiles(profiles))
         state.lastRefreshDate = env.date()
-        return .none
+        
+        return Effect.timer(id: RefreshTimerID(), every: .seconds(kFriendsListRefreshInterval), tolerance: 0, on: env.mainScheduler)
+            .map { _ in AppAction.reloadFriendsList }
+            .eraseToEffect()
         
     case .profilesLoaded(.failure(let error)):
         state.friendsList.fail(with: error.failureReason ?? "Failed to load the friends list.")
-        return .none
+        
+        return Effect.timer(id: RefreshTimerID(), every: .seconds(kFriendsListRefreshInterval), tolerance: 0, on: env.mainScheduler)
+            .map { _ in AppAction.reloadFriendsList }
+            .eraseToEffect()
     }
 }
 
