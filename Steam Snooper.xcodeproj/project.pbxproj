@@ -31,6 +31,7 @@
 		FA82C936248A46D200C5EFBE /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C935248A46D200C5EFBE /* FriendTableViewCell.swift */; };
 		FA82C938248A46E100C5EFBE /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA82C937248A46E100C5EFBE /* FriendTableViewCell.xib */; };
 		FA836F4F248C1498002E5F95 /* FriendsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA836F4E248C1498002E5F95 /* FriendsListRow.swift */; };
+		FAB66C8B24950FDB00AC461F /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB66C8A24950FDB00AC461F /* Notifier.swift */; };
 		FAC248F4248A721D00386D70 /* MainWindowState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC248F3248A721D00386D70 /* MainWindowState.swift */; };
 		FACA4508248B852400E14C27 /* FriendTableViewGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACA4507248B852400E14C27 /* FriendTableViewGroupCell.xib */; };
 		FACA450C248BAB8700E14C27 /* FriendTableViewGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA450B248BAB8700E14C27 /* FriendTableViewGroupCell.swift */; };
@@ -74,6 +75,7 @@
 		FA82C935248A46D200C5EFBE /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		FA82C937248A46E100C5EFBE /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		FA836F4E248C1498002E5F95 /* FriendsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListRow.swift; sourceTree = "<group>"; };
+		FAB66C8A24950FDB00AC461F /* Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		FAC248F3248A721D00386D70 /* MainWindowState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowState.swift; sourceTree = "<group>"; };
 		FACA4507248B852400E14C27 /* FriendTableViewGroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewGroupCell.xib; sourceTree = "<group>"; };
 		FACA450B248BAB8700E14C27 /* FriendTableViewGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewGroupCell.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			children = (
 				FA836F4E248C1498002E5F95 /* FriendsListRow.swift */,
 				FA54FED324891FBD004D21A7 /* AppState.swift */,
+				FAB66C8A24950FDB00AC461F /* Notifier.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */,
 				FA54FED424891FBD004D21A7 /* AppState.swift in Sources */,
 				FA82C92224892F1B00C5EFBE /* UserProfilesResponse.swift in Sources */,
+				FAB66C8B24950FDB00AC461F /* Notifier.swift in Sources */,
 				FA82C9262489333900C5EFBE /* Loadable.swift in Sources */,
 				FA54FED824892332004D21A7 /* FriendsListResponse.swift in Sources */,
 				FA82C92024892C8C00C5EFBE /* Client.swift in Sources */,

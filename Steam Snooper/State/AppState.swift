@@ -8,6 +8,7 @@
 
 import Foundation
 import ComposableArchitecture
+import CasePaths
 
 let kFriendsListRefreshInterval: TimeInterval = 2 * 60
 
@@ -25,6 +26,7 @@ enum AppAction: Equatable {
 
 struct AppEnvironment {
     var client: SteamClient
+    var notifier: Notifier
     var mainScheduler: AnySchedulerOf<DispatchQueue>
     var date: () -> Date
 }
@@ -34,13 +36,20 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, 
     
     switch action {
     case .windowLoaded where state.friendsList.isLoaded == false:
-        return Effect(value: .reloadFriendsList)
+        return Effect.merge(
+            Effect(value: .reloadFriendsList),
+            Effect.fireAndForget {
+                env.notifier.requestAuthorization()
+            }
+        )
     case .windowLoaded:
-        return .none
+        return Effect.fireAndForget {
+            env.notifier.requestAuthorization()
+        }
         
     case .reloadFriendsList where state.friendsList.isLoading == false:
         state.friendsList.startLoading()
-
+        
         return Effect.merge(
             Effect.cancel(id: RefreshTimerID()),
             env.client.getFriendsList(state.userID)
@@ -54,13 +63,22 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, 
     case .reloadFriendsList:
         return .none
         
-    case .profilesLoaded(.success(let profiles)):
-        state.friendsList.complete(groupAndSortProfiles(profiles))
+    case .profilesLoaded(.success(let newFriendsList)):
+        let oldFriendsList = state.friendsList.data?.compactMap(/FriendsListRow.friend) ?? []
+
+        state.friendsList.complete(groupAndSortProfiles(newFriendsList))
         state.lastRefreshDate = env.date()
         
-        return Effect.timer(id: RefreshTimerID(), every: .seconds(kFriendsListRefreshInterval), tolerance: 0, on: env.mainScheduler)
-            .map { _ in AppAction.reloadFriendsList }
-            .eraseToEffect()
+        let notifications = statusChangeNotifications(from: oldFriendsList, to: newFriendsList)
+        
+        return Effect.merge(
+            Effect.fireAndForget {
+                env.notifier.postNotifications(notifications)
+            },
+            Effect.timer(id: RefreshTimerID(), every: .seconds(kFriendsListRefreshInterval), tolerance: 0, on: env.mainScheduler)
+                .map { _ in AppAction.reloadFriendsList }
+                .eraseToEffect()
+        )
         
     case .profilesLoaded(.failure(let error)):
         state.friendsList.fail(with: error.failureReason ?? "Failed to load the friends list.")
@@ -99,6 +117,59 @@ private func sortProfiles(_ profiles: [Profile]) -> [Profile] {
             }
         } else {
             return profile.status.sortRanking < otherProfile.status.sortRanking
+        }
+    }
+}
+
+// MARK: - Notification Support
+
+import UserNotifications
+
+private func statusChangeNotifications(from oldFriendsList: [Profile], to newFriendsList: [Profile]) -> [UNNotificationRequest] {
+    guard !oldFriendsList.isEmpty else {
+        return []
+    }
+
+    return statusChanges(from: oldFriendsList, in: newFriendsList)
+        .map { change in
+            let notificationContent = UNMutableNotificationContent()
+
+            switch change.kind {
+            case .cameOnline:
+                notificationContent.title = "\(change.player.name) is online"
+                if let currentGame = change.player.currentGame {
+                    notificationContent.subtitle = "Currently playing \(currentGame)"
+                }
+            }
+            
+            let request = UNNotificationRequest(identifier: change.player.id.rawValue, content: notificationContent, trigger: nil)
+            return request
+    }
+}
+
+private struct StatusChange {
+    enum Kind {
+        case cameOnline
+    }
+    
+    let player: Profile
+    let kind: Kind
+}
+
+private func statusChanges(from oldFriendsList: [Profile], in newFriendsList: [Profile]) -> [StatusChange] {
+    let previousOnlineFriends = oldFriendsList.filter { $0.status == .online }
+    let currentOnlineFriends = newFriendsList.filter { $0.status == .online }
+    let difference = currentOnlineFriends.difference(from: previousOnlineFriends, by: { $0.id == $1.id })
+    
+    return difference.insertions.map { StatusChange(player: $0.element, kind: .cameOnline) }
+}
+
+private extension CollectionDifference.Change {
+    var element: ChangeElement {
+        switch self {
+        case .insert(_, let element, _),
+             .remove(_, let element, _):
+            return element
         }
     }
 }

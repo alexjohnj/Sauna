@@ -25,6 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             reducer: appReducer,
             environment: AppEnvironment(
                 client: .live(.shared),
+                notifier: .user(.current()),
                 mainScheduler: DispatchQueue.main.eraseToAnyScheduler(),
                 date: Date.init
             )
