@@ -23,6 +23,9 @@
 		FA54FEEE2489277F004D21A7 /* ProfileDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEED2489277F004D21A7 /* ProfileDecodingTests.swift */; };
 		FA54FEF024892840004D21A7 /* Profile.Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEEF24892840004D21A7 /* Profile.Status.swift */; };
 		FA6F2ECF24961B67004F02F8 /* AppEnvironment+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ECE24961B67004F02F8 /* AppEnvironment+Mock.swift */; };
+		FA6F2ED12496204D004F02F8 /* AppNotificationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED02496204D004F02F8 /* AppNotificationReducer.swift */; };
+		FA6F2ED324962323004F02F8 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED224962323004F02F8 /* Observer.swift */; };
+		FA6F2ED824962532004F02F8 /* CollectionDifference.Change+Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED724962532004F02F8 /* CollectionDifference.Change+Element.swift */; };
 		FA82C92024892C8C00C5EFBE /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C91F24892C8C00C5EFBE /* Client.swift */; };
 		FA82C92224892F1B00C5EFBE /* UserProfilesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92124892F1B00C5EFBE /* UserProfilesResponse.swift */; };
 		FA82C92424892F3D00C5EFBE /* UserProfilesResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92324892F3D00C5EFBE /* UserProfilesResponseTests.swift */; };
@@ -68,6 +71,9 @@
 		FA54FEED2489277F004D21A7 /* ProfileDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDecodingTests.swift; sourceTree = "<group>"; };
 		FA54FEEF24892840004D21A7 /* Profile.Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.Status.swift; sourceTree = "<group>"; };
 		FA6F2ECE24961B67004F02F8 /* AppEnvironment+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Mock.swift"; sourceTree = "<group>"; };
+		FA6F2ED02496204D004F02F8 /* AppNotificationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationReducer.swift; sourceTree = "<group>"; };
+		FA6F2ED224962323004F02F8 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		FA6F2ED724962532004F02F8 /* CollectionDifference.Change+Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionDifference.Change+Element.swift"; sourceTree = "<group>"; };
 		FA82C91F24892C8C00C5EFBE /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		FA82C92124892F1B00C5EFBE /* UserProfilesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilesResponse.swift; sourceTree = "<group>"; };
 		FA82C92324892F3D00C5EFBE /* UserProfilesResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilesResponseTests.swift; sourceTree = "<group>"; };
@@ -129,7 +135,7 @@
 				FA54FED124891F81004D21A7 /* Secrets.swift */,
 				FA54FED524892309004D21A7 /* API */,
 				FA82C930248968C500C5EFBE /* AppKit Friends List */,
-				FA54FEC124891EDA004D21A7 /* Main.storyboard */,
+				FA6F2ED624962526004F02F8 /* Extensions */,
 				FA54FEBE24891EDA004D21A7 /* Preview Content */,
 				FA836F4D248C1488002E5F95 /* State */,
 				FAC248F5248A77F600386D70 /* Supporting Files */,
@@ -179,6 +185,15 @@
 			path = "Steam SnooperTests";
 			sourceTree = "<group>";
 		};
+		FA6F2ED624962526004F02F8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA6F2ED724962532004F02F8 /* CollectionDifference.Change+Element.swift */,
+				FA6F2ED224962323004F02F8 /* Observer.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		FA82C930248968C500C5EFBE /* AppKit Friends List */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,8 +211,9 @@
 		FA836F4D248C1488002E5F95 /* State */ = {
 			isa = PBXGroup;
 			children = (
-				FA836F4E248C1498002E5F95 /* FriendsListRow.swift */,
+				FA6F2ED02496204D004F02F8 /* AppNotificationReducer.swift */,
 				FA54FED324891FBD004D21A7 /* AppState.swift */,
+				FA836F4E248C1498002E5F95 /* FriendsListRow.swift */,
 				FAB66C8A24950FDB00AC461F /* Notifier.swift */,
 			);
 			path = State;
@@ -206,6 +222,7 @@
 		FAC248F5248A77F600386D70 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA54FEC124891EDA004D21A7 /* Main.storyboard */,
 				FA54FEBC24891EDA004D21A7 /* Assets.xcassets */,
 				FA54FEC524891EDA004D21A7 /* Steam_Snooper.entitlements */,
 				FA54FEC424891EDA004D21A7 /* Info.plist */,
@@ -326,17 +343,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA54FEDA248924D0004D21A7 /* SteamID.swift in Sources */,
+				FA6F2ED324962323004F02F8 /* Observer.swift in Sources */,
 				FA54FEF024892840004D21A7 /* Profile.Status.swift in Sources */,
 				FACA450C248BAB8700E14C27 /* FriendTableViewGroupCell.swift in Sources */,
 				FA54FED224891F81004D21A7 /* Secrets.swift in Sources */,
 				FA54FEEC24892771004D21A7 /* Profile.swift in Sources */,
 				FAC248F4248A721D00386D70 /* MainWindowState.swift in Sources */,
 				FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */,
+				FA6F2ED12496204D004F02F8 /* AppNotificationReducer.swift in Sources */,
 				FA54FED424891FBD004D21A7 /* AppState.swift in Sources */,
 				FA82C92224892F1B00C5EFBE /* UserProfilesResponse.swift in Sources */,
 				FAB66C8B24950FDB00AC461F /* Notifier.swift in Sources */,
 				FA82C9262489333900C5EFBE /* Loadable.swift in Sources */,
 				FA54FED824892332004D21A7 /* FriendsListResponse.swift in Sources */,
+				FA6F2ED824962532004F02F8 /* CollectionDifference.Change+Element.swift in Sources */,
 				FA82C92024892C8C00C5EFBE /* Client.swift in Sources */,
 				FA82C933248968DD00C5EFBE /* MainWindowController.swift in Sources */,
 				FA836F4F248C1498002E5F95 /* FriendsListRow.swift in Sources */,

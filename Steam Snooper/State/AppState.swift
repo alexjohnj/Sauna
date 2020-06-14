@@ -31,22 +31,15 @@ struct AppEnvironment {
     var date: () -> Date
 }
 
-let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, action, env in
+let appStateReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, action, env in
     struct RefreshTimerID: Hashable { }
     
     switch action {
     case .windowLoaded where state.friendsList.isLoaded == false:
-        return Effect.merge(
-            Effect(value: .reloadFriendsList),
-            Effect.fireAndForget {
-                env.notifier.requestAuthorization()
-            }
-        )
+        return Effect(value: .reloadFriendsList)
     case .windowLoaded:
-        return Effect.fireAndForget {
-            env.notifier.requestAuthorization()
-        }
-        
+        return .none
+
     case .reloadFriendsList where state.friendsList.isLoading == false:
         state.friendsList.startLoading()
         
@@ -64,22 +57,13 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, 
         return .none
         
     case .profilesLoaded(.success(let newFriendsList)):
-        let oldFriendsList = state.friendsList.data?.compactMap(/FriendsListRow.friend) ?? []
-
         state.friendsList.complete(groupAndSortProfiles(newFriendsList))
         state.lastRefreshDate = env.date()
-        
-        let notifications = statusChangeNotifications(from: oldFriendsList, to: newFriendsList)
-        
-        return Effect.merge(
-            Effect.fireAndForget {
-                env.notifier.postNotifications(notifications)
-            },
-            Effect.timer(id: RefreshTimerID(), every: .seconds(kFriendsListRefreshInterval), tolerance: 0, on: env.mainScheduler)
-                .map { _ in AppAction.reloadFriendsList }
-                .eraseToEffect()
-        )
-        
+
+        return Effect.timer(id: RefreshTimerID(), every: .seconds(kFriendsListRefreshInterval), tolerance: 0, on: env.mainScheduler)
+            .map { _ in AppAction.reloadFriendsList }
+            .eraseToEffect()
+
     case .profilesLoaded(.failure(let error)):
         state.friendsList.fail(with: error.failureReason ?? "Failed to load the friends list.")
         
@@ -117,59 +101,6 @@ private func sortProfiles(_ profiles: [Profile]) -> [Profile] {
             }
         } else {
             return profile.status.sortRanking < otherProfile.status.sortRanking
-        }
-    }
-}
-
-// MARK: - Notification Support
-
-import UserNotifications
-
-private func statusChangeNotifications(from oldFriendsList: [Profile], to newFriendsList: [Profile]) -> [UNNotificationRequest] {
-    guard !oldFriendsList.isEmpty else {
-        return []
-    }
-
-    return statusChanges(from: oldFriendsList, in: newFriendsList)
-        .map { change in
-            let notificationContent = UNMutableNotificationContent()
-
-            switch change.kind {
-            case .cameOnline:
-                notificationContent.title = "\(change.player.name) is online"
-                if let currentGame = change.player.currentGame {
-                    notificationContent.subtitle = "Currently playing \(currentGame)"
-                }
-            }
-            
-            let request = UNNotificationRequest(identifier: change.player.id.rawValue, content: notificationContent, trigger: nil)
-            return request
-    }
-}
-
-private struct StatusChange {
-    enum Kind {
-        case cameOnline
-    }
-    
-    let player: Profile
-    let kind: Kind
-}
-
-private func statusChanges(from oldFriendsList: [Profile], in newFriendsList: [Profile]) -> [StatusChange] {
-    let previousOnlineFriends = oldFriendsList.filter { $0.status == .online }.sorted(by: { $0.id.rawValue > $1.id.rawValue })
-    let currentOnlineFriends = newFriendsList.filter { $0.status == .online }.sorted(by: { $0.id.rawValue > $1.id.rawValue })
-    let difference = currentOnlineFriends.difference(from: previousOnlineFriends, by: { $0.id == $1.id })
-    
-    return difference.insertions.map { StatusChange(player: $0.element, kind: .cameOnline) }
-}
-
-private extension CollectionDifference.Change {
-    var element: ChangeElement {
-        switch self {
-        case .insert(_, let element, _),
-             .remove(_, let element, _):
-            return element
         }
     }
 }
