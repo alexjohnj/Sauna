@@ -13,11 +13,11 @@ import ComposableArchitecture
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
+    
     var window: NSWindow!
     var mainWindowController: MainWindowController!
-
-
+    
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
         let store = Store(
@@ -30,21 +30,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 date: Date.init
             )
         )
-
+        
         mainWindowController = MainWindowController(store: store)
         mainWindowController.showWindow(nil)
     }
-
+    
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
+    
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows: Bool) -> Bool {
         if !hasVisibleWindows {
             mainWindowController.showWindow(nil)
             return false
         }
-
+        
         return true
     }
 }
@@ -62,6 +62,11 @@ private let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer.c
         state: \AppState.loadedProfiles,
         action: /.`self`,
         environment: { AppNotificationEnvironment(notifier: $0.notifier) }
+    ),
+    autoRefreshObserver.pullback(
+        state: \.self,
+        action: /.`self`,
+        environment: { AutoRefreshReducerEnvironment(mainScheduler: $0.mainScheduler) }
     ),
     appStateReducer
 )
