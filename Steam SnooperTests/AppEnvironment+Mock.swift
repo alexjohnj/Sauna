@@ -36,7 +36,7 @@ extension SteamClient {
 
 extension Notifier {
     static var stub: Notifier {
-        Notifier(requestAuthorization: { }, postNotifications: { _ in })
+        Notifier(requestAuthorization: { }, postNotifications: { _ in }, removeDeliveredNotifications: { _ in })
     }
 }
 

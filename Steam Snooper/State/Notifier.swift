@@ -11,6 +11,7 @@ import UserNotifications
 struct Notifier {
     var requestAuthorization: () -> Void
     var postNotifications: ([UNNotificationRequest]) -> Void
+    var removeDeliveredNotifications: ([String]) -> Void
 }
 
 extension Notifier {
@@ -21,6 +22,8 @@ extension Notifier {
                 for notification in notifications {
                     center.add(notification, withCompletionHandler: nil)
                 }
-        })
+        },
+            removeDeliveredNotifications: center.removeDeliveredNotifications(withIdentifiers:)
+        )
     }
 }
