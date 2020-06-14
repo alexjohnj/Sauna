@@ -157,8 +157,8 @@ private struct StatusChange {
 }
 
 private func statusChanges(from oldFriendsList: [Profile], in newFriendsList: [Profile]) -> [StatusChange] {
-    let previousOnlineFriends = oldFriendsList.filter { $0.status == .online }
-    let currentOnlineFriends = newFriendsList.filter { $0.status == .online }
+    let previousOnlineFriends = oldFriendsList.filter { $0.status == .online }.sorted(by: { $0.id.rawValue > $1.id.rawValue })
+    let currentOnlineFriends = newFriendsList.filter { $0.status == .online }.sorted(by: { $0.id.rawValue > $1.id.rawValue })
     let difference = currentOnlineFriends.difference(from: previousOnlineFriends, by: { $0.id == $1.id })
     
     return difference.insertions.map { StatusChange(player: $0.element, kind: .cameOnline) }
