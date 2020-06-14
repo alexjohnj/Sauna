@@ -35,5 +35,10 @@ extension Profile {
                 return Status.online.sortRanking + 1
             }
         }
+        
+        /// `true` if the status means the user account is online, even if the user may not be present.
+        var isTechnicallyOnline: Bool {
+            self == .offline ? false : true
+        }
     }
 }

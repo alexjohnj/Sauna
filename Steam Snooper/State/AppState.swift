@@ -16,6 +16,10 @@ struct AppState: Equatable {
     var userID: SteamID
     var friendsList = Loadable<[FriendsListRow], String>()
     var lastRefreshDate: Date?
+    
+    var loadedProfiles: [Profile] {
+        friendsList.data?.compactMap(/FriendsListRow.friend) ?? []
+    }
 }
 
 enum AppAction: Equatable {

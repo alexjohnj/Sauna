@@ -51,12 +51,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 // MARK: - Application Reducer
 
-private extension AppState {
-    var loadedProfiles: [Profile] {
-        friendsList.data?.compactMap(/FriendsListRow.friend) ?? []
-    }
-}
-
 private let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer.combine(
     appNotificationReducer.pullback(
         state: \AppState.loadedProfiles,

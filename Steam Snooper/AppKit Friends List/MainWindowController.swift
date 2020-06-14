@@ -78,6 +78,10 @@ final class MainWindowController: NSWindowController {
             .throttle(for: .seconds(0.5), scheduler: RunLoop.main, latest: true)
             .assign(to: \.refreshButton.isEnabled, on: self)
             .store(in: &cancellationBag)
+        
+        windowState.title
+            .sink { [unowned self] title in self.window?.title = title }
+            .store(in: &cancellationBag)
 
         viewStore.send(.windowLoaded)
     }

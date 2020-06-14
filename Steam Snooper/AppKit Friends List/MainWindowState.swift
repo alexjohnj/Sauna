@@ -16,6 +16,7 @@ private let kUpdateTimeFormatter: DateFormatter = {
 }()
 
 struct MainWindowState: Equatable {
+    var title: String
     var statusText: String
     var isRefreshButtonEnabled: Bool
 }
@@ -26,22 +27,29 @@ extension AppState {
         switch friendsList.state {
         case .notRequested:
             statusText = ""
-
+            
         case .idle(nil):
             if let lastRefreshDate = self.lastRefreshDate {
                 statusText = "Updated \(kUpdateTimeFormatter.string(from: lastRefreshDate))"
             } else {
                 statusText = ""
             }
-
+            
         case .idle(let errorMessage?):
             statusText = errorMessage
-
+            
         case .loading:
             statusText = "Updating…"
         }
-
+        
+        let onlineFriendCount = loadedProfiles.filter { $0.status.isTechnicallyOnline }.count
+        let windowTitle = "Steam Friends (\(onlineFriendCount) Online)"
+        
         let isRefreshButtonEnabled = !friendsList.isLoading
-        return MainWindowState(statusText: statusText, isRefreshButtonEnabled: isRefreshButtonEnabled)
+        return MainWindowState(
+            title: windowTitle,
+            statusText: statusText,
+            isRefreshButtonEnabled: isRefreshButtonEnabled
+        )
     }
 }
