@@ -11,12 +11,15 @@ import Foundation
 enum FriendsListRow: Equatable {
 
     enum Group: Equatable {
+        case inGame
         case online
         case awayFromKeyboard
         case offline
 
         var localizedDescription: String {
             switch self {
+            case .inGame:
+                return "In Game"
             case .online:
                 return "Online"
             case .awayFromKeyboard:
@@ -28,8 +31,10 @@ enum FriendsListRow: Equatable {
 
         var sortRanking: Int {
             switch self {
-            case .online:
+            case .inGame:
                 return .min
+            case .online:
+                return Group.inGame.sortRanking + 1
             case .offline:
                 return .max
             case .awayFromKeyboard:
@@ -44,6 +49,10 @@ enum FriendsListRow: Equatable {
 
 extension Profile {
     var groupName: FriendsListRow.Group {
+        guard currentGame == nil else {
+            return .inGame
+        }
+
         switch status {
         case .online,
              .lookingToPlay,
