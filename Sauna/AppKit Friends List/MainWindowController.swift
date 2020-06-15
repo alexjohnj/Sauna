@@ -26,6 +26,7 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
     private let viewStore: ViewStore<AppState, AppAction>
 
     private var cancellationBag: [AnyCancellable] = []
+    private var setupWindowController: SetupWindowController?
 
     // MARK: - Outlets
 
@@ -63,6 +64,20 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
                 self.tableView.reloadData()
         }
         .store(in: &cancellationBag)
+
+        store.scope(state: { $0.setupWindowState }, action: AppAction.setupWindowAction)
+            .ifLet(
+                then: { [unowned self] setupWindowStore in
+                    self.setupWindowController = SetupWindowController(store: setupWindowStore)
+                    self.window?.beginSheet(self.setupWindowController!.window!) { _ in self.setupWindowController = nil }
+                },
+                else: { [unowned self] in
+                    if let setupWindow = self.setupWindowController?.window {
+                        self.window?.endSheet(setupWindow, returnCode: .OK)
+                    }
+                }
+        )
+            .store(in: &cancellationBag)
 
         let windowState = viewStore.publisher.mainWindowState
 

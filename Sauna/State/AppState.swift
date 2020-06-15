@@ -7,15 +7,16 @@
 //
 
 import Foundation
+import Combine
 import ComposableArchitecture
 import CasePaths
 
 let kFriendsListRefreshInterval: TimeInterval = 2 * 60
 
 struct AppState: Equatable {
-    var userID: SteamID
     var friendsList = Loadable<[FriendsListRow], String>()
     var lastRefreshDate: Date?
+    var setupWindowState: SetupWindowState?
     
     var loadedProfiles: [Profile] {
         friendsList.data?.compactMap(/FriendsListRow.friend) ?? []
@@ -26,32 +27,48 @@ enum AppAction: Equatable {
     case windowLoaded
     case reloadFriendsList
     case profilesLoaded(Result<[Profile], SteamClient.Failure>)
+
+    case startSetupWindow
+    case setupWindowAction(SetupWindowAction)
 }
 
 struct AppEnvironment {
     var client: SteamClient
     var notifier: Notifier
+    var credentialStore: CredentialStore
+
     var mainScheduler: AnySchedulerOf<DispatchQueue>
     var date: () -> Date
 }
 
 let appStateReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, action, env in
-    
     switch action {
-    case .windowLoaded where state.friendsList.isLoaded == false:
-        return Effect(value: .reloadFriendsList)
     case .windowLoaded:
+        return Effect.running(env.credentialStore.getCredentials)
+            .map { $0 == nil ? AppAction.startSetupWindow : AppAction.reloadFriendsList }
+            .eraseToEffect()
+
+    case .startSetupWindow:
+        state.setupWindowState = SetupWindowState()
         return .none
-        
+
     case .reloadFriendsList where state.friendsList.isLoading == false:
         state.friendsList.startLoading()
-        
-        return env.client.getFriendsList(state.userID)
-            .flatMap(env.client.getProfiles)
-            .catchToEffect()
-            .map(AppAction.profilesLoaded)
-            .receive(on: env.mainScheduler)
-            .eraseToEffect()
+
+        return Effect.running(env.credentialStore.getCredentials)
+            .compactMap { $0 } // This is bad, need to make this produce a failure instead.
+            .setFailureType(to: SteamClient.Failure.self)
+            .flatMap {
+                env.client.getFriendsList($0.apiKey, $0.steamID)
+                    .zip(Just($0).setFailureType(to: SteamClient.Failure.self))
+        }
+        .flatMap { steamIDs, credentials in
+            env.client.getProfiles(credentials.apiKey, steamIDs)
+        }
+        .catchToEffect()
+        .map(AppAction.profilesLoaded)
+        .receive(on: env.mainScheduler)
+        .eraseToEffect()
 
     case .reloadFriendsList:
         return .none
@@ -63,6 +80,13 @@ let appStateReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { st
         
     case .profilesLoaded(.failure(let error)):
         state.friendsList.fail(with: error.failureReason ?? "Failed to load the friends list.")
+        return .none
+
+    case .setupWindowAction(.credentialsSaved):
+        state.setupWindowState = nil
+        return Effect(value: .reloadFriendsList)
+
+    case .setupWindowAction:
         return .none
     }
 }

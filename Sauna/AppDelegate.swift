@@ -12,20 +12,20 @@ import SwiftUI
 import ComposableArchitecture
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+final class AppDelegate: NSObject, NSApplicationDelegate {
     
     var window: NSWindow!
     var mainWindowController: MainWindowController!
-    
-    
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
         let store = Store(
-            initialState: AppState(userID: kMySteamID),
+            initialState: AppState(),
             reducer: appReducer,
             environment: AppEnvironment(
                 client: .live(.shared),
                 notifier: .user(.current()),
+                credentialStore: .real,
                 mainScheduler: DispatchQueue.main.eraseToAnyScheduler(),
                 date: Date.init
             )
@@ -34,11 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainWindowController = MainWindowController(store: store)
         mainWindowController.showWindow(nil)
     }
-    
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
-    
+
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows: Bool) -> Bool {
         if !hasVisibleWindows {
             mainWindowController.showWindow(nil)
@@ -61,6 +57,11 @@ private let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer.c
         state: \.self,
         action: /.`self`,
         environment: { AutoRefreshReducerEnvironment(mainScheduler: $0.mainScheduler) }
+    ),
+    setupWindowReducer.optional.pullback(
+        state: \AppState.setupWindowState,
+        action: /AppAction.setupWindowAction,
+        environment: { SetupWindowEnvironment(credentialStore: $0.credentialStore) }
     ),
     appStateReducer
 )

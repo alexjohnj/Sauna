@@ -40,9 +40,8 @@ let appNotificationReducer: Observer<[Profile], AppAction, AppNotificationEnviro
             env.notifier.postNotifications(notificationRequests)
             env.notifier.removeDeliveredNotifications(noteIdentifiersToRemove)
         }
-        
-    case .profilesLoaded(.failure),
-         .reloadFriendsList:
+
+    default:
         return .none
     }
 }

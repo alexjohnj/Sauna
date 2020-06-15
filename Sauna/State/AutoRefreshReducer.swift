@@ -26,8 +26,8 @@ let autoRefreshObserver: Observer<AppState, AppAction, AutoRefreshReducerEnviron
         return Effect.timer(id: RefreshTimerID(), every: .seconds(kFriendsListRefreshInterval), on: env.mainScheduler)
             .map { _ in AppAction.reloadFriendsList }
             .eraseToEffect()
-    
-    case .windowLoaded:
+
+    default:
         return .none
     }
 }

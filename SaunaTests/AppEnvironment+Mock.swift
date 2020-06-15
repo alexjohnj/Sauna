@@ -17,6 +17,7 @@ extension AppEnvironment {
         AppEnvironment(
             client: .stub,
             notifier: .stub,
+            credentialStore: .stub,
             mainScheduler: scheduler,
             date: { Date.stub }
         )
@@ -26,9 +27,9 @@ extension AppEnvironment {
 extension SteamClient {
     static var stub: SteamClient {
         SteamClient(
-            getFriendsList: { _ in
+            getFriendsList: { _, _  in
                 stubPublisher([])
-        }, getProfiles: { _ in
+        }, getProfiles: { _, _  in
             stubPublisher([])
         })
     }
@@ -43,6 +44,12 @@ extension Notifier {
 extension Date {
     static var stub: Date {
         Date(timeIntervalSince1970: 86400)
+    }
+}
+
+extension CredentialStore {
+    static var stub: CredentialStore {
+        CredentialStore(saveCredentials: { _ in }, getCredentials: { nil }, clearCredentials: { })
     }
 }
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA0E7FEA2498D9BB004836EC /* SetupWindowStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E7FE92498D9BB004836EC /* SetupWindowStateTests.swift */; };
+		FA0E7FEC2498E69E004836EC /* SteamIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E7FEB2498E69E004836EC /* SteamIDTests.swift */; };
+		FA0E7FEE2498E7AE004836EC /* APIKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E7FED2498E7AE004836EC /* APIKeyTests.swift */; };
 		FA381E90249659EA00719ABC /* AutoRefreshReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA381E8F249659EA00719ABC /* AutoRefreshReducer.swift */; };
 		FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEB824891ED8004D21A7 /* AppDelegate.swift */; };
 		FA54FEBD24891EDA004D21A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA54FEBC24891EDA004D21A7 /* Assets.xcassets */; };
@@ -35,6 +38,12 @@
 		FA82C936248A46D200C5EFBE /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C935248A46D200C5EFBE /* FriendTableViewCell.swift */; };
 		FA82C938248A46E100C5EFBE /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA82C937248A46E100C5EFBE /* FriendTableViewCell.xib */; };
 		FA836F4F248C1498002E5F95 /* FriendsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA836F4E248C1498002E5F95 /* FriendsListRow.swift */; };
+		FA8AA4E72497814200B9924D /* SetupWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AA4E52497814200B9924D /* SetupWindowController.swift */; };
+		FA8AA4E82497814200B9924D /* SetupWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8AA4E62497814200B9924D /* SetupWindowController.xib */; };
+		FA8AA4EA2497852400B9924D /* SetupWindowState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AA4E92497852400B9924D /* SetupWindowState.swift */; };
+		FA8AA4EC249793E200B9924D /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AA4EB249793E200B9924D /* CredentialStore.swift */; };
+		FA8AA4EE2497958200B9924D /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AA4ED2497958200B9924D /* APIKey.swift */; };
+		FA8AA4F0249799D100B9924D /* Effect+Running.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AA4EF249799D100B9924D /* Effect+Running.swift */; };
 		FAB66C8B24950FDB00AC461F /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB66C8A24950FDB00AC461F /* Notifier.swift */; };
 		FAC248F4248A721D00386D70 /* MainWindowState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC248F3248A721D00386D70 /* MainWindowState.swift */; };
 		FACA4508248B852400E14C27 /* FriendTableViewGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACA4507248B852400E14C27 /* FriendTableViewGroupCell.xib */; };
@@ -52,6 +61,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA0E7FE92498D9BB004836EC /* SetupWindowStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWindowStateTests.swift; sourceTree = "<group>"; };
+		FA0E7FEB2498E69E004836EC /* SteamIDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamIDTests.swift; sourceTree = "<group>"; };
+		FA0E7FED2498E7AE004836EC /* APIKeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeyTests.swift; sourceTree = "<group>"; };
 		FA381E8F249659EA00719ABC /* AutoRefreshReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshReducer.swift; sourceTree = "<group>"; };
 		FA54FEB524891ED8004D21A7 /* Sauna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sauna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA54FEB824891ED8004D21A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +95,12 @@
 		FA82C935248A46D200C5EFBE /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		FA82C937248A46E100C5EFBE /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		FA836F4E248C1498002E5F95 /* FriendsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListRow.swift; sourceTree = "<group>"; };
+		FA8AA4E52497814200B9924D /* SetupWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWindowController.swift; sourceTree = "<group>"; };
+		FA8AA4E62497814200B9924D /* SetupWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupWindowController.xib; sourceTree = "<group>"; };
+		FA8AA4E92497852400B9924D /* SetupWindowState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWindowState.swift; sourceTree = "<group>"; };
+		FA8AA4EB249793E200B9924D /* CredentialStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialStore.swift; sourceTree = "<group>"; };
+		FA8AA4ED2497958200B9924D /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		FA8AA4EF249799D100B9924D /* Effect+Running.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Effect+Running.swift"; sourceTree = "<group>"; };
 		FAB66C8A24950FDB00AC461F /* Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		FAC248F3248A721D00386D70 /* MainWindowState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowState.swift; sourceTree = "<group>"; };
 		FACA4507248B852400E14C27 /* FriendTableViewGroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewGroupCell.xib; sourceTree = "<group>"; };
@@ -137,6 +155,7 @@
 				FA82C930248968C500C5EFBE /* AppKit Friends List */,
 				FA6F2ED624962526004F02F8 /* Extensions */,
 				FA54FEBE24891EDA004D21A7 /* Preview Content */,
+				FA8AA4E42497812E00B9924D /* Setup Window */,
 				FA836F4D248C1488002E5F95 /* State */,
 				FAC248F5248A77F600386D70 /* Supporting Files */,
 			);
@@ -156,6 +175,7 @@
 			children = (
 				FA54FED62489230D004D21A7 /* Responses */,
 				FA54FED9248924D0004D21A7 /* SteamID.swift */,
+				FA8AA4ED2497958200B9924D /* APIKey.swift */,
 				FA54FEEB24892771004D21A7 /* Profile.swift */,
 				FA54FEEF24892840004D21A7 /* Profile.Status.swift */,
 				FA82C91F24892C8C00C5EFBE /* Client.swift */,
@@ -180,6 +200,9 @@
 				FA54FEED2489277F004D21A7 /* ProfileDecodingTests.swift */,
 				FA82C92324892F3D00C5EFBE /* UserProfilesResponseTests.swift */,
 				FA6F2ECE24961B67004F02F8 /* AppEnvironment+Mock.swift */,
+				FA0E7FE92498D9BB004836EC /* SetupWindowStateTests.swift */,
+				FA0E7FEB2498E69E004836EC /* SteamIDTests.swift */,
+				FA0E7FED2498E7AE004836EC /* APIKeyTests.swift */,
 			);
 			path = SaunaTests;
 			sourceTree = "<group>";
@@ -189,6 +212,7 @@
 			children = (
 				FA6F2ED724962532004F02F8 /* CollectionDifference.Change+Element.swift */,
 				FA6F2ED224962323004F02F8 /* Observer.swift */,
+				FA8AA4EF249799D100B9924D /* Effect+Running.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -215,8 +239,19 @@
 				FA836F4E248C1498002E5F95 /* FriendsListRow.swift */,
 				FAB66C8A24950FDB00AC461F /* Notifier.swift */,
 				FA381E8F249659EA00719ABC /* AutoRefreshReducer.swift */,
+				FA8AA4EB249793E200B9924D /* CredentialStore.swift */,
 			);
 			path = State;
+			sourceTree = "<group>";
+		};
+		FA8AA4E42497812E00B9924D /* Setup Window */ = {
+			isa = PBXGroup;
+			children = (
+				FA8AA4E52497814200B9924D /* SetupWindowController.swift */,
+				FA8AA4E92497852400B9924D /* SetupWindowState.swift */,
+				FA8AA4E62497814200B9924D /* SetupWindowController.xib */,
+			);
+			path = "Setup Window";
 			sourceTree = "<group>";
 		};
 		FAC248F5248A77F600386D70 /* Supporting Files */ = {
@@ -324,6 +359,7 @@
 				FA54FEC024891EDA004D21A7 /* Preview Assets.xcassets in Resources */,
 				FACA4508248B852400E14C27 /* FriendTableViewGroupCell.xib in Resources */,
 				FA82C934248968DD00C5EFBE /* MainWindowController.xib in Resources */,
+				FA8AA4E82497814200B9924D /* SetupWindowController.xib in Resources */,
 				FA54FEBD24891EDA004D21A7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,20 +379,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA54FEDA248924D0004D21A7 /* SteamID.swift in Sources */,
+				FA8AA4E72497814200B9924D /* SetupWindowController.swift in Sources */,
 				FA381E90249659EA00719ABC /* AutoRefreshReducer.swift in Sources */,
+				FA8AA4EA2497852400B9924D /* SetupWindowState.swift in Sources */,
 				FA6F2ED324962323004F02F8 /* Observer.swift in Sources */,
 				FA54FEF024892840004D21A7 /* Profile.Status.swift in Sources */,
 				FACA450C248BAB8700E14C27 /* FriendTableViewGroupCell.swift in Sources */,
 				FA54FED224891F81004D21A7 /* Secrets.swift in Sources */,
 				FA54FEEC24892771004D21A7 /* Profile.swift in Sources */,
 				FAC248F4248A721D00386D70 /* MainWindowState.swift in Sources */,
+				FA8AA4EE2497958200B9924D /* APIKey.swift in Sources */,
 				FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */,
 				FA6F2ED12496204D004F02F8 /* AppNotificationReducer.swift in Sources */,
 				FA54FED424891FBD004D21A7 /* AppState.swift in Sources */,
 				FA82C92224892F1B00C5EFBE /* UserProfilesResponse.swift in Sources */,
+				FA8AA4EC249793E200B9924D /* CredentialStore.swift in Sources */,
 				FAB66C8B24950FDB00AC461F /* Notifier.swift in Sources */,
 				FA82C9262489333900C5EFBE /* Loadable.swift in Sources */,
 				FA54FED824892332004D21A7 /* FriendsListResponse.swift in Sources */,
+				FA8AA4F0249799D100B9924D /* Effect+Running.swift in Sources */,
 				FA6F2ED824962532004F02F8 /* CollectionDifference.Change+Element.swift in Sources */,
 				FA82C92024892C8C00C5EFBE /* Client.swift in Sources */,
 				FA82C933248968DD00C5EFBE /* MainWindowController.swift in Sources */,
@@ -369,6 +410,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA0E7FEC2498E69E004836EC /* SteamIDTests.swift in Sources */,
+				FA0E7FEE2498E7AE004836EC /* APIKeyTests.swift in Sources */,
+				FA0E7FEA2498D9BB004836EC /* SetupWindowStateTests.swift in Sources */,
 				FA6F2ECF24961B67004F02F8 /* AppEnvironment+Mock.swift in Sources */,
 				FA54FEEE2489277F004D21A7 /* ProfileDecodingTests.swift in Sources */,
 				FA54FEEA24892547004D21A7 /* FriendsListResponseTests.swift in Sources */,
@@ -529,7 +573,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.alexj.Sauna";
+				PRODUCT_BUNDLE_IDENTIFIER = org.alexj.Sauna;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -553,7 +597,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.alexj.Sauna";
+				PRODUCT_BUNDLE_IDENTIFIER = org.alexj.Sauna;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -572,7 +616,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.alexj.SaunaTests";
+				PRODUCT_BUNDLE_IDENTIFIER = org.alexj.SaunaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sauna.app/Contents/MacOS/Sauna";
@@ -592,7 +636,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.alexj.SaunaTests";
+				PRODUCT_BUNDLE_IDENTIFIER = org.alexj.SaunaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sauna.app/Contents/MacOS/Sauna";
