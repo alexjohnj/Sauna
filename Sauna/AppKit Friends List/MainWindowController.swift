@@ -79,25 +79,53 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
         viewStore.send(.windowLoaded)
     }
 
+    // MARK: - Actions
+
+    @objc private func openSelectedProfile(_ sender: Any) {
+        guard tableView.clickedRow != -1,
+            case .friend(let profile) = viewStore.friendsList.data?[tableView.clickedRow] else {
+                return
+        }
+
+        NSWorkspace.shared.open(profile.url)
+    }
+
+    // MARK: - Menu Items
+
     func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         if menuItem.action == #selector(refresh(_:)) {
             return viewStore.mainWindowState.isRefreshButtonEnabled
+        } else if menuItem.action == #selector(copy(_:)) {
+            return canCopySelectedRow()
         } else {
             return true
         }
     }
 
-    // MARK: - Actions
+    @objc private func copy(_ sender: Any) {
+        guard tableView.selectedRow != -1,
+            case .friend(let selectedProfile)? = viewStore.friendsList.data?[tableView.selectedRow] else {
+                return
+        }
+
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.declareTypes([.string], owner: nil)
+        NSPasteboard.general.setString(selectedProfile.url.absoluteString, forType: .string)
+    }
 
     @objc private func refresh(_ sender: Any) {
         viewStore.send(.reloadFriendsList)
     }
 
-    @objc private func openSelectedProfile(_ sender: Any) {
-        guard tableView.clickedRow != -1 else { return }
-        guard case .friend(let profile) = viewStore.friendsList.data?[tableView.clickedRow] else { return }
+    // MARK: - Helper Methods
 
-        NSWorkspace.shared.open(profile.url)
+    private func canCopySelectedRow() -> Bool {
+        guard tableView.selectedRow != -1,
+            case .friend? = viewStore.friendsList.data?[tableView.selectedRow] else {
+                return false
+        }
+
+        return true
     }
 }
 
