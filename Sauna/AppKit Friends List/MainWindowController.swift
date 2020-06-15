@@ -18,7 +18,7 @@ private let kGroupRowIdentifier = NSUserInterfaceItemIdentifier("FriendsGroupRow
 private let kGroupHeaderRowHeight: CGFloat = 24
 private let kFriendRowHeight: CGFloat = 48
 
-final class MainWindowController: NSWindowController {
+final class MainWindowController: NSWindowController, NSMenuItemValidation {
 
     // MARK: - Private Properties
 
@@ -30,7 +30,6 @@ final class MainWindowController: NSWindowController {
     // MARK: - Outlets
 
     @IBOutlet private var tableView: NSTableView!
-    @IBOutlet private var refreshButton: NSButton!
     @IBOutlet private var statusLabel: NSTextField!
 
     // MARK: - Initializers
@@ -73,12 +72,6 @@ final class MainWindowController: NSWindowController {
             .assign(to: \.statusLabel.stringValue, on: self)
             .store(in: &cancellationBag)
 
-        windowState.isRefreshButtonEnabled
-            .removeDuplicates()
-            .throttle(for: .seconds(0.5), scheduler: RunLoop.main, latest: true)
-            .assign(to: \.refreshButton.isEnabled, on: self)
-            .store(in: &cancellationBag)
-        
         windowState.title
             .sink { [unowned self] title in self.window?.title = title }
             .store(in: &cancellationBag)
@@ -86,9 +79,17 @@ final class MainWindowController: NSWindowController {
         viewStore.send(.windowLoaded)
     }
 
+    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        if menuItem.action == #selector(refresh(_:)) {
+            return viewStore.mainWindowState.isRefreshButtonEnabled
+        } else {
+            return true
+        }
+    }
+
     // MARK: - Actions
 
-    @IBAction private func refresh(_ sender: Any) {
+    @objc private func refresh(_ sender: Any) {
         viewStore.send(.reloadFriendsList)
     }
 
