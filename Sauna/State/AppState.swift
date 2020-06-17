@@ -30,6 +30,7 @@ enum AppAction: Equatable {
 
     case startSetupWindow
     case setupWindowAction(SetupWindowAction)
+    case signOut
 }
 
 struct AppEnvironment {
@@ -88,6 +89,12 @@ let appStateReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer { st
 
     case .setupWindowAction:
         return .none
+
+    case .signOut:
+        state = AppState()
+        return Effect.running(env.credentialStore.clearCredentials)
+            .map { AppAction.startSetupWindow }
+            .eraseToEffect()
     }
 }
 

@@ -27,6 +27,9 @@ let autoRefreshObserver: Observer<AppState, AppAction, AutoRefreshReducerEnviron
             .map { _ in AppAction.reloadFriendsList }
             .eraseToEffect()
 
+    case .signOut:
+        return Effect.cancel(id: RefreshTimerID())
+
     default:
         return .none
     }

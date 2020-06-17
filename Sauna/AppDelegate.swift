@@ -12,14 +12,15 @@ import SwiftUI
 import ComposableArchitecture
 
 @NSApplicationMain
-final class AppDelegate: NSObject, NSApplicationDelegate {
+final class AppDelegate: NSResponder, NSApplicationDelegate {
     
     var window: NSWindow!
     var mainWindowController: MainWindowController!
+    var store: Store<AppState, AppAction>!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
-        let store = Store(
+        store = Store(
             initialState: AppState(),
             reducer: appReducer,
             environment: AppEnvironment(
@@ -42,6 +43,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         return true
+    }
+
+    @objc private func signOut(_ sender: Any) {
+        ViewStore(store).send(.signOut)
     }
 }
 
