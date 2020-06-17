@@ -46,6 +46,8 @@ final class SetupWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
 
+        window?.preventsApplicationTerminationWhenModal = false
+
         viewStore.publisher.isDoneButtonEnabled
             .assign(to: \.isEnabled, on: self.doneButton)
             .store(in: &cancellationBag)

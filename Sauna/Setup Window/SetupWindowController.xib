@@ -92,8 +92,19 @@
                                 </textField>
                             </gridCell>
                             <gridCell row="1hQ-s4-Dx5" column="sH9-jE-PUL" headOfMergedCell="dY4-xg-1iE" id="rLT-tI-siF"/>
-                            <gridCell row="e5X-R2-kM1" column="tEZ-nR-84d" headOfMergedCell="gOx-kE-YpA" id="gOx-kE-YpA"/>
-                            <gridCell row="e5X-R2-kM1" column="QKJ-LY-moA" headOfMergedCell="gOx-kE-YpA" id="QhD-DT-Jqz"/>
+                            <gridCell row="e5X-R2-kM1" column="tEZ-nR-84d" xPlacement="leading" id="pTO-Xe-SKd">
+                                <button key="contentView" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hs2-EM-W6o">
+                                    <rect key="frame" x="-6" y="-7" width="66" height="32"/>
+                                    <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SaI-MG-K8B">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="terminate:" target="-1" id="qhy-TK-E8q"/>
+                                    </connections>
+                                </button>
+                            </gridCell>
+                            <gridCell row="e5X-R2-kM1" column="QKJ-LY-moA" id="QhD-DT-Jqz"/>
                             <gridCell row="e5X-R2-kM1" column="sH9-jE-PUL" id="fZi-7E-U6Q">
                                 <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d93-pF-qPG">
                                     <rect key="frame" x="379" y="-7" width="72" height="32"/>
