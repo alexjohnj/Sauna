@@ -29,6 +29,8 @@
 		FA6F2ED12496204D004F02F8 /* AppNotificationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED02496204D004F02F8 /* AppNotificationReducer.swift */; };
 		FA6F2ED324962323004F02F8 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED224962323004F02F8 /* Observer.swift */; };
 		FA6F2ED824962532004F02F8 /* CollectionDifference.Change+Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED724962532004F02F8 /* CollectionDifference.Change+Element.swift */; };
+		FA7AEA8D249A79A800EE6860 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7AEA8C249A79A800EE6860 /* main.swift */; };
+		FA7AEA8E249A7B0300EE6860 /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7AEA8A249A799200EE6860 /* TestAppDelegate.swift */; };
 		FA82C92024892C8C00C5EFBE /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C91F24892C8C00C5EFBE /* Client.swift */; };
 		FA82C92224892F1B00C5EFBE /* UserProfilesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92124892F1B00C5EFBE /* UserProfilesResponse.swift */; };
 		FA82C92424892F3D00C5EFBE /* UserProfilesResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C92324892F3D00C5EFBE /* UserProfilesResponseTests.swift */; };
@@ -86,6 +88,8 @@
 		FA6F2ED02496204D004F02F8 /* AppNotificationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationReducer.swift; sourceTree = "<group>"; };
 		FA6F2ED224962323004F02F8 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		FA6F2ED724962532004F02F8 /* CollectionDifference.Change+Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionDifference.Change+Element.swift"; sourceTree = "<group>"; };
+		FA7AEA8A249A799200EE6860 /* TestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
+		FA7AEA8C249A79A800EE6860 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		FA82C91F24892C8C00C5EFBE /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		FA82C92124892F1B00C5EFBE /* UserProfilesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilesResponse.swift; sourceTree = "<group>"; };
 		FA82C92324892F3D00C5EFBE /* UserProfilesResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilesResponseTests.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				FA54FEB824891ED8004D21A7 /* AppDelegate.swift */,
+				FA7AEA8A249A799200EE6860 /* TestAppDelegate.swift */,
 				FA82C9252489333900C5EFBE /* Loadable.swift */,
 				FA54FED124891F81004D21A7 /* Secrets.swift */,
 				FA54FED524892309004D21A7 /* API */,
@@ -158,6 +163,7 @@
 				FA8AA4E42497812E00B9924D /* Setup Window */,
 				FA836F4D248C1488002E5F95 /* State */,
 				FAC248F5248A77F600386D70 /* Supporting Files */,
+				FA7AEA8C249A79A800EE6860 /* main.swift */,
 			);
 			path = Sauna;
 			sourceTree = "<group>";
@@ -392,11 +398,13 @@
 				FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */,
 				FA6F2ED12496204D004F02F8 /* AppNotificationReducer.swift in Sources */,
 				FA54FED424891FBD004D21A7 /* AppState.swift in Sources */,
+				FA7AEA8D249A79A800EE6860 /* main.swift in Sources */,
 				FA82C92224892F1B00C5EFBE /* UserProfilesResponse.swift in Sources */,
 				FA8AA4EC249793E200B9924D /* CredentialStore.swift in Sources */,
 				FAB66C8B24950FDB00AC461F /* Notifier.swift in Sources */,
 				FA82C9262489333900C5EFBE /* Loadable.swift in Sources */,
 				FA54FED824892332004D21A7 /* FriendsListResponse.swift in Sources */,
+				FA7AEA8E249A7B0300EE6860 /* TestAppDelegate.swift in Sources */,
 				FA8AA4F0249799D100B9924D /* Effect+Running.swift in Sources */,
 				FA6F2ED824962532004F02F8 /* CollectionDifference.Change+Element.swift in Sources */,
 				FA82C92024892C8C00C5EFBE /* Client.swift in Sources */,

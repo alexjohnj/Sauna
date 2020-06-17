@@ -11,7 +11,6 @@ import SwiftUI
 
 import ComposableArchitecture
 
-@NSApplicationMain
 final class AppDelegate: NSResponder, NSApplicationDelegate {
     
     var window: NSWindow!
