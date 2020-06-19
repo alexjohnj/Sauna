@@ -35,11 +35,11 @@ struct Profile: Codable, Hashable, Identifiable {
 
 extension Profile {
     static func fixture(
-        id: SteamID = "1",
+        id: SteamID = .valid,
         url: URL = URL(string: "https://steamcommunity.com/id/Gabe/")!,
         name: String = "AJ",
         status: Status = .online,
-        currentGame: String? = "Civilization VI"
+        currentGame: String? = nil
     ) -> Profile {
         Profile(id: id, url: url, name: name, status: status, currentGame: currentGame)
     }

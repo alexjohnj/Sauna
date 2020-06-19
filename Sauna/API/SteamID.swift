@@ -29,17 +29,15 @@ struct SteamID: Hashable, RawRepresentable, Codable {
     }
 }
 
-extension SteamID: ExpressibleByStringLiteral {
-    init(stringLiteral value: StringLiteralType) {
-        self.init(rawValue: value)!
-    }
-}
-
 // MARK: - Test IDs
 
 #if DEBUG
 extension SteamID {
     static let invalidRawID = "abc-123"
     static let valid = SteamID(rawValue: String(repeating: "0", count: SteamID.validIDLength))!
+
+    init(withoutChecking rawValue: String) {
+        self.rawValue = rawValue
+    }
 }
 #endif

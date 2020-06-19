@@ -26,9 +26,10 @@
 		FA54FEEE2489277F004D21A7 /* ProfileDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEED2489277F004D21A7 /* ProfileDecodingTests.swift */; };
 		FA54FEF024892840004D21A7 /* Profile.Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEEF24892840004D21A7 /* Profile.Status.swift */; };
 		FA6F2ECF24961B67004F02F8 /* AppEnvironment+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ECE24961B67004F02F8 /* AppEnvironment+Mock.swift */; };
-		FA6F2ED12496204D004F02F8 /* AppNotificationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED02496204D004F02F8 /* AppNotificationReducer.swift */; };
+		FA6F2ED12496204D004F02F8 /* AppNotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED02496204D004F02F8 /* AppNotificationObserver.swift */; };
 		FA6F2ED324962323004F02F8 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED224962323004F02F8 /* Observer.swift */; };
 		FA6F2ED824962532004F02F8 /* CollectionDifference.Change+Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED724962532004F02F8 /* CollectionDifference.Change+Element.swift */; };
+		FA789A54249B573C00BE3FC4 /* NotificationObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA789A53249B573C00BE3FC4 /* NotificationObserverTests.swift */; };
 		FA7AEA8D249A79A800EE6860 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7AEA8C249A79A800EE6860 /* main.swift */; };
 		FA7AEA8E249A7B0300EE6860 /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7AEA8A249A799200EE6860 /* TestAppDelegate.swift */; };
 		FA82C92024892C8C00C5EFBE /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C91F24892C8C00C5EFBE /* Client.swift */; };
@@ -85,9 +86,10 @@
 		FA54FEED2489277F004D21A7 /* ProfileDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDecodingTests.swift; sourceTree = "<group>"; };
 		FA54FEEF24892840004D21A7 /* Profile.Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.Status.swift; sourceTree = "<group>"; };
 		FA6F2ECE24961B67004F02F8 /* AppEnvironment+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Mock.swift"; sourceTree = "<group>"; };
-		FA6F2ED02496204D004F02F8 /* AppNotificationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationReducer.swift; sourceTree = "<group>"; };
+		FA6F2ED02496204D004F02F8 /* AppNotificationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationObserver.swift; sourceTree = "<group>"; };
 		FA6F2ED224962323004F02F8 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		FA6F2ED724962532004F02F8 /* CollectionDifference.Change+Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionDifference.Change+Element.swift"; sourceTree = "<group>"; };
+		FA789A53249B573C00BE3FC4 /* NotificationObserverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationObserverTests.swift; sourceTree = "<group>"; };
 		FA7AEA8A249A799200EE6860 /* TestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
 		FA7AEA8C249A79A800EE6860 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		FA82C91F24892C8C00C5EFBE /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				FA82C92324892F3D00C5EFBE /* UserProfilesResponseTests.swift */,
 				FA6F2ECE24961B67004F02F8 /* AppEnvironment+Mock.swift */,
 				FA0E7FE92498D9BB004836EC /* SetupWindowStateTests.swift */,
+				FA789A53249B573C00BE3FC4 /* NotificationObserverTests.swift */,
 				FA0E7FEB2498E69E004836EC /* SteamIDTests.swift */,
 				FA0E7FED2498E7AE004836EC /* APIKeyTests.swift */,
 			);
@@ -240,7 +243,7 @@
 		FA836F4D248C1488002E5F95 /* State */ = {
 			isa = PBXGroup;
 			children = (
-				FA6F2ED02496204D004F02F8 /* AppNotificationReducer.swift */,
+				FA6F2ED02496204D004F02F8 /* AppNotificationObserver.swift */,
 				FA54FED324891FBD004D21A7 /* AppState.swift */,
 				FA836F4E248C1498002E5F95 /* FriendsListRow.swift */,
 				FAB66C8A24950FDB00AC461F /* Notifier.swift */,
@@ -396,7 +399,7 @@
 				FAC248F4248A721D00386D70 /* MainWindowState.swift in Sources */,
 				FA8AA4EE2497958200B9924D /* APIKey.swift in Sources */,
 				FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */,
-				FA6F2ED12496204D004F02F8 /* AppNotificationReducer.swift in Sources */,
+				FA6F2ED12496204D004F02F8 /* AppNotificationObserver.swift in Sources */,
 				FA54FED424891FBD004D21A7 /* AppState.swift in Sources */,
 				FA7AEA8D249A79A800EE6860 /* main.swift in Sources */,
 				FA82C92224892F1B00C5EFBE /* UserProfilesResponse.swift in Sources */,
@@ -422,6 +425,7 @@
 				FA0E7FEE2498E7AE004836EC /* APIKeyTests.swift in Sources */,
 				FA0E7FEA2498D9BB004836EC /* SetupWindowStateTests.swift in Sources */,
 				FA6F2ECF24961B67004F02F8 /* AppEnvironment+Mock.swift in Sources */,
+				FA789A54249B573C00BE3FC4 /* NotificationObserverTests.swift in Sources */,
 				FA54FEEE2489277F004D21A7 /* ProfileDecodingTests.swift in Sources */,
 				FA54FEEA24892547004D21A7 /* FriendsListResponseTests.swift in Sources */,
 				FA82C92424892F3D00C5EFBE /* UserProfilesResponseTests.swift in Sources */,

@@ -52,7 +52,7 @@ final class AppDelegate: NSResponder, NSApplicationDelegate {
 // MARK: - Application Reducer
 
 private let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer.combine(
-    appNotificationReducer.pullback(
+    appNotificationObserver.pullback(
         state: \AppState.loadedProfiles,
         action: /.`self`,
         environment: { AppNotificationEnvironment(notifier: $0.notifier) }

@@ -41,4 +41,8 @@ struct Observer<State, Action, Environment> {
                 .map(toLocalAction.embed)
         }
     }
+
+    var reducer: Reducer<State, Action, Environment> {
+        Reducer { self.observer($0, $1, $2) }
+    }
 }
