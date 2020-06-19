@@ -33,6 +33,7 @@ struct Profile: Codable, Hashable, Identifiable {
     var currentGame: String?
 }
 
+#if DEBUG
 extension Profile {
     static func fixture(
         id: SteamID = .valid,
@@ -44,3 +45,4 @@ extension Profile {
         Profile(id: id, url: url, name: name, status: status, currentGame: currentGame)
     }
 }
+#endif

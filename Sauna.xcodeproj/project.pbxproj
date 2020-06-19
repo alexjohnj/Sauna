@@ -17,7 +17,6 @@
 		FA54FEC324891EDA004D21A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA54FEC124891EDA004D21A7 /* Main.storyboard */; };
 		FA54FECD24891F3D004D21A7 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = FA54FECC24891F3D004D21A7 /* ComposableArchitecture */; };
 		FA54FED024891F5B004D21A7 /* Requests in Frameworks */ = {isa = PBXBuildFile; productRef = FA54FECF24891F5B004D21A7 /* Requests */; };
-		FA54FED224891F81004D21A7 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FED124891F81004D21A7 /* Secrets.swift */; };
 		FA54FED424891FBD004D21A7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FED324891FBD004D21A7 /* AppState.swift */; };
 		FA54FED824892332004D21A7 /* FriendsListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FED724892332004D21A7 /* FriendsListResponse.swift */; };
 		FA54FEDA248924D0004D21A7 /* SteamID.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FED9248924D0004D21A7 /* SteamID.swift */; };
@@ -75,7 +74,6 @@
 		FA54FEC224891EDA004D21A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA54FEC424891EDA004D21A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA54FEC524891EDA004D21A7 /* Sauna.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sauna.entitlements; sourceTree = "<group>"; };
-		FA54FED124891F81004D21A7 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		FA54FED324891FBD004D21A7 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		FA54FED724892332004D21A7 /* FriendsListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListResponse.swift; sourceTree = "<group>"; };
 		FA54FED9248924D0004D21A7 /* SteamID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamID.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 				FA54FEB824891ED8004D21A7 /* AppDelegate.swift */,
 				FA7AEA8A249A799200EE6860 /* TestAppDelegate.swift */,
 				FA82C9252489333900C5EFBE /* Loadable.swift */,
-				FA54FED124891F81004D21A7 /* Secrets.swift */,
 				FA54FED524892309004D21A7 /* API */,
 				FA82C930248968C500C5EFBE /* AppKit Friends List */,
 				FA6F2ED624962526004F02F8 /* Extensions */,
@@ -394,7 +391,6 @@
 				FA6F2ED324962323004F02F8 /* Observer.swift in Sources */,
 				FA54FEF024892840004D21A7 /* Profile.Status.swift in Sources */,
 				FACA450C248BAB8700E14C27 /* FriendTableViewGroupCell.swift in Sources */,
-				FA54FED224891F81004D21A7 /* Secrets.swift in Sources */,
 				FA54FEEC24892771004D21A7 /* Profile.swift in Sources */,
 				FAC248F4248A721D00386D70 /* MainWindowState.swift in Sources */,
 				FA8AA4EE2497958200B9924D /* APIKey.swift in Sources */,
