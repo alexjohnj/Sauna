@@ -101,6 +101,21 @@ final class NotificationObserverTests: XCTestCase {
         let removedNotificationID = try XCTUnwrap(removedNotificationIDs.first)
         XCTAssertEqual(removedNotificationID, secondProfile.id.rawValue)
     }
+
+    func test_removesNotifications_whenAPlayerStopsPlayingAGame() throws {
+        var environment = AppNotificationEnvironment.mock
+        var removedNotificationIDs = [String]()
+        environment.notifier.removeDeliveredNotifications = { removedNotificationIDs.append(contentsOf: $0) }
+        let firstProfile = Profile.fixture(id: .init(withoutChecking: "1"), status: .online)
+        var secondProfile = Profile.fixture(id: .init(withoutChecking: "2"), status: .online, currentGame: "Borderlands 2")
+
+        let store = TestStore(initialState: [firstProfile, secondProfile], reducer: appNotificationObserver.reducer, environment: environment)
+        secondProfile.currentGame = nil
+        store.assert(.send(.profilesLoaded(.success([firstProfile, secondProfile]))))
+
+        let removedNotificationID = try XCTUnwrap(removedNotificationIDs.first)
+        XCTAssertEqual(removedNotificationID, secondProfile.id.rawValue)
+    }
 }
 
 private extension AppNotificationEnvironment {

@@ -27,13 +27,13 @@ let appNotificationObserver: Observer<[Profile], AppAction, AppNotificationEnvir
         
         let changes = statusChanges(from: currentFriendsList, in: newFriendsList)
         let notificationRequests: [UNNotificationRequest] = changes
-            .filter { $0.kind != .wentOffline }
+            .filter { !$0.kind.triggersNotificationRemoval }
             .map { change in
                 let content = notificationContent(for: change)
                 return UNNotificationRequest(identifier: change.player.id.rawValue, content: content, trigger: nil)
         }
         let noteIdentifiersToRemove = changes
-            .filter { $0.kind == .wentOffline }
+            .filter { $0.kind.triggersNotificationRemoval }
             .map(\.player.id.rawValue)
         
         return Effect.fireAndForget {
@@ -53,6 +53,19 @@ private struct StatusChange: Equatable {
         case cameOnline
         case wentOffline
         case startedPlaying(game: String)
+        case stoppedPlaying(game: String)
+
+        /// `true` if the status change should trigger the removal of a notification.
+        var triggersNotificationRemoval: Bool {
+            switch self {
+            case .cameOnline,
+                 .startedPlaying:
+                return false
+            case .wentOffline,
+                 .stoppedPlaying:
+                return true
+            }
+        }
     }
     
     let player: Profile
@@ -92,6 +105,10 @@ private func statusChanges(from oldFriend: Profile, to newFriend: Profile) -> [S
         let nowPlayingGame = newFriend.currentGame,
         nowPlayingGame != oldFriend.currentGame {
         changes.append(StatusChange(player: newFriend, kind: .startedPlaying(game: nowPlayingGame)))
+    } else if newFriend.status.isTechnicallyOnline,
+        let oldGame = oldFriend.currentGame,
+        newFriend.currentGame == nil {
+        changes.append(StatusChange(player: newFriend, kind: .stoppedPlaying(game: oldGame)))
     } else if oldFriend.status.isTechnicallyOnline,
         !newFriend.status.isTechnicallyOnline {
         changes.append(StatusChange(player: newFriend, kind: .wentOffline))
@@ -116,12 +133,13 @@ private func notificationContent(for statusChange: StatusChange) -> UNNotificati
         if let currentGame = statusChange.player.currentGame {
             content.subtitle = "Currently playing \(currentGame)"
         }
-        
-    case .wentOffline:
-        content.title = "\(statusChange.player.name) is offline"
 
     case .startedPlaying(let gameName):
         content.body = "\(statusChange.player.name) is now playing \(gameName)"
+
+    case .stoppedPlaying,
+         .wentOffline:
+        break
     }
     
     return content
