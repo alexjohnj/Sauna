@@ -53,7 +53,9 @@ final class FriendTableViewCell: NSTableCellView {
 
     private func configure(with profile: Profile) {
         nameLabel.stringValue = profile.name
+        toolTip = profile.realName
         statusImageView.image = statusImage(for: profile)
+
         if let statusText = self.statusText(for: profile) {
             statusLabel.stringValue = statusText
             statusLabel.isHidden = false

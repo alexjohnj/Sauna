@@ -15,6 +15,7 @@ struct Profile: Codable, Hashable, Identifiable {
     private enum CodingKeys: String, CodingKey {
         case id = "steamid"
         case name = "personaname"
+        case realName = "realname"
         case status = "personastate"
         case currentGame = "gameextrainfo"
         case url = "profileurl"
@@ -34,6 +35,7 @@ struct Profile: Codable, Hashable, Identifiable {
     var id: SteamID
     var url: URL
     var name: String
+    var realName: String?
 
     /// If the player's profile is private, this will always be "0" [offline], except if the user has set their status to looking
     /// to trade or looking to play, because a bug makes those status appear even if the profile is private.
@@ -50,6 +52,7 @@ extension Profile {
         id: SteamID = .valid,
         url: URL = URL(string: "https://steamcommunity.com/id/Gabe/")!,
         name: String = "AJ",
+        realName: String? = nil,
         status: Status = .online,
         lastOnlineTime: Date = Date(timeIntervalSinceNow: -86400),
         currentGame: String? = nil
@@ -58,6 +61,7 @@ extension Profile {
             id: id,
             url: url,
             name: name,
+            realName: realName,
             status: status,
             lastOnlineTime: lastOnlineTime,
             currentGame: currentGame
