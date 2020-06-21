@@ -119,8 +119,18 @@ private func sortProfiles(_ profiles: [Profile]) -> [Profile] {
                 return true
             case (.none, .some):
                 return false
+
+                // People playing the same game are grouped together and sorted alphabetically.
+                // Different games are then sorted alphabetically
+            case (.some(let game), .some(let otherGame)) where game == otherGame:
+                return profile.name < otherProfile.name
             case (.some(let game), .some(let otherGame)):
                 return game < otherGame // This will group people playing the same game together
+
+                // Sort people who aren't in a game but have the same sort ranking by most recently online
+            case (.none, .none) where profile.lastOnlineTime != otherProfile.lastOnlineTime:
+                return profile.lastOnlineTime > otherProfile.lastOnlineTime
+
             case (.none, .none):
                 return profile.name < otherProfile.name
             }

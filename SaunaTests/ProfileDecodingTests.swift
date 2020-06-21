@@ -15,13 +15,12 @@ final class ProfileDecodingTests: XCTestCase {
 
     func test_decodingFixtureData() throws {
         let data = try XCTUnwrap(fixture.data(using: .utf8))
-        let decoder = JSONDecoder()
-
-        let decodedProfile = try decoder.decode(Profile.self, from: data)
+        let decodedProfile = try Profile.jsonDecoder.decode(Profile.self, from: data)
 
         XCTAssertEqual(decodedProfile.id, SteamID(rawValue: "76561198007277374"))
         XCTAssertEqual(decodedProfile.status, .offline)
         XCTAssertEqual(decodedProfile.name, "AJ")
+        XCTAssertEqual(decodedProfile.lastOnlineTime, Date(timeIntervalSince1970: 1591272212))
     }
 
 }

@@ -18,6 +18,15 @@ struct Profile: Codable, Hashable, Identifiable {
         case status = "personastate"
         case currentGame = "gameextrainfo"
         case url = "profileurl"
+        case lastOnlineTime = "lastlogoff"
+    }
+
+    // MARK: - Type Properties
+
+    public static var jsonDecoder: JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .secondsSince1970
+        return decoder
     }
 
     // MARK: - Public Properties
@@ -30,6 +39,8 @@ struct Profile: Codable, Hashable, Identifiable {
     /// to trade or looking to play, because a bug makes those status appear even if the profile is private.
     var status: Status
 
+    var lastOnlineTime: Date
+
     var currentGame: String?
 }
 
@@ -40,9 +51,17 @@ extension Profile {
         url: URL = URL(string: "https://steamcommunity.com/id/Gabe/")!,
         name: String = "AJ",
         status: Status = .online,
+        lastOnlineTime: Date = Date(timeIntervalSinceNow: -86400),
         currentGame: String? = nil
     ) -> Profile {
-        Profile(id: id, url: url, name: name, status: status, currentGame: currentGame)
+        Profile(
+            id: id,
+            url: url,
+            name: name,
+            status: status,
+            lastOnlineTime: lastOnlineTime,
+            currentGame: currentGame
+        )
     }
 }
 #endif

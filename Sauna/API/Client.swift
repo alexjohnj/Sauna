@@ -23,7 +23,7 @@ struct SteamAPI: RequestProviding {
     func getProfiles(forIDs steamIDs: [SteamID]) -> Request<SteamAPI, UserProfilesResponse> {
         let allSteamIDs = steamIDs.map(\.rawValue).joined(separator: ",")
 
-        return get(.json(encoded: UserProfilesResponse.self), from: "ISteamUser/GetPlayerSummaries/v0002/")
+        return get(.json(encoded: UserProfilesResponse.self, decoder: Profile.jsonDecoder), from: "ISteamUser/GetPlayerSummaries/v0002/")
             .adding(queryItems: ["key": apiKey.rawValue, "steamids": allSteamIDs])
     }
 }
