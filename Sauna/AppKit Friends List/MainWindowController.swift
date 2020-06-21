@@ -9,6 +9,7 @@
 import AppKit
 import Combine
 import ComposableArchitecture
+import Differ
 
 // MARK: - Constants
 
@@ -60,8 +61,24 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
         tableView.doubleAction = #selector(openSelectedProfile(_:))
 
         viewStore.publisher.friendsList
-            .sink { [unowned self] list in
-                self.tableView.reloadData()
+            .scan(([FriendsListRow](), [FriendsListRow]())) { accum, newList in
+                (accum.1, newList.data ?? [])
+            }
+            .sink { [unowned self] (oldList, newList) in
+                self.tableView.beginUpdates()
+                self.tableView.animateRowChanges(
+                    oldData: oldList,
+                    newData: newList,
+                    isEqual: FriendsListRow.equalityChecker,
+                    deletionAnimation: .slideUp,
+                    insertionAnimation: .slideDown
+                )
+
+                // This is inefficient but is needed since the diffs do not say which rows need to be reloaded.
+                let rowIndicesToReload = IndexSet(integersIn: 0..<newList.count)
+                self.tableView.reloadData(forRowIndexes: rowIndicesToReload, columnIndexes: [0])
+                self.tableView.noteHeightOfRows(withIndexesChanged: rowIndicesToReload)
+                self.tableView.endUpdates()
         }
         .store(in: &cancellationBag)
 

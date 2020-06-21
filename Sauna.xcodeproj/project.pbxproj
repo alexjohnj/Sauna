@@ -28,6 +28,7 @@
 		FA6F2ED12496204D004F02F8 /* AppNotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED02496204D004F02F8 /* AppNotificationObserver.swift */; };
 		FA6F2ED324962323004F02F8 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED224962323004F02F8 /* Observer.swift */; };
 		FA6F2ED824962532004F02F8 /* CollectionDifference.Change+Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED724962532004F02F8 /* CollectionDifference.Change+Element.swift */; };
+		FA78492E249E36BE003D5133 /* Differ in Frameworks */ = {isa = PBXBuildFile; productRef = FA78492D249E36BE003D5133 /* Differ */; };
 		FA789A54249B573C00BE3FC4 /* NotificationObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA789A53249B573C00BE3FC4 /* NotificationObserverTests.swift */; };
 		FA7AEA8D249A79A800EE6860 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7AEA8C249A79A800EE6860 /* main.swift */; };
 		FA7AEA8E249A7B0300EE6860 /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7AEA8A249A799200EE6860 /* TestAppDelegate.swift */; };
@@ -117,6 +118,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA54FED024891F5B004D21A7 /* Requests in Frameworks */,
+				FA78492E249E36BE003D5133 /* Differ in Frameworks */,
 				FA54FECD24891F3D004D21A7 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,6 +292,7 @@
 			packageProductDependencies = (
 				FA54FECC24891F3D004D21A7 /* ComposableArchitecture */,
 				FA54FECF24891F5B004D21A7 /* Requests */,
+				FA78492D249E36BE003D5133 /* Differ */,
 			);
 			productName = Sauna;
 			productReference = FA54FEB524891ED8004D21A7 /* Sauna.app */;
@@ -344,6 +347,7 @@
 			packageReferences = (
 				FA54FECB24891F3D004D21A7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				FA54FECE24891F5B004D21A7 /* XCRemoteSwiftPackageReference "requests" */,
+				FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ" */,
 			);
 			productRefGroup = FA54FEB624891ED8004D21A7 /* Products */;
 			projectDirPath = "";
@@ -700,6 +704,14 @@
 				minimumVersion = 0.3.2;
 			};
 		};
+		FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tonyarnold/Differ.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -712,6 +724,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FA54FECE24891F5B004D21A7 /* XCRemoteSwiftPackageReference "requests" */;
 			productName = Requests;
+		};
+		FA78492D249E36BE003D5133 /* Differ */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ" */;
+			productName = Differ;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

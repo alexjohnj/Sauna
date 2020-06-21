@@ -69,3 +69,25 @@ extension Profile {
         }
     }
 }
+
+// MARK: - Diffing Support
+
+import Differ
+
+extension FriendsListRow {
+    static let equalityChecker: EqualityChecker<[FriendsListRow]> = { row, otherRow in
+        switch (row, otherRow) {
+        case (.groupHeader(let group), .groupHeader(let otherGroup)):
+            return group == otherGroup
+
+        case (.groupHeader, _):
+            return false
+
+        case (.friend(let profile), .friend(let otherProfile)):
+            return profile.id == otherProfile.id
+
+        case (.friend, _):
+            return false
+        }
+    }
+}
