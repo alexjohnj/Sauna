@@ -21,6 +21,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="geC-RY-p6H" userLabel="Preferences">
+                                            <connections>
+                                                <action selector="openPreferences:" target="Ady-hI-5gd" id="DAA-Sp-34L"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Sign Out…" id="5E2-Jp-8nW">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>

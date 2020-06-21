@@ -87,6 +87,44 @@ final class NotificationObserverTests: XCTestCase {
         XCTAssertEqual(postedNotifications.count, 1)
     }
 
+    func test_doesNotPostGameStartNotification_whenPlayerStartsPlayingAGame_AndGameNotificationsAreDisabled() {
+        var environment = AppNotificationEnvironment.mock
+        var postedNotifications = [UNNotificationRequest]()
+        environment.notifier.postNotifications = { postedNotifications.append(contentsOf: $0) }
+        environment.preferences.shouldNotifyWhenFriendsStartGames = false
+
+        let firstProfile = Profile.fixture(id: .init(withoutChecking: "1"), status: .online)
+        var secondProfile = Profile.fixture(id: .init(withoutChecking: "2"), status: .online, currentGame: nil)
+
+        let store = TestStore(initialState: [firstProfile, secondProfile], reducer: appNotificationObserver.reducer, environment: environment)
+        secondProfile.currentGame = "Civilization VI"
+
+        store.assert(
+            .send(.profilesLoaded(.success([firstProfile, secondProfile])))
+        )
+
+        XCTAssertEqual(postedNotifications.count, 0)
+    }
+
+    func test_doesNotPostPlayerOnlineNotification_whenPlayerOnlineNotificationsAreDisabled() {
+        var environment = AppNotificationEnvironment.mock
+        var postedNotifications = [UNNotificationRequest]()
+        environment.notifier.postNotifications = { postedNotifications.append(contentsOf: $0) }
+        environment.preferences.shouldNotifyWhenFriendsComeOnline = false
+
+        let firstProfile = Profile.fixture(id: .init(withoutChecking: "1"), status: .online)
+        var secondProfile = Profile.fixture(id: .init(withoutChecking: "2"), status: .offline, currentGame: nil)
+
+        let store = TestStore(initialState: [firstProfile, secondProfile], reducer: appNotificationObserver.reducer, environment: environment)
+        secondProfile.status = .online
+
+        store.assert(
+            .send(.profilesLoaded(.success([firstProfile, secondProfile])))
+        )
+
+        XCTAssertEqual(postedNotifications.count, 0)
+    }
+
     func test_removesNotifications_associatedWithPlayersGoingOffline() throws {
         var environment = AppNotificationEnvironment.mock
         var removedNotificationIDs = [String]()
@@ -120,6 +158,9 @@ final class NotificationObserverTests: XCTestCase {
 
 private extension AppNotificationEnvironment {
     static var mock: AppNotificationEnvironment {
-        AppNotificationEnvironment(notifier: .stub)
+        AppNotificationEnvironment(
+            notifier: .stub,
+            preferences: Preferences(userDefaults: TemporaryUserDefaults(suiteName: #file)!)
+        )
     }
 }

@@ -37,6 +37,7 @@ struct AppEnvironment {
     var client: SteamClient
     var notifier: Notifier
     var credentialStore: CredentialStore
+    var preferences: Preferences
 
     var mainScheduler: AnySchedulerOf<DispatchQueue>
     var date: () -> Date

@@ -13,6 +13,7 @@ import ComposableArchitecture
 
 struct AppNotificationEnvironment {
     var notifier: Notifier
+    var preferences: Preferences
 }
 
 let appNotificationObserver: Observer<[Profile], AppAction, AppNotificationEnvironment> = Observer { currentFriendsList, action, env in
@@ -27,10 +28,13 @@ let appNotificationObserver: Observer<[Profile], AppAction, AppNotificationEnvir
         
         let changes = statusChanges(from: currentFriendsList, in: newFriendsList)
         let notificationRequests: [UNNotificationRequest] = changes
-            .filter { !$0.kind.triggersNotificationRemoval }
-            .map { change in
-                let content = notificationContent(for: change)
-                return UNNotificationRequest(identifier: change.player.id.rawValue, content: content, trigger: nil)
+            .filter { change in
+                !change.kind.triggersNotificationRemoval &&
+                    change.kind.isCompatibleWithNotificationPreferences(env.preferences.notificationPreferences)
+        }
+        .map { change in
+            let content = notificationContent(for: change)
+            return UNNotificationRequest(identifier: change.player.id.rawValue, content: content, trigger: nil)
         }
         let noteIdentifiersToRemove = changes
             .filter { $0.kind.triggersNotificationRemoval }
@@ -64,6 +68,18 @@ private struct StatusChange: Equatable {
             case .wentOffline,
                  .stoppedPlaying:
                 return true
+            }
+        }
+
+        func isCompatibleWithNotificationPreferences(_ preferences: Preferences.NotificationPreferences) -> Bool {
+            switch self {
+            case .cameOnline,
+                 .wentOffline:
+                return preferences.shouldNotifyWhenFriendsComeOnline
+
+            case .startedPlaying,
+                 .stoppedPlaying:
+                return preferences.shouldNotifyWhenFriendsStartGames
             }
         }
     }

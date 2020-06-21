@@ -12,12 +12,16 @@ import SwiftUI
 import ComposableArchitecture
 
 final class AppDelegate: NSResponder, NSApplicationDelegate {
-    
+
     var window: NSWindow!
-    var mainWindowController: MainWindowController!
-    var store: Store<AppState, AppAction>!
+
+    private var mainWindowController: MainWindowController!
+    private var store: Store<AppState, AppAction>!
+    private lazy var preferencesWindowController = PreferencesWindowController()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        Preferences.standard.registerDefaults()
+
         // Create the SwiftUI view that provides the window contents.
         store = Store(
             initialState: AppState(),
@@ -26,11 +30,12 @@ final class AppDelegate: NSResponder, NSApplicationDelegate {
                 client: .live(.shared),
                 notifier: .user(.current()),
                 credentialStore: .real,
+                preferences: .standard,
                 mainScheduler: DispatchQueue.main.eraseToAnyScheduler(),
                 date: Date.init
             )
         )
-        
+
         mainWindowController = MainWindowController(store: store)
         mainWindowController.showWindow(nil)
     }
@@ -40,12 +45,16 @@ final class AppDelegate: NSResponder, NSApplicationDelegate {
             mainWindowController.showWindow(nil)
             return false
         }
-        
+
         return true
     }
 
     @objc private func signOut(_ sender: Any) {
         ViewStore(store).send(.signOut)
+    }
+
+    @objc private func openPreferences(_ sender: Any) {
+        preferencesWindowController.showWindow(sender)
     }
 }
 
@@ -55,7 +64,7 @@ private let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer.c
     appNotificationObserver.pullback(
         state: \AppState.loadedProfiles,
         action: /.`self`,
-        environment: { AppNotificationEnvironment(notifier: $0.notifier) }
+        environment: { AppNotificationEnvironment(notifier: $0.notifier, preferences: $0.preferences) }
     ),
     autoRefreshObserver.pullback(
         state: \.self,

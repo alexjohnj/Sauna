@@ -12,12 +12,29 @@ import Combine
 import ComposableArchitecture
 @testable import Sauna
 
+class TemporaryUserDefaults: UserDefaults {
+
+    let suiteName: String
+
+    override init?(suiteName: String?) {
+        self.suiteName = suiteName ?? UUID().uuidString
+        super.init(suiteName: suiteName)
+
+        removePersistentDomain(forName: self.suiteName)
+    }
+
+    deinit {
+        removePersistentDomain(forName: suiteName)
+    }
+}
+
 extension AppEnvironment {
     static let mock: (AnySchedulerOf<DispatchQueue>) -> AppEnvironment = { scheduler in
         AppEnvironment(
             client: .stub,
             notifier: .stub,
             credentialStore: .stub,
+            preferences: Preferences(userDefaults: TemporaryUserDefaults(suiteName: "org.alexj.Sauna.TestUserDefaults")!),
             mainScheduler: scheduler,
             date: { Date.stub }
         )
