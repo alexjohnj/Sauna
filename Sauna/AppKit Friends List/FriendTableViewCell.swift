@@ -26,7 +26,30 @@ final class FriendTableViewCell: NSTableCellView {
         }
     }
 
+    override func viewWillMove(toWindow newWindow: NSWindow?) {
+        if newWindow == nil {
+            NSWorkspace.shared.notificationCenter.removeObserver(
+                self,
+                name: NSWorkspace.accessibilityDisplayOptionsDidChangeNotification,
+                object: NSWorkspace.shared
+            )
+        } else if self.window == nil {
+            NSWorkspace.shared.notificationCenter.addObserver(
+                self,
+                selector: #selector(displayAccessibilitySettingsDidChange(_:)),
+                name: NSWorkspace.accessibilityDisplayOptionsDidChangeNotification,
+                object: NSWorkspace.shared
+            )
+        }
+    }
+
     // MARK: - Private Methods
+
+    @objc private func displayAccessibilitySettingsDidChange(_ note: Notification) {
+        if let profile = objectValue as? Profile {
+            configure(with: profile)
+        }
+    }
 
     private func configure(with profile: Profile) {
         nameLabel.stringValue = profile.name
@@ -62,19 +85,27 @@ final class FriendTableViewCell: NSTableCellView {
     }
 
     private func statusImage(for profile: Profile) -> NSImage {
+        let shouldDifferentiateWithoutColor = NSWorkspace.shared.accessibilityDisplayShouldDifferentiateWithoutColor
+
         switch profile.status {
         case .online,
              .lookingToPlay,
              .lookingToTrade:
-            return NSImage(named: NSImage.statusAvailableName)!
+            return shouldDifferentiateWithoutColor ?
+                NSImage(named: "NSStatusAvailableFlat") ?? NSImage(named: NSImage.statusAvailableName)! :
+                NSImage(named: NSImage.statusAvailableName)!
 
         case .snooze,
              .busy,
              .away:
-            return NSImage(named: NSImage.statusPartiallyAvailableName)!
+            return shouldDifferentiateWithoutColor ?
+                NSImage(named: "NSStatusPartiallyAvailableFlat") ?? NSImage(named: NSImage.statusPartiallyAvailableName)! :
+                NSImage(named: NSImage.statusPartiallyAvailableName)!
 
         case .offline:
-            return NSImage(named: NSImage.statusUnavailableName)!
+            return shouldDifferentiateWithoutColor ?
+                NSImage(named: "NSStatusUnavailableFlat") ?? NSImage(named: NSImage.statusUnavailableName)! :
+                NSImage(named: NSImage.statusUnavailableName)!
         }
     }
 }
