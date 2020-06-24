@@ -49,6 +49,7 @@
 		FA8AA4F0249799D100B9924D /* Effect+Running.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AA4EF249799D100B9924D /* Effect+Running.swift */; };
 		FAA5980E249FB3A20089BC51 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5980D249FB3A20089BC51 /* PreferencesWindowController.swift */; };
 		FAA59810249FC8C90089BC51 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5980F249FC8C90089BC51 /* Preference.swift */; };
+		FAA6D81324A3480E006631E3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FAA6D81224A3480E006631E3 /* Credits.rtf */; };
 		FAB66C8B24950FDB00AC461F /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB66C8A24950FDB00AC461F /* Notifier.swift */; };
 		FAC248F4248A721D00386D70 /* MainWindowState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC248F3248A721D00386D70 /* MainWindowState.swift */; };
 		FACA4508248B852400E14C27 /* FriendTableViewGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACA4507248B852400E14C27 /* FriendTableViewGroupCell.xib */; };
@@ -111,6 +112,7 @@
 		FA8AA4EF249799D100B9924D /* Effect+Running.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Effect+Running.swift"; sourceTree = "<group>"; };
 		FAA5980D249FB3A20089BC51 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		FAA5980F249FC8C90089BC51 /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
+		FAA6D81224A3480E006631E3 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		FAB66C8A24950FDB00AC461F /* Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		FAC248F3248A721D00386D70 /* MainWindowState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowState.swift; sourceTree = "<group>"; };
 		FACA4507248B852400E14C27 /* FriendTableViewGroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewGroupCell.xib; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				FA54FEBC24891EDA004D21A7 /* Assets.xcassets */,
 				FA54FEC524891EDA004D21A7 /* Sauna.entitlements */,
 				FA54FEC424891EDA004D21A7 /* Info.plist */,
+				FAA6D81224A3480E006631E3 /* Credits.rtf */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAF9900E249F873F00520316 /* PreferencesWindow.xib in Resources */,
+				FAA6D81324A3480E006631E3 /* Credits.rtf in Resources */,
 				FA82C938248A46E100C5EFBE /* FriendTableViewCell.xib in Resources */,
 				FA54FEC324891EDA004D21A7 /* Main.storyboard in Resources */,
 				FA54FEC024891EDA004D21A7 /* Preview Assets.xcassets in Resources */,
