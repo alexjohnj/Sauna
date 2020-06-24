@@ -303,6 +303,7 @@
 				FA54FEB124891ED8004D21A7 /* Sources */,
 				FA54FEB224891ED8004D21A7 /* Frameworks */,
 				FA54FEB324891ED8004D21A7 /* Resources */,
+				FAA6D81424A34DAB006631E3 /* Update Bundle Build Number */,
 			);
 			buildRules = (
 			);
@@ -404,6 +405,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FAA6D81424A34DAB006631E3 /* Update Bundle Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH%.*}",
+			);
+			name = "Update Bundle Build Number";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "COMMITS=$(git rev-list HEAD | wc -l)\nCOMMITS=$(($COMMITS))\ndefaults write \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH%.*}\" \"CFBundleVersion\" \"${COMMITS}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FA54FEB124891ED8004D21A7 /* Sources */ = {
@@ -599,6 +622,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = SEE_BUILD_PHASE;
 				DEVELOPMENT_ASSET_PATHS = "\"Sauna/Preview Content\"";
 				DEVELOPMENT_TEAM = LMVB86HGC7;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -609,6 +633,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.alexj.Sauna;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -623,6 +648,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = SEE_BUILD_PHASE;
 				DEVELOPMENT_ASSET_PATHS = "\"Sauna/Preview Content\"";
 				DEVELOPMENT_TEAM = LMVB86HGC7;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -633,6 +659,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.alexj.Sauna;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
