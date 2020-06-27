@@ -15,16 +15,13 @@ struct ContentView: View {
 
     var body: some View {
         WithViewStore(store) { (viewStore: ViewStore<WatchAppState, WatchAppAction>) in
-            Group {
-                if viewStore.friendsListState.friendsList.isLoading {
-                    Text("Loading Friends…")
-                } else if viewStore.friendsListState.friendsList.isLoaded {
-                    FriendsListView(store: store.scope(state: \.friendsListState, action: WatchAppAction.friendsListAction))
-                } else {
-                    Text("Failed to load friends")
-                }
+            if viewStore.friendsListState.friendsList.isLoading {
+                Text("Loading Friends…")
+            } else if viewStore.friendsListState.friendsList.isLoaded {
+                FriendsListView(store: store.scope(state: \.friendsListState, action: WatchAppAction.friendsListAction))
+            } else {
+                Text("Failed to load friends")
             }
-            .onAppear { viewStore.send(.appAppeared) }
         }
     }
 }

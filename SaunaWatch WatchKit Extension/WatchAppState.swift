@@ -19,7 +19,7 @@ struct WatchAppState: Equatable {
 }
 
 enum WatchAppAction: Equatable {
-    case appAppeared
+    case appWillEnterForeground
     case friendsListAction(FriendsListAction)
 }
 
@@ -31,7 +31,7 @@ let watchAppReducer: Reducer<WatchAppState, WatchAppAction, WatchAppEnvironment>
     ),
     Reducer { state, action, env in
         switch action {
-        case .appAppeared:
+        case .appWillEnterForeground:
             if let lastRefreshDate = state.friendsListState.lastRefreshDate,
                env.date().timeIntervalSince(lastRefreshDate) < kMinimumAutoRefreshInterval {
                 return .none

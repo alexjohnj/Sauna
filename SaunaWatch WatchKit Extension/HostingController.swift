@@ -15,21 +15,8 @@ import LibSauna
 
 final class HostingController: WKHostingController<ContentView> {
 
-    private let store: Store<WatchAppState, WatchAppAction>
-
-    override init() {
-        store = Store(
-            initialState: WatchAppState(),
-            reducer: watchAppReducer.debug(),
-            environment: WatchAppEnvironment(
-                mainScheduler: DispatchQueue.main.eraseToAnyScheduler(),
-                date: Date.init,
-                client: .live(.shared),
-                credentialStore: .constant(steamID: kMySteamID, apiKey: kMySteamAPIKey)
-            )
-        )
-
-        super.init()
+    var store: Store<WatchAppState, WatchAppAction> {
+        (WKExtension.shared().delegate as! ExtensionDelegate).store
     }
 
     override var body: ContentView {
