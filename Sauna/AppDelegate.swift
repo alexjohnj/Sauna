@@ -10,6 +10,7 @@ import Cocoa
 import SwiftUI
 
 import ComposableArchitecture
+import LibSauna
 
 final class AppDelegate: NSResponder, NSApplicationDelegate {
 
@@ -62,7 +63,7 @@ final class AppDelegate: NSResponder, NSApplicationDelegate {
 
 private let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer.combine(
     appNotificationObserver.pullback(
-        state: \AppState.loadedProfiles,
+        state: \AppState.friendsListState.loadedProfiles,
         action: /.`self`,
         environment: { AppNotificationEnvironment(notifier: $0.notifier, preferences: $0.preferences) }
     ),
@@ -75,6 +76,18 @@ private let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer.c
         state: \AppState.setupWindowState,
         action: /AppAction.setupWindowAction,
         environment: { SetupWindowEnvironment(credentialStore: $0.credentialStore) }
+    ),
+    friendsListReducer.pullback(
+        state: \AppState.friendsListState,
+        action: /AppAction.friendsListAction,
+        environment: {
+            FriendsListEnvironment(
+                mainScheduler: $0.mainScheduler,
+                date: $0.date,
+                client: $0.client,
+                credentialStore: $0.credentialStore
+            )
+        }
     ),
     appStateReducer
 )

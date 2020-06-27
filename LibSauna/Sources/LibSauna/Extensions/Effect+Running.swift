@@ -10,7 +10,7 @@ import Foundation
 import Combine
 import ComposableArchitecture
 
-extension Effect where Failure == Never {
+public extension Effect where Failure == Never {
     static func running(_ work: @escaping () -> Output) -> Self {
         Effect<Output, Never>.future { p in p(.success(work())) }
     }

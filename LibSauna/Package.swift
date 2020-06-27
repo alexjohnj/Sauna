@@ -14,12 +14,17 @@ let package = Package(
             targets: ["LibSauna"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/alexjohnj/Requests.git", .upToNextMinor(from: "0.3.0"))
+        .package(url: "https://github.com/alexjohnj/Requests.git", .upToNextMinor(from: "0.3.0")),
+        .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", .upToNextMinor(from: "0.4.0"))
     ],
     targets: [
         .target(
             name: "LibSauna",
-            dependencies: ["Requests"]),
+            dependencies: [
+                "Requests",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
         .testTarget(
             name: "LibSaunaTests",
             dependencies: ["LibSauna"]),

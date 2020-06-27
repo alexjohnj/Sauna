@@ -27,7 +27,7 @@ final class NotificationObserverTests: XCTestCase {
 
         let store = TestStore(initialState: [], reducer: appNotificationObserver.reducer, environment: environment)
         store.assert(
-            .send(.profilesLoaded(.success([firstProfile, secondProfile])))
+            .send(.friendsListAction(.profilesLoaded(.success([firstProfile, secondProfile]))))
         )
 
         XCTAssertTrue(postedNotifications.isEmpty)
@@ -44,7 +44,7 @@ final class NotificationObserverTests: XCTestCase {
         secondProfile.status = .online
 
         store.assert(
-            .send(.profilesLoaded(.success([firstProfile, secondProfile])))
+            .send(.friendsListAction(.profilesLoaded(.success([firstProfile, secondProfile]))))
         )
 
         XCTAssertFalse(postedNotifications.isEmpty)
@@ -61,7 +61,7 @@ final class NotificationObserverTests: XCTestCase {
         secondProfile.currentGame = "Borderlands"
 
         store.assert(
-            .send(.profilesLoaded(.success([firstProfile, secondProfile])))
+            .send(.friendsListAction(.profilesLoaded(.success([firstProfile, secondProfile]))))
         )
 
         let notification = try XCTUnwrap(postedNotifications.first?.content)
@@ -82,7 +82,7 @@ final class NotificationObserverTests: XCTestCase {
         secondProfile.currentGame = "Civilization VI"
 
         store.assert(
-            .send(.profilesLoaded(.success([firstProfile, secondProfile])))
+            .send(.friendsListAction(.profilesLoaded(.success([firstProfile, secondProfile]))))
         )
 
         XCTAssertEqual(postedNotifications.count, 1)
@@ -101,7 +101,7 @@ final class NotificationObserverTests: XCTestCase {
         secondProfile.currentGame = "Civilization VI"
 
         store.assert(
-            .send(.profilesLoaded(.success([firstProfile, secondProfile])))
+            .send(.friendsListAction(.profilesLoaded(.success([firstProfile, secondProfile]))))
         )
 
         XCTAssertEqual(postedNotifications.count, 0)
@@ -120,7 +120,7 @@ final class NotificationObserverTests: XCTestCase {
         secondProfile.status = .online
 
         store.assert(
-            .send(.profilesLoaded(.success([firstProfile, secondProfile])))
+            .send(.friendsListAction(.profilesLoaded(.success([firstProfile, secondProfile]))))
         )
 
         XCTAssertEqual(postedNotifications.count, 0)
@@ -135,7 +135,7 @@ final class NotificationObserverTests: XCTestCase {
 
         let store = TestStore(initialState: [firstProfile, secondProfile], reducer: appNotificationObserver.reducer, environment: environment)
         secondProfile.status = .offline
-        store.assert(.send(.profilesLoaded(.success([firstProfile, secondProfile]))))
+        store.assert(.send(.friendsListAction(.profilesLoaded(.success([firstProfile, secondProfile])))))
 
         let removedNotificationID = try XCTUnwrap(removedNotificationIDs.first)
         XCTAssertEqual(removedNotificationID, secondProfile.id.rawValue)
@@ -150,7 +150,7 @@ final class NotificationObserverTests: XCTestCase {
 
         let store = TestStore(initialState: [firstProfile, secondProfile], reducer: appNotificationObserver.reducer, environment: environment)
         secondProfile.currentGame = nil
-        store.assert(.send(.profilesLoaded(.success([firstProfile, secondProfile]))))
+        store.assert(.send(.friendsListAction(.profilesLoaded(.success([firstProfile, secondProfile])))))
 
         let removedNotificationID = try XCTUnwrap(removedNotificationIDs.first)
         XCTAssertEqual(removedNotificationID, secondProfile.id.rawValue)

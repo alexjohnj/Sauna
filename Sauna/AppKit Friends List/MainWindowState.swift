@@ -24,12 +24,12 @@ struct MainWindowState: Equatable {
 extension AppState {
     var mainWindowState: MainWindowState {
         let statusText: String
-        switch friendsList.state {
+        switch friendsListState.friendsList.state {
         case .notRequested:
             statusText = ""
             
         case .idle(nil):
-            if let lastRefreshDate = self.lastRefreshDate {
+            if let lastRefreshDate = friendsListState.lastRefreshDate {
                 statusText = "Updated \(kUpdateTimeFormatter.string(from: lastRefreshDate))"
             } else {
                 statusText = ""
@@ -42,10 +42,10 @@ extension AppState {
             statusText = "Updating…"
         }
         
-        let onlineFriendCount = loadedProfiles.filter { $0.status.isTechnicallyOnline }.count
+        let onlineFriendCount = friendsListState.loadedProfiles.filter { $0.status.isTechnicallyOnline }.count
         let windowTitle = "Steam Friends (\(onlineFriendCount) Online)"
         
-        let isRefreshButtonEnabled = !friendsList.isLoading
+        let isRefreshButtonEnabled = !friendsListState.friendsList.isLoading
         return MainWindowState(
             title: windowTitle,
             statusText: statusText,

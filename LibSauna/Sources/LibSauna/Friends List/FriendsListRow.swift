@@ -7,17 +7,16 @@
 //
 
 import Foundation
-import LibSauna
- 
-enum FriendsListRow: Equatable {
 
-    enum Group: Equatable {
+public enum FriendsListRow: Equatable {
+
+    public enum Group: Equatable {
         case inGame
         case online
         case awayFromKeyboard
         case offline
 
-        var localizedDescription: String {
+        public var localizedDescription: String {
             switch self {
             case .inGame:
                 return "In Game"
@@ -30,7 +29,7 @@ enum FriendsListRow: Equatable {
             }
         }
 
-        var sortRanking: Int {
+        public var sortRanking: Int {
             switch self {
             case .inGame:
                 return .min
@@ -48,7 +47,7 @@ enum FriendsListRow: Equatable {
     case groupHeader(Group)
 }
 
-extension Profile {
+public extension Profile {
     var groupName: FriendsListRow.Group {
         guard currentGame == nil else {
             return .inGame
@@ -67,28 +66,6 @@ extension Profile {
 
         case .offline:
             return .offline
-        }
-    }
-}
-
-// MARK: - Diffing Support
-
-import Differ
-
-extension FriendsListRow {
-    static let equalityChecker: EqualityChecker<[FriendsListRow]> = { row, otherRow in
-        switch (row, otherRow) {
-        case (.groupHeader(let group), .groupHeader(let otherGroup)):
-            return group == otherGroup
-
-        case (.groupHeader, _):
-            return false
-
-        case (.friend(let profile), .friend(let otherProfile)):
-            return profile.id == otherProfile.id
-
-        case (.friend, _):
-            return false
         }
     }
 }

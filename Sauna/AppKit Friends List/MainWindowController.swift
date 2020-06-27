@@ -27,6 +27,7 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
 
     private let store: Store<AppState, AppAction>
     private let viewStore: ViewStore<AppState, AppAction>
+    private let friendsListStore: ViewStore<FriendsListState, FriendsListAction>
 
     private var cancellationBag: [AnyCancellable] = []
     private var setupWindowController: SetupWindowController?
@@ -41,6 +42,7 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
     init(store: Store<AppState, AppAction>) {
         self.store = store
         self.viewStore = ViewStore(store)
+        self.friendsListStore = ViewStore(store.scope(state: \.friendsListState, action: AppAction.friendsListAction))
         super.init(window: nil)
     }
 
@@ -62,7 +64,7 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
         tableView.target = self
         tableView.doubleAction = #selector(openSelectedProfile(_:))
 
-        viewStore.publisher.friendsList
+        friendsListStore.publisher.friendsList
             .scan(([FriendsListRow](), [FriendsListRow]())) { accum, newList in
                 (accum.1, newList.data ?? [])
             }
@@ -81,8 +83,8 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
                 self.tableView.reloadData(forRowIndexes: rowIndicesToReload, columnIndexes: [0])
                 self.tableView.noteHeightOfRows(withIndexesChanged: rowIndicesToReload)
                 self.tableView.endUpdates()
-        }
-        .store(in: &cancellationBag)
+            }
+            .store(in: &cancellationBag)
 
         store.scope(state: { $0.setupWindowState }, action: AppAction.setupWindowAction)
             .ifLet(
@@ -95,7 +97,7 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
                         self.window?.endSheet(setupWindow, returnCode: .OK)
                     }
                 }
-        )
+            )
             .store(in: &cancellationBag)
 
         let windowState = viewStore.publisher.mainWindowState
@@ -117,8 +119,8 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
 
     @objc private func openSelectedProfile(_ sender: Any) {
         guard tableView.clickedRow != -1,
-            case .friend(let profile) = viewStore.friendsList.data?[tableView.clickedRow] else {
-                return
+              case .friend(let profile) = friendsListStore.friendsList.data?[tableView.clickedRow] else {
+            return
         }
 
         NSWorkspace.shared.open(profile.url)
@@ -138,8 +140,8 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
 
     @objc private func copy(_ sender: Any) {
         guard tableView.selectedRow != -1,
-            case .friend(let selectedProfile)? = viewStore.friendsList.data?[tableView.selectedRow] else {
-                return
+              case .friend(let selectedProfile)? = friendsListStore.friendsList.data?[tableView.selectedRow] else {
+            return
         }
 
         NSPasteboard.general.clearContents()
@@ -148,15 +150,15 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
     }
 
     @objc private func refresh(_ sender: Any) {
-        viewStore.send(.reloadFriendsList)
+        friendsListStore.send(.reload)
     }
 
     // MARK: - Helper Methods
 
     private func canCopySelectedRow() -> Bool {
         guard tableView.selectedRow != -1,
-            case .friend? = viewStore.friendsList.data?[tableView.selectedRow] else {
-                return false
+              case .friend? = friendsListStore.friendsList.data?[tableView.selectedRow] else {
+            return false
         }
 
         return true
@@ -165,11 +167,11 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
 
 extension MainWindowController: NSTableViewDataSource, NSTableViewDelegate {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        viewStore.friendsList.data?.count ?? 0
+        friendsListStore.friendsList.data?.count ?? 0
     }
 
     func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
-        if case .groupHeader? = viewStore.friendsList.data?[row] {
+        if case .groupHeader? = friendsListStore.friendsList.data?[row] {
             return true
         } else {
             return false
@@ -177,7 +179,7 @@ extension MainWindowController: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        switch viewStore.friendsList.data?[row] {
+        switch friendsListStore.friendsList.data?[row] {
         case .friend(let profile):
             return profile
         default:
@@ -186,7 +188,7 @@ extension MainWindowController: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        if case .groupHeader(let group)? = viewStore.friendsList.data?[row] {
+        if case .groupHeader(let group)? = friendsListStore.friendsList.data?[row] {
             let headerView = tableView.makeView(withIdentifier: kGroupRowIdentifier, owner: self) as! FriendTableViewGroupCell
             headerView.titleLabel?.stringValue = group.localizedDescription
             return headerView
@@ -196,7 +198,7 @@ extension MainWindowController: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        if case .groupHeader = viewStore.friendsList.data?[row] {
+        if case .groupHeader = friendsListStore.friendsList.data?[row] {
             return kGroupHeaderRowHeight
         } else {
             return kFriendRowHeight
@@ -204,7 +206,7 @@ extension MainWindowController: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        if case .groupHeader = viewStore.friendsList.data?[row] {
+        if case .groupHeader = friendsListStore.friendsList.data?[row] {
             return false
         } else {
             return true

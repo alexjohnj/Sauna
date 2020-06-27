@@ -24,7 +24,7 @@ let appNotificationObserver: Observer<[Profile], AppAction, AppNotificationEnvir
             env.notifier.requestAuthorization()
         }
         
-    case .profilesLoaded(.success(let newFriendsList)):
+    case .friendsListAction(.profilesLoaded(.success(let newFriendsList))):
         guard !currentFriendsList.isEmpty else { return .none }
         
         let changes = statusChanges(from: currentFriendsList, in: newFriendsList)

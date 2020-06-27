@@ -17,14 +17,15 @@ let autoRefreshObserver: Observer<AppState, AppAction, AutoRefreshReducerEnviron
     struct RefreshTimerID: Hashable { }
     
     switch action {
-    case .reloadFriendsList where state.friendsList.isLoading == false:
+    case .friendsListAction(.reload) where state.friendsListState.friendsList.isLoading == false:
         return Effect.cancel(id: RefreshTimerID())
-    case .reloadFriendsList:
+
+    case .friendsListAction(.reload):
         return .none
 
-    case .profilesLoaded:
+    case .friendsListAction(.profilesLoaded):
         return Effect.timer(id: RefreshTimerID(), every: .seconds(kFriendsListRefreshInterval), on: env.mainScheduler)
-            .map { _ in AppAction.reloadFriendsList }
+            .map { _ in AppAction.friendsListAction(.reload) }
             .eraseToEffect()
 
     case .signOut:

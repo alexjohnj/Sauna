@@ -7,17 +7,26 @@
 //
 
 import Foundation
-import LibSauna
 
-struct CredentialStore {
-    typealias Credentials = (steamID: SteamID, apiKey: APIKey)
+public struct CredentialStore {
+    public typealias Credentials = (steamID: SteamID, apiKey: APIKey)
     
-    var saveCredentials: (Credentials) -> Void
-    var getCredentials: () -> Credentials?
-    var clearCredentials: () -> Void
+    public var saveCredentials: (Credentials) -> Void
+    public var getCredentials: () -> Credentials?
+    public var clearCredentials: () -> Void
+
+    public init(
+        saveCredentials: @escaping (CredentialStore.Credentials) -> Void,
+        getCredentials: @escaping () -> CredentialStore.Credentials?,
+        clearCredentials: @escaping () -> Void
+    ) {
+        self.saveCredentials = saveCredentials
+        self.getCredentials = getCredentials
+        self.clearCredentials = clearCredentials
+    }
 }
 
-extension CredentialStore {
+public extension CredentialStore {
     static var mock: CredentialStore {
         var savedSteamID: SteamID?
         var savedAPIKey: APIKey?
@@ -44,12 +53,12 @@ extension CredentialStore {
 
 // MARK: - Keychain Implementation
 
-extension CredentialStore {
+public extension CredentialStore {
     static var real: CredentialStore {
         CredentialStore(
             saveCredentials: saveCredentials(_:),
-            getCredentials: Sauna.getCredentials,
-            clearCredentials: Sauna.clearCredentials
+            getCredentials: LibSauna.getCredentials,
+            clearCredentials: LibSauna.clearCredentials
         )
     }
 }
