@@ -20,7 +20,15 @@ struct ContentView: View {
                     ProfileRow(profile: profile)
                 }
             }
-            .onAppear { viewStore.send(.friendsListAction(.reload)) }
+            .onAppear { viewStore.send(.appAppeared) }
+            .contextMenu {
+                Button(action: { viewStore.send(.friendsListAction(.reload)) }) {
+                    VStack {
+                        Image(systemName: "arrow.clockwise")
+                        Text("Refresh")
+                    }
+                }
+            }
         }
     }
 }

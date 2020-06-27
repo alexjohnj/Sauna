@@ -10,6 +10,8 @@ import Foundation
 import ComposableArchitecture
 import LibSauna
 
+private let kMinimumAutoRefreshInterval: TimeInterval = 60 * 2
+
 typealias WatchAppEnvironment = FriendsListEnvironment
 
 struct WatchAppState: Equatable {
@@ -17,6 +19,7 @@ struct WatchAppState: Equatable {
 }
 
 enum WatchAppAction: Equatable {
+    case appAppeared
     case friendsListAction(FriendsListAction)
 }
 
@@ -28,6 +31,14 @@ let watchAppReducer: Reducer<WatchAppState, WatchAppAction, WatchAppEnvironment>
     ),
     Reducer { state, action, env in
         switch action {
+        case .appAppeared:
+            if let lastRefreshDate = state.friendsListState.lastRefreshDate,
+               env.date().timeIntervalSince(lastRefreshDate) < kMinimumAutoRefreshInterval {
+                return .none
+            }
+
+            return Effect(value: .friendsListAction(.reload))
+
         case .friendsListAction:
             return .none
         }
