@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA0E7FEA2498D9BB004836EC /* SetupWindowStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E7FE92498D9BB004836EC /* SetupWindowStateTests.swift */; };
+		FA1C541624A7C51D006B1A2F /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C541524A7C51D006B1A2F /* FriendsListView.swift */; };
 		FA381E90249659EA00719ABC /* AutoRefreshReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA381E8F249659EA00719ABC /* AutoRefreshReducer.swift */; };
 		FA3B4A7624A76CC000212F1C /* LibSauna in Frameworks */ = {isa = PBXBuildFile; productRef = FA3B4A7524A76CC000212F1C /* LibSauna */; };
 		FA3B4A7A24A7749B00212F1C /* FriendsListRow+Diffing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B4A7924A7749B00212F1C /* FriendsListRow+Diffing.swift */; };
@@ -108,6 +109,7 @@
 
 /* Begin PBXFileReference section */
 		FA0E7FE92498D9BB004836EC /* SetupWindowStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWindowStateTests.swift; sourceTree = "<group>"; };
+		FA1C541524A7C51D006B1A2F /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		FA381E8F249659EA00719ABC /* AutoRefreshReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshReducer.swift; sourceTree = "<group>"; };
 		FA3B4A7324A76B6D00212F1C /* LibSauna */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LibSauna; sourceTree = "<group>"; };
 		FA3B4A7924A7749B00212F1C /* FriendsListRow+Diffing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FriendsListRow+Diffing.swift"; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				FA3B4A9624A777CD00212F1C /* ContentView.swift */,
+				FA1C541524A7C51D006B1A2F /* FriendsListView.swift */,
 				FA9F2F4E24A77D94006C7BBF /* ProfileRow.swift */,
 				FA9F2F5024A77E5F006C7BBF /* StatusView.swift */,
 			);
@@ -602,6 +605,7 @@
 			files = (
 				FA3B4A9724A777CD00212F1C /* ContentView.swift in Sources */,
 				FA9F2F4C24A77CB6006C7BBF /* Secrets.swift in Sources */,
+				FA1C541624A7C51D006B1A2F /* FriendsListView.swift in Sources */,
 				FA9F2F4F24A77D94006C7BBF /* ProfileRow.swift in Sources */,
 				FA3B4A9524A777CD00212F1C /* HostingController.swift in Sources */,
 				FA9F2F5124A77E5F006C7BBF /* StatusView.swift in Sources */,

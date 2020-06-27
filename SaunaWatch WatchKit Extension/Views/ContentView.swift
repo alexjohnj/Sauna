@@ -14,21 +14,17 @@ struct ContentView: View {
     let store: Store<WatchAppState, WatchAppAction>
 
     var body: some View {
-        WithViewStore(store) { viewStore in
-            List {
-                ForEach(viewStore.friendsListState.loadedProfiles) { profile in
-                    ProfileRow(profile: profile)
+        WithViewStore(store) { (viewStore: ViewStore<WatchAppState, WatchAppAction>) in
+            Group {
+                if viewStore.friendsListState.friendsList.isLoading {
+                    Text("Loading Friends…")
+                } else if viewStore.friendsListState.friendsList.isLoaded {
+                    FriendsListView(store: store.scope(state: \.friendsListState, action: WatchAppAction.friendsListAction))
+                } else {
+                    Text("Failed to load friends")
                 }
             }
             .onAppear { viewStore.send(.appAppeared) }
-            .contextMenu {
-                Button(action: { viewStore.send(.friendsListAction(.reload)) }) {
-                    VStack {
-                        Image(systemName: "arrow.clockwise")
-                        Text("Refresh")
-                    }
-                }
-            }
         }
     }
 }
