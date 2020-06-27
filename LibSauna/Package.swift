@@ -7,7 +7,8 @@ let package = Package(
     name: "LibSauna",
     platforms: [
         .macOS(.v10_15),
-        .watchOS(.v6)
+        .watchOS(.v6),
+        .iOS(.v13)
     ],
     products: [
         .library(

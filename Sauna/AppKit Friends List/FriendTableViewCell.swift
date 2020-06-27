@@ -57,33 +57,12 @@ final class FriendTableViewCell: NSTableCellView {
         toolTip = profile.realName
         statusImageView.image = statusImage(for: profile)
 
-        if let statusText = self.statusText(for: profile) {
+        if let statusText = profile.statusDescription {
             statusLabel.stringValue = statusText
             statusLabel.isHidden = false
         } else {
             statusLabel.stringValue = ""
             statusLabel.isHidden = true
-        }
-    }
-
-    private func statusText(for profile: Profile) -> String? {
-        if let currentGame = profile.currentGame {
-            return "Playing \(currentGame)"
-        }
-
-        switch profile.status {
-        case .away:
-            return "Away"
-        case .busy:
-            return "Busy"
-        case .snooze:
-            return "Snooze"
-        case .lookingToTrade:
-            return "Looking to Trade"
-        case .lookingToPlay:
-            return "Looking to Play"
-        default:
-            return nil
         }
     }
 

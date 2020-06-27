@@ -51,6 +51,14 @@ public extension CredentialStore {
     }
 }
 
+// MARK: - Constant Implementation
+
+public extension CredentialStore {
+    static func constant(steamID: SteamID, apiKey: APIKey) -> CredentialStore {
+        CredentialStore(saveCredentials: { _ in }, getCredentials: { (steamID, apiKey) }, clearCredentials: { })
+    }
+}
+
 // MARK: - Keychain Implementation
 
 public extension CredentialStore {
