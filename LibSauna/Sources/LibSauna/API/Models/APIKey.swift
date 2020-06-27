@@ -6,10 +6,10 @@
 //  Copyright © 2020 Alex Jackson. All rights reserved.
 //
 
-struct APIKey: Hashable, RawRepresentable, Codable {
-    let rawValue: String
+public struct APIKey: Hashable, RawRepresentable, Codable {
+    public let rawValue: String
 
-    init?(rawValue: String) {
+    public init?(rawValue: String) {
         let trimmedKey = rawValue.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmedKey.isEmpty else {
             return nil
@@ -20,7 +20,7 @@ struct APIKey: Hashable, RawRepresentable, Codable {
 }
 
 extension APIKey: ExpressibleByStringLiteral {
-    init(stringLiteral value: StringLiteralType) {
+    public init(stringLiteral value: StringLiteralType) {
         self.init(rawValue: value)!
     }
 }
@@ -28,7 +28,7 @@ extension APIKey: ExpressibleByStringLiteral {
 // MARK: - Test Data
 
 #if DEBUG
-extension APIKey {
+public extension APIKey {
     static let valid = APIKey(rawValue: "DEADBEEF")!
 }
 #endif

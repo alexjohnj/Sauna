@@ -10,6 +10,8 @@ import Foundation
 import Combine
 
 import ComposableArchitecture
+import LibSauna
+
 @testable import Sauna
 
 class TemporaryUserDefaults: UserDefaults {

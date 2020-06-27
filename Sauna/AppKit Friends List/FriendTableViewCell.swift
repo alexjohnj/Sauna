@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import LibSauna
 
 final class FriendTableViewCell: NSTableCellView {
 

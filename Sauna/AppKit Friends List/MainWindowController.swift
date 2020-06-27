@@ -11,6 +11,8 @@ import Combine
 import ComposableArchitecture
 import Differ
 
+import LibSauna
+
 // MARK: - Constants
 
 private let kRowIdentifier = NSUserInterfaceItemIdentifier("FriendTableColumn")

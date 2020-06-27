@@ -8,21 +8,21 @@
 
 import Foundation
 
-struct SteamID: Hashable, RawRepresentable, Codable {
+public struct SteamID: Hashable, RawRepresentable, Codable {
 
     // MARK: - Constants
 
-    static let validIDLength = 17
+    public static let validIDLength = 17
 
     private static let validIDPredicate = NSPredicate(format: "SELF MATCHES %@", "^[0-9]{17}$")
 
     // MARK: - Public Properties
 
-    let rawValue: String
+    public let rawValue: String
 
     // MARK: - Initializers
 
-    init?(rawValue: String) {
+    public init?(rawValue: String) {
         let trimmedID = rawValue.trimmingCharacters(in: .whitespacesAndNewlines)
         guard Self.validIDPredicate.evaluate(with: trimmedID) else { return nil }
         self.rawValue = trimmedID
@@ -32,7 +32,7 @@ struct SteamID: Hashable, RawRepresentable, Codable {
 // MARK: - Test IDs
 
 #if DEBUG
-extension SteamID {
+public extension SteamID {
     static let invalidRawID = "abc-123"
     static let valid = SteamID(rawValue: String(repeating: "0", count: SteamID.validIDLength))!
 

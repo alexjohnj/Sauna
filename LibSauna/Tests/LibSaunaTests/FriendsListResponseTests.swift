@@ -9,7 +9,7 @@
 import Foundation
 import XCTest
 
-@testable import Sauna
+@testable import LibSauna
 
 final class FriendsListResponseTests: XCTestCase {
 

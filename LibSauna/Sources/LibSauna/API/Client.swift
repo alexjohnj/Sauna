@@ -28,17 +28,25 @@ struct SteamAPI: RequestProviding {
     }
 }
 
-struct SteamClient {
-    struct Failure: LocalizedError, Equatable {
-        var failureReason: String?
+public struct SteamClient {
+    public struct Failure: LocalizedError, Equatable {
+        public var failureReason: String?
     }
 
-    var getFriendsList: (APIKey, SteamID) -> AnyPublisher<[SteamID], Failure>
-    var getProfiles: (APIKey, [SteamID]) -> AnyPublisher<[Profile], Failure>
+    public var getFriendsList: (APIKey, SteamID) -> AnyPublisher<[SteamID], Failure>
+    public var getProfiles: (APIKey, [SteamID]) -> AnyPublisher<[Profile], Failure>
+
+    public init(
+        getFriendsList: @escaping (APIKey, SteamID) -> AnyPublisher<[SteamID], SteamClient.Failure>,
+        getProfiles: @escaping (APIKey, [SteamID]) -> AnyPublisher<[Profile], SteamClient.Failure>
+    ) {
+        self.getFriendsList = getFriendsList
+        self.getProfiles = getProfiles
+    }
 }
 
 extension SteamClient {
-    static var live: (URLSession) -> SteamClient = { session in
+    public static var live: (URLSession) -> SteamClient = { session in
         SteamClient(
             getFriendsList: { apiKey, id in
                 let request = SteamAPI(apiKey: apiKey).getFriendsList(forPlayerID: id)
@@ -62,7 +70,7 @@ extension SteamClient {
     }
 }
 
-extension URLSession {
+private extension URLSession {
     func _perform<R: RequestConvertible>(_ request: R) -> Deferred<Future<R.Resource, RequestTransportError>> {
         Deferred {
             Future { promise in

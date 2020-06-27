@@ -11,6 +11,8 @@ import Combine
 import ComposableArchitecture
 import CasePaths
 
+import LibSauna
+
 let kFriendsListRefreshInterval: TimeInterval = 2 * 60
 
 struct AppState: Equatable {

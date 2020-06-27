@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Profile: Codable, Hashable, Identifiable {
+public struct Profile: Codable, Hashable, Identifiable {
 
     // MARK: - Nested Types
 
@@ -32,22 +32,22 @@ struct Profile: Codable, Hashable, Identifiable {
 
     // MARK: - Public Properties
 
-    var id: SteamID
-    var url: URL
-    var name: String
-    var realName: String?
+    public var id: SteamID
+    public var url: URL
+    public var name: String
+    public var realName: String?
 
     /// If the player's profile is private, this will always be "0" [offline], except if the user has set their status to looking
     /// to trade or looking to play, because a bug makes those status appear even if the profile is private.
-    var status: Status
+    public var status: Status
 
-    var lastOnlineTime: Date
+    public var lastOnlineTime: Date
 
-    var currentGame: String?
+    public var currentGame: String?
 }
 
 #if DEBUG
-extension Profile {
+public extension Profile {
     static func fixture(
         id: SteamID = .valid,
         url: URL = URL(string: "https://steamcommunity.com/id/Gabe/")!,

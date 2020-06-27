@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import LibSauna
 
 struct CredentialStore {
     typealias Credentials = (steamID: SteamID, apiKey: APIKey)

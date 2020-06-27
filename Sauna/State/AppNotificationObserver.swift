@@ -9,6 +9,7 @@
 import Foundation
 import UserNotifications
 
+import LibSauna
 import ComposableArchitecture
 
 struct AppNotificationEnvironment {

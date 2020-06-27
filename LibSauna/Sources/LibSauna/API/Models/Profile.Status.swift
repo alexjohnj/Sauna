@@ -7,7 +7,7 @@
 //
 
 extension Profile {
-    enum Status: Int, Codable {
+    public enum Status: Int, Codable {
         case offline = 0
         case online
         case busy
@@ -17,7 +17,7 @@ extension Profile {
         case lookingToPlay
 
         /// Integer describing the logical ranking of the receiver.
-        var sortRanking: Int16 {
+        public var sortRanking: Int16 {
             switch self {
             case .offline:
                 return .max // Offline should always sort last
@@ -37,7 +37,7 @@ extension Profile {
         }
         
         /// `true` if the status means the user account is online, even if the user may not be present.
-        var isTechnicallyOnline: Bool {
+        public var isTechnicallyOnline: Bool {
             self == .offline ? false : true
         }
     }

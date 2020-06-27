@@ -10,6 +10,8 @@ import Foundation
 import Combine
 import ComposableArchitecture
 
+import LibSauna
+
 struct SetupWindowEnvironment {
     var credentialStore: CredentialStore
 }

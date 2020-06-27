@@ -8,31 +8,33 @@
 
 import Foundation
 
-struct Loadable<T, E> {
-    enum State {
+public struct Loadable<T, E> {
+    public enum State {
         case notRequested
         case idle(E?)
         case loading
     }
 
-    private(set) var state: State = .notRequested
-    private(set) var data: T?
+    public private(set) var state: State = .notRequested
+    public private(set) var data: T?
 
-    mutating func startLoading() {
+    public mutating func startLoading() {
         state = .loading
     }
 
-    mutating func complete(_ data: T) {
+    public mutating func complete(_ data: T) {
         state = .idle(nil)
         self.data = data
     }
 
-    mutating func fail(with error: E) {
+    public mutating func fail(with error: E) {
         state = .idle(error)
     }
+
+    public init() { }
 }
 
-extension Loadable {
+public extension Loadable {
     /// `true` if the data has at some point been requested.
     var isRequested: Bool {
         if case .notRequested = state { return false } else { return true }
@@ -60,7 +62,7 @@ extension Loadable {
 }
 
 extension Loadable where E: Error {
-    mutating func complete(_ result: Result<T, E>) {
+    public mutating func complete(_ result: Result<T, E>) {
         switch result {
         case .success(let data):
             complete(data)
