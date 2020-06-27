@@ -28,6 +28,10 @@ final class ExtensionDelegate: NSObject, WKExtensionDelegate {
         super.init()
     }
 
+    func applicationDidFinishLaunching() {
+        ViewStore(store).send(.appWillEnterForeground)
+    }
+
     func applicationWillEnterForeground() {
         ViewStore(store).send(.appWillEnterForeground)
     }

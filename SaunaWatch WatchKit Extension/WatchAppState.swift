@@ -10,6 +10,8 @@ import Foundation
 import ComposableArchitecture
 import LibSauna
 
+import WatchKit
+
 private let kMinimumAutoRefreshInterval: TimeInterval = 60 * 2
 
 typealias WatchAppEnvironment = FriendsListEnvironment
@@ -38,6 +40,16 @@ let watchAppReducer: Reducer<WatchAppState, WatchAppAction, WatchAppEnvironment>
             }
 
             return Effect(value: .friendsListAction(.reload))
+
+        case .friendsListAction(.profilesLoaded(.success)):
+            return Effect.fireAndForget {
+                WKInterfaceDevice.current().play(.success)
+            }
+
+        case .friendsListAction(.profilesLoaded(.failure)):
+            return Effect.fireAndForget {
+                WKInterfaceDevice.current().play(.failure)
+            }
 
         case .friendsListAction:
             return .none
