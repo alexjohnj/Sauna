@@ -20,8 +20,12 @@ struct FriendsListView: View {
     var body: some View {
         WithViewStore(store) { (viewStore: ViewStore<FriendsListState, FriendsListAction>) in
             List {
-                ForEach(viewStore.loadedProfiles) { profile in
-                    ProfileRow(profile: profile)
+                ForEach(viewStore.friendsList.data ?? [], id: \.group) { (section: FriendsListSection) in
+                    Section(header: Text(section.group.localizedDescription)) {
+                        ForEach(section.profiles) { profile in
+                            ProfileRow(profile: profile)
+                        }
+                    }
                 }
             }
             .contextMenu {
