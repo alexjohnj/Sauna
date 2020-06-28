@@ -29,6 +29,7 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
     private let viewStore: ViewStore<AppState, AppAction>
     private let friendsListStore: ViewStore<FriendsListState, FriendsListAction>
 
+    private var dataSource: [FriendsListRow] = []
     private var cancellationBag: [AnyCancellable] = []
     private var setupWindowController: SetupWindowController?
 
@@ -65,21 +66,29 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
         tableView.doubleAction = #selector(openSelectedProfile(_:))
 
         friendsListStore.publisher.friendsList
-            .scan(([FriendsListRow](), [FriendsListRow]())) { accum, newList in
-                (accum.1, newList.data ?? [])
+            .map(\.data)
+            .replaceNil(with: [])
+            .map { (sections: [FriendsListSection]) -> [FriendsListRow] in
+                sections.reduce(into: [FriendsListRow]()) { accum, section in
+                    accum.append(.groupHeader(section.group))
+                    accum.append(contentsOf: section.profiles.map(FriendsListRow.friend))
+                }
             }
-            .sink { [unowned self] (oldList, newList) in
+            .sink { [unowned self] newRows in
+                let oldRows = self.dataSource
+                self.dataSource = newRows
+
                 self.tableView.beginUpdates()
                 self.tableView.animateRowChanges(
-                    oldData: oldList,
-                    newData: newList,
+                    oldData: oldRows,
+                    newData: newRows,
                     isEqual: FriendsListRow.equalityChecker,
                     deletionAnimation: .slideUp,
                     insertionAnimation: .slideDown
                 )
 
                 // This is inefficient but is needed since the diffs do not say which rows need to be reloaded.
-                let rowIndicesToReload = IndexSet(integersIn: 0..<newList.count)
+                let rowIndicesToReload = IndexSet(integersIn: 0..<newRows.count)
                 self.tableView.reloadData(forRowIndexes: rowIndicesToReload, columnIndexes: [0])
                 self.tableView.noteHeightOfRows(withIndexesChanged: rowIndicesToReload)
                 self.tableView.endUpdates()
@@ -119,7 +128,7 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
 
     @objc private func openSelectedProfile(_ sender: Any) {
         guard tableView.clickedRow != -1,
-              case .friend(let profile) = friendsListStore.friendsList.data?[tableView.clickedRow] else {
+              case .friend(let profile) = dataSource[tableView.clickedRow] else {
             return
         }
 
@@ -140,7 +149,7 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
 
     @objc private func copy(_ sender: Any) {
         guard tableView.selectedRow != -1,
-              case .friend(let selectedProfile)? = friendsListStore.friendsList.data?[tableView.selectedRow] else {
+              case .friend(let selectedProfile) = dataSource[tableView.selectedRow] else {
             return
         }
 
@@ -157,7 +166,7 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
 
     private func canCopySelectedRow() -> Bool {
         guard tableView.selectedRow != -1,
-              case .friend? = friendsListStore.friendsList.data?[tableView.selectedRow] else {
+              case .friend = dataSource[tableView.selectedRow] else {
             return false
         }
 
@@ -171,7 +180,7 @@ extension MainWindowController: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
-        if case .groupHeader? = friendsListStore.friendsList.data?[row] {
+        if case .groupHeader = dataSource[row] {
             return true
         } else {
             return false
@@ -179,16 +188,16 @@ extension MainWindowController: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        switch friendsListStore.friendsList.data?[row] {
+        switch dataSource[row] {
         case .friend(let profile):
             return profile
-        default:
+        case .groupHeader:
             return nil
         }
     }
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        if case .groupHeader(let group)? = friendsListStore.friendsList.data?[row] {
+        if case .groupHeader(let group) = dataSource[row] {
             let headerView = tableView.makeView(withIdentifier: kGroupRowIdentifier, owner: self) as! FriendTableViewGroupCell
             headerView.titleLabel?.stringValue = group.localizedDescription
             return headerView
@@ -198,7 +207,7 @@ extension MainWindowController: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        if case .groupHeader = friendsListStore.friendsList.data?[row] {
+        if case .groupHeader = dataSource[row] {
             return kGroupHeaderRowHeight
         } else {
             return kFriendRowHeight
@@ -206,7 +215,7 @@ extension MainWindowController: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        if case .groupHeader = friendsListStore.friendsList.data?[row] {
+        if case .groupHeader = dataSource[row] {
             return false
         } else {
             return true

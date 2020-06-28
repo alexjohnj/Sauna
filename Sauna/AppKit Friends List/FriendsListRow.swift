@@ -9,6 +9,11 @@
 import LibSauna
 import Differ
 
+public enum FriendsListRow {
+    case groupHeader(FriendsListSection.Group)
+    case friend(Profile)
+}
+
 extension FriendsListRow {
     static let equalityChecker: EqualityChecker<[FriendsListRow]> = { row, otherRow in
         switch (row, otherRow) {

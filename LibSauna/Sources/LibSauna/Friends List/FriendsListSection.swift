@@ -8,8 +8,7 @@
 
 import Foundation
 
-public enum FriendsListRow: Equatable {
-
+public struct FriendsListSection: Equatable {
     public enum Group: Equatable {
         case inGame
         case online
@@ -43,12 +42,12 @@ public enum FriendsListRow: Equatable {
         }
     }
 
-    case friend(Profile)
-    case groupHeader(Group)
+    public let group: Group
+    public let profiles: [Profile]
 }
 
 public extension Profile {
-    var groupName: FriendsListRow.Group {
+    var groupName: FriendsListSection.Group {
         guard currentGame == nil else {
             return .inGame
         }

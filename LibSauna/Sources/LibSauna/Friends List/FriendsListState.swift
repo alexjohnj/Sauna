@@ -32,11 +32,11 @@ public struct FriendsListEnvironment {
 }
 
 public struct FriendsListState: Equatable {
-    public var friendsList = Loadable<[FriendsListRow], String>()
+    public var friendsList = Loadable<[FriendsListSection], String>()
     public var lastRefreshDate: Date?
 
     public var loadedProfiles: [Profile] {
-        friendsList.data?.compactMap(/FriendsListRow.friend) ?? []
+        friendsList.data?.flatMap(\.profiles) ?? []
     }
 
     public init() { }
@@ -83,14 +83,11 @@ public let friendsListReducer: Reducer<FriendsListState, FriendsListAction, Frie
 
 // MARK: - Helper Functions
 
-private func groupAndSortProfiles(_ profiles: [Profile]) -> [FriendsListRow] {
-    return Dictionary<FriendsListRow.Group, [Profile]>(grouping: profiles, by: \.groupName)
+private func groupAndSortProfiles(_ profiles: [Profile]) -> [FriendsListSection] {
+    return Dictionary<FriendsListSection.Group, [Profile]>(grouping: profiles, by: \.groupName)
         .mapValues(sortProfiles) // Sort contents of each group
         .sorted { $0.key.sortRanking < $1.key.sortRanking } // Sort groups
-        .reduce(into: []) { accum, group in // Flatten groups and profiles into single array
-            accum.append(.groupHeader(group.key))
-            accum.append(contentsOf: group.value.map(FriendsListRow.friend))
-    }
+        .map(FriendsListSection.init)
 }
 
 private func sortProfiles(_ profiles: [Profile]) -> [Profile] {
