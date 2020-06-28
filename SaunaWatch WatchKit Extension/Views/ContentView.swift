@@ -15,12 +15,22 @@ struct ContentView: View {
 
     var body: some View {
         WithViewStore(store) { (viewStore: ViewStore<WatchAppState, WatchAppAction>) in
-            if viewStore.friendsListState.friendsList.isLoading {
-                Text("Loading Friends…")
-            } else if viewStore.friendsListState.friendsList.isLoaded {
+            ZStack(alignment: .bottom) {
                 FriendsListView(store: store.scope(state: \.friendsListState, action: WatchAppAction.friendsListAction))
-            } else {
-                Text("Failed to load friends")
+
+                Group {
+                    switch viewStore.friendsListState.friendsList.state {
+                    case .notRequested,
+                         .idle(nil):
+                        EmptyView()
+                    case .loading:
+                        MessageOverlay.loading
+                    case .idle(.some):
+                        MessageOverlay(message: "Load Failed")
+                    }
+                }
+                .transition(.move(edge: .bottom))
+                .animation(.interactiveSpring())
             }
         }
     }
