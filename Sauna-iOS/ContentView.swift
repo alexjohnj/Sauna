@@ -7,15 +7,17 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
+import LibSauna
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!").padding()
-    }
-}
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    let store: Store<AppState, AppAction>
+
+    var body: some View {
+        NavigationView {
+            FriendsListView(store: store.scope(state: \.friendsList, action: AppAction.friendsListAction))
+                .navigationBarHidden(true)
+        }
     }
 }
