@@ -14,23 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FA54FEB424891ED8004D21A7"
-               BuildableName = "Sauna.app"
-               BlueprintName = "Sauna"
+               BlueprintIdentifier = "FA3B4A7F24A777CC00212F1C"
+               BuildableName = "SaunaWatch WatchKit App.app"
+               BlueprintName = "SaunaWatch WatchKit App"
                ReferencedContainer = "container:Sauna.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FA54FEDE24892539004D21A7"
-               BuildableName = "SaunaTests.xctest"
-               BlueprintName = "SaunaTests"
+               BlueprintIdentifier = "FA3B4A7C24A777CC00212F1C"
+               BuildableName = "SaunaWatch.app"
+               BlueprintName = "SaunaWatch"
                ReferencedContainer = "container:Sauna.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,16 +42,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FA54FEDE24892539004D21A7"
-               BuildableName = "SaunaTests.xctest"
-               BlueprintName = "SaunaTests"
-               ReferencedContainer = "container:Sauna.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -64,22 +54,18 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Sauna">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FA54FEB424891ED8004D21A7"
-            BuildableName = "Sauna.app"
-            BlueprintName = "Sauna"
+            BlueprintIdentifier = "FA3B4A7F24A777CC00212F1C"
+            BuildableName = "SaunaWatch WatchKit App.app"
+            BlueprintName = "SaunaWatch WatchKit App"
             ReferencedContainer = "container:Sauna.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "-NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints YES"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -87,16 +73,27 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Sauna">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FA54FEB424891ED8004D21A7"
-            BuildableName = "Sauna.app"
-            BlueprintName = "Sauna"
+            BlueprintIdentifier = "FA3B4A7F24A777CC00212F1C"
+            BuildableName = "SaunaWatch WatchKit App.app"
+            BlueprintName = "SaunaWatch WatchKit App"
             ReferencedContainer = "container:Sauna.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "FA3B4A7F24A777CC00212F1C"
+            BuildableName = "SaunaWatch WatchKit App.app"
+            BlueprintName = "SaunaWatch WatchKit App"
+            ReferencedContainer = "container:Sauna.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
