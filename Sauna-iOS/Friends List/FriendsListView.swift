@@ -36,7 +36,10 @@ struct FriendsListView: View {
                 .padding()
             }
             .toolbar {
-                ToolbarItem(placement: .bottomBar) { Text("Loading") }
+                ToolbarItem(placement: .bottomBar) {
+                    Text(vs.statusDescription)
+                        .font(.caption)
+                }
             }
             .onAppear { vs.send(.reload) }
         }
