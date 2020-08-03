@@ -20,6 +20,7 @@ public struct Profile: Codable, Hashable, Identifiable {
         case currentGame = "gameextrainfo"
         case url = "profileurl"
         case lastOnlineTime = "lastlogoff"
+        case avatarURL = "avatarfull"
     }
 
     // MARK: - Type Properties
@@ -44,6 +45,7 @@ public struct Profile: Codable, Hashable, Identifiable {
     public var lastOnlineTime: Date
 
     public var currentGame: String?
+    public var avatarURL: URL?
 }
 
 #if DEBUG
@@ -55,7 +57,8 @@ public extension Profile {
         realName: String? = nil,
         status: Status = .online,
         lastOnlineTime: Date = Date(timeIntervalSinceNow: -86400),
-        currentGame: String? = nil
+        currentGame: String? = nil,
+        avatarURL: URL? = nil
     ) -> Profile {
         Profile(
             id: id,
@@ -64,7 +67,8 @@ public extension Profile {
             realName: realName,
             status: status,
             lastOnlineTime: lastOnlineTime,
-            currentGame: currentGame
+            currentGame: currentGame,
+            avatarURL: avatarURL
         )
     }
 }

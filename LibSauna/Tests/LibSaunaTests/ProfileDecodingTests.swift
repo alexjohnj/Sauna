@@ -23,6 +23,7 @@ final class ProfileDecodingTests: XCTestCase {
         XCTAssertEqual(decodedProfile.realName, "Alex")
         XCTAssertEqual(decodedProfile.lastOnlineTime, Date(timeIntervalSince1970: 1591272212))
         XCTAssertEqual(decodedProfile.currentGame, "Civilization VI")
+        XCTAssertNotNil(decodedProfile.avatarURL) 
     }
 
     func test_decodingPrivateProfileFixture() throws {
