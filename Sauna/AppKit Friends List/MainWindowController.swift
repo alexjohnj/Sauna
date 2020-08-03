@@ -111,7 +111,7 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
 
         let windowState = viewStore.publisher.mainWindowState
 
-        windowState.statusText
+        windowState.bottomBarText
             .removeDuplicates()
             .throttle(for: .seconds(0.5), scheduler: RunLoop.main, latest: true)
             .assign(to: \.statusLabel.stringValue, on: self)
