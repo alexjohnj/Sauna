@@ -54,8 +54,10 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Sauna">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA3B4A7F24A777CC00212F1C"
@@ -63,7 +65,7 @@
             BlueprintName = "SaunaWatch WatchKit App"
             ReferencedContainer = "container:Sauna.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -71,8 +73,10 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Sauna">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA3B4A7F24A777CC00212F1C"
@@ -80,7 +84,16 @@
             BlueprintName = "SaunaWatch WatchKit App"
             ReferencedContainer = "container:Sauna.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "FA3B4A7F24A777CC00212F1C"
+            BuildableName = "SaunaWatch WatchKit App.app"
+            BlueprintName = "SaunaWatch WatchKit App"
+            ReferencedContainer = "container:Sauna.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

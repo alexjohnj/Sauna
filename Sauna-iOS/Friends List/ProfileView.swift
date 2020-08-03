@@ -16,8 +16,13 @@ struct ProfileView: View {
 
     var body: some View {
         VStack(alignment: .center) {
-            RoundedRectangle(cornerRadius: 10)
-                .frame(width: 64, height: 64)
+            if let avatarURL = profile.avatarURL {
+                AvatarView(url: avatarURL)
+                    .frame(width: 69, height: 69)
+            } else {
+                PlaceholderAvatarView()
+                    .frame(width: 69, height: 69)
+            }
 
             Text(profile.name)
                 .font(.caption)

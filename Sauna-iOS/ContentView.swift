@@ -19,5 +19,6 @@ struct ContentView: View {
             FriendsListView(store: store.scope(state: \.friendsList, action: AppAction.friendsListAction))
                 .navigationBarHidden(true)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
