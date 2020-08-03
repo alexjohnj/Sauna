@@ -11,9 +11,12 @@ import SwiftUI
 import ComposableArchitecture
 import LibSauna
 
+private let kRefreshInterval: TimeInterval = 60 * 2
+
 struct FriendsListView: View {
 
     let store: Store<FriendsListState, FriendsListAction>
+    @Environment(\.scenePhase) private var scenePhase: ScenePhase
 
     private var columns: [GridItem] {
         [
@@ -41,7 +44,12 @@ struct FriendsListView: View {
                         .font(.caption)
                 }
             }
-            .onAppear { vs.send(.reload) }
+            .onAppear { vs.send(.reloadIfOlderThan(kRefreshInterval)) }
+            .onChange(of: scenePhase) { phase in
+                if phase == .active {
+                    vs.send(.reloadIfOlderThan(kRefreshInterval))
+                }
+            }
         }
     }
 }

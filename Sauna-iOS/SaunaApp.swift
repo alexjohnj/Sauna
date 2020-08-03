@@ -17,7 +17,7 @@ struct SaunaApp: App {
         print("here")
         return Store(
             initialState: AppState(),
-            reducer: appReducer,
+            reducer: appReducer.debugActions(),
             environment: AppEnvironment(
                 mainScheduler: DispatchQueue.main.eraseToAnyScheduler(),
                 date: Date.init,

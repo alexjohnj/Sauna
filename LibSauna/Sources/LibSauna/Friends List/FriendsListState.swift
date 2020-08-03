@@ -44,11 +44,26 @@ public struct FriendsListState: Equatable {
 
 public enum FriendsListAction: Equatable {
     case reload
+    case reloadIfOlderThan(TimeInterval)
     case profilesLoaded(Result<[Profile], SteamClient.Failure>)
 }
 
 public let friendsListReducer: Reducer<FriendsListState, FriendsListAction, FriendsListEnvironment> = Reducer { state, action, env in
     switch action {
+    case .reloadIfOlderThan(let timeInterval) where state.friendsList.isLoading == false:
+        guard let lastRefreshDate = state.lastRefreshDate else {
+            return Effect(value: .reload)
+        }
+
+        guard env.date().timeIntervalSince(lastRefreshDate) >= timeInterval else {
+            return .none
+        }
+
+        return Effect(value: .reload)
+
+    case .reloadIfOlderThan:
+        return .none
+
     case .reload where state.friendsList.isLoading == false:
         state.friendsList.startLoading()
 
