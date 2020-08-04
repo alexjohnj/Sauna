@@ -71,6 +71,7 @@
 		FACA450C248BAB8700E14C27 /* FriendTableViewGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA450B248BAB8700E14C27 /* FriendTableViewGroupCell.swift */; };
 		FAE41B3C24D961FB005821D7 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE41B3B24D961FB005821D7 /* AvatarView.swift */; };
 		FAE41B3E24D96674005821D7 /* PlaceholderAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE41B3D24D96674005821D7 /* PlaceholderAvatarView.swift */; };
+		FAE41B4024D9A7D7005821D7 /* FriendsListGroupEnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE41B3F24D9A7D7005821D7 /* FriendsListGroupEnvironmentKey.swift */; };
 		FAF9900E249F873F00520316 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF9900D249F873F00520316 /* PreferencesWindow.xib */; };
 /* End PBXBuildFile section */
 
@@ -191,6 +192,7 @@
 		FACA450B248BAB8700E14C27 /* FriendTableViewGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewGroupCell.swift; sourceTree = "<group>"; };
 		FAE41B3B24D961FB005821D7 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		FAE41B3D24D96674005821D7 /* PlaceholderAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderAvatarView.swift; sourceTree = "<group>"; };
+		FAE41B3F24D9A7D7005821D7 /* FriendsListGroupEnvironmentKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListGroupEnvironmentKey.swift; sourceTree = "<group>"; };
 		FAF9900D249F873F00520316 /* PreferencesWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -408,6 +410,7 @@
 				FAE41B3B24D961FB005821D7 /* AvatarView.swift */,
 				FAE41B3D24D96674005821D7 /* PlaceholderAvatarView.swift */,
 				FABA2BED24D84EB500DBCAB4 /* FriendsListGroupHeader.swift */,
+				FAE41B3F24D9A7D7005821D7 /* FriendsListGroupEnvironmentKey.swift */,
 			);
 			path = "Friends List";
 			sourceTree = "<group>";
@@ -790,6 +793,7 @@
 				FAE41B3E24D96674005821D7 /* PlaceholderAvatarView.swift in Sources */,
 				FA68D5CB24D85A99007AC163 /* RemoteImage.swift in Sources */,
 				FA83552024D80FD20051AC2B /* SaunaApp.swift in Sources */,
+				FAE41B4024D9A7D7005821D7 /* FriendsListGroupEnvironmentKey.swift in Sources */,
 				FA68D5CE24D85CE1007AC163 /* ImageLoader.swift in Sources */,
 				FA83552D24D810970051AC2B /* AppState.swift in Sources */,
 				FABA2BEC24D84C1C00DBCAB4 /* ProfileView.swift in Sources */,

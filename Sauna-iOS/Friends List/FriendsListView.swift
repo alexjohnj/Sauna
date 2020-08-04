@@ -34,6 +34,7 @@ struct FriendsListView: View {
                                 ProfileView(profile: profile)
                             }
                         }
+                        .environment(\.friendsListGroup, section.group)
                     }
                 }
                 .padding()
