@@ -16,7 +16,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            FriendsListView(store: store.scope(state: \.friendsList, action: AppAction.friendsListAction))
+            FriendsListRootView(store: store.scope(state: \.friendsList, action: AppAction.friendsListAction))
                 .navigationTitle("Steam Friends")
         }
         .navigationViewStyle(StackNavigationViewStyle())

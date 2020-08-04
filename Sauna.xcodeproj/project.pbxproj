@@ -53,7 +53,7 @@
 		FA83553024D811060051AC2B /* LibSauna in Frameworks */ = {isa = PBXBuildFile; productRef = FA83552F24D811060051AC2B /* LibSauna */; };
 		FA83553124D812F10051AC2B /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F2F4B24A77CB6006C7BBF /* Secrets.swift */; };
 		FA83553324D813620051AC2B /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = FA83553224D813620051AC2B /* ComposableArchitecture */; };
-		FA83553524D818050051AC2B /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA83553424D818050051AC2B /* FriendsListView.swift */; };
+		FA83553524D818050051AC2B /* FriendsListRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA83553424D818050051AC2B /* FriendsListRootView.swift */; };
 		FA8AA4E72497814200B9924D /* SetupWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AA4E52497814200B9924D /* SetupWindowController.swift */; };
 		FA8AA4E82497814200B9924D /* SetupWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8AA4E62497814200B9924D /* SetupWindowController.xib */; };
 		FA8AA4EA2497852400B9924D /* SetupWindowState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AA4E92497852400B9924D /* SetupWindowState.swift */; };
@@ -72,6 +72,8 @@
 		FAE41B3C24D961FB005821D7 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE41B3B24D961FB005821D7 /* AvatarView.swift */; };
 		FAE41B3E24D96674005821D7 /* PlaceholderAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE41B3D24D96674005821D7 /* PlaceholderAvatarView.swift */; };
 		FAE41B4024D9A7D7005821D7 /* FriendsListGroupEnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE41B3F24D9A7D7005821D7 /* FriendsListGroupEnvironmentKey.swift */; };
+		FAE68EB224D9AE6200FE5ED1 /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE68EB124D9AE6200FE5ED1 /* FriendsListView.swift */; };
+		FAE68EB424D9B09400FE5ED1 /* FriendsListErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE68EB324D9B09400FE5ED1 /* FriendsListErrorView.swift */; };
 		FAF9900E249F873F00520316 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF9900D249F873F00520316 /* PreferencesWindow.xib */; };
 /* End PBXBuildFile section */
 
@@ -174,7 +176,7 @@
 		FA83552624D80FD30051AC2B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FA83552824D80FD30051AC2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA83552C24D810970051AC2B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		FA83553424D818050051AC2B /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
+		FA83553424D818050051AC2B /* FriendsListRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListRootView.swift; sourceTree = "<group>"; };
 		FA8AA4E52497814200B9924D /* SetupWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWindowController.swift; sourceTree = "<group>"; };
 		FA8AA4E62497814200B9924D /* SetupWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupWindowController.xib; sourceTree = "<group>"; };
 		FA8AA4E92497852400B9924D /* SetupWindowState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWindowState.swift; sourceTree = "<group>"; };
@@ -193,6 +195,8 @@
 		FAE41B3B24D961FB005821D7 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		FAE41B3D24D96674005821D7 /* PlaceholderAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderAvatarView.swift; sourceTree = "<group>"; };
 		FAE41B3F24D9A7D7005821D7 /* FriendsListGroupEnvironmentKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListGroupEnvironmentKey.swift; sourceTree = "<group>"; };
+		FAE68EB124D9AE6200FE5ED1 /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
+		FAE68EB324D9B09400FE5ED1 /* FriendsListErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListErrorView.swift; sourceTree = "<group>"; };
 		FAF9900D249F873F00520316 /* PreferencesWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -405,12 +409,14 @@
 		FA83553624D81B620051AC2B /* Friends List */ = {
 			isa = PBXGroup;
 			children = (
-				FA83553424D818050051AC2B /* FriendsListView.swift */,
-				FABA2BEB24D84C1C00DBCAB4 /* ProfileView.swift */,
 				FAE41B3B24D961FB005821D7 /* AvatarView.swift */,
-				FAE41B3D24D96674005821D7 /* PlaceholderAvatarView.swift */,
-				FABA2BED24D84EB500DBCAB4 /* FriendsListGroupHeader.swift */,
+				FAE68EB324D9B09400FE5ED1 /* FriendsListErrorView.swift */,
 				FAE41B3F24D9A7D7005821D7 /* FriendsListGroupEnvironmentKey.swift */,
+				FABA2BED24D84EB500DBCAB4 /* FriendsListGroupHeader.swift */,
+				FA83553424D818050051AC2B /* FriendsListRootView.swift */,
+				FAE68EB124D9AE6200FE5ED1 /* FriendsListView.swift */,
+				FAE41B3D24D96674005821D7 /* PlaceholderAvatarView.swift */,
+				FABA2BEB24D84C1C00DBCAB4 /* ProfileView.swift */,
 			);
 			path = "Friends List";
 			sourceTree = "<group>";
@@ -788,6 +794,7 @@
 			files = (
 				FA83552224D80FD20051AC2B /* ContentView.swift in Sources */,
 				FABA2BEE24D84EB500DBCAB4 /* FriendsListGroupHeader.swift in Sources */,
+				FAE68EB224D9AE6200FE5ED1 /* FriendsListView.swift in Sources */,
 				FA83553124D812F10051AC2B /* Secrets.swift in Sources */,
 				FAE41B3C24D961FB005821D7 /* AvatarView.swift in Sources */,
 				FAE41B3E24D96674005821D7 /* PlaceholderAvatarView.swift in Sources */,
@@ -796,8 +803,9 @@
 				FAE41B4024D9A7D7005821D7 /* FriendsListGroupEnvironmentKey.swift in Sources */,
 				FA68D5CE24D85CE1007AC163 /* ImageLoader.swift in Sources */,
 				FA83552D24D810970051AC2B /* AppState.swift in Sources */,
+				FAE68EB424D9B09400FE5ED1 /* FriendsListErrorView.swift in Sources */,
 				FABA2BEC24D84C1C00DBCAB4 /* ProfileView.swift in Sources */,
-				FA83553524D818050051AC2B /* FriendsListView.swift in Sources */,
+				FA83553524D818050051AC2B /* FriendsListRootView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
