@@ -12,21 +12,21 @@ import ComposableArchitecture
 ///
 /// Useful for running side-effects in response to actions.
 ///
-struct Observer<State, Action, Environment> {
+public struct Observer<State, Action, Environment> {
     
     private let observer: (State, Action, Environment) -> Effect<Action, Never>
     
-    init(_ observer: @escaping (State, Action, Environment) -> Effect<Action, Never>) {
+    public init(_ observer: @escaping (State, Action, Environment) -> Effect<Action, Never>) {
         self.observer = observer
     }
     
-    func run(_ state: State, _ action: Action, _ environment: Environment) -> Effect<Action, Never> {
+    public func run(_ state: State, _ action: Action, _ environment: Environment) -> Effect<Action, Never> {
         self.observer(state, action, environment)
     }
     
     /// Converts an observer that observes local state into an immutable reducer that operates on global state.
     ///
-    func pullback<GlobalState, GlobalAction, GlobalEnvironment>(
+    public func pullback<GlobalState, GlobalAction, GlobalEnvironment>(
         state toLocalState: KeyPath<GlobalState, State>,
         action toLocalAction: CasePath<GlobalAction, Action>,
         environment toLocalEnvironment: @escaping (GlobalEnvironment) -> Environment
@@ -42,7 +42,7 @@ struct Observer<State, Action, Environment> {
         }
     }
 
-    var reducer: Reducer<State, Action, Environment> {
+    public var reducer: Reducer<State, Action, Environment> {
         Reducer { self.observer($0, $1, $2) }
     }
 }

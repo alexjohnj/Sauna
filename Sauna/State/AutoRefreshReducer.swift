@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import LibSauna
 import ComposableArchitecture
 
 struct AutoRefreshReducerEnvironment {
