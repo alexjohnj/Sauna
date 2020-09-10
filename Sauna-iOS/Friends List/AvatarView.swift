@@ -9,36 +9,32 @@
 import Foundation
 import SwiftUI
 import LibSauna
+import FetchImage
 
 struct AvatarView: View {
 
     let url: URL
 
-    @StateObject private var image: RemoteImage
+    @StateObject private var image: FetchImage
     @Environment(\.friendsListGroup) private var friendsListGroup: FriendsListSection.Group?
 
     init(url: URL) {
         self.url = url
-        self._image = StateObject(wrappedValue: RemoteImage(url))
+        self._image = StateObject(wrappedValue: FetchImage(url: url))
     }
 
     var body: some View {
-        VStack {
-            if let imageView = image.view {
-                imageView
-                    .resizable()
-                    .cornerRadius(10)
-                    .shadow(color: friendsListGroup?.glowColor ?? .clear, radius: 7)
-                    .saturation(friendsListGroup?.saturationValue ?? 1)
-            } else if image.isLoading {
-                // FIXME: Would like to use a progress view here but it causes major jank when scrolling
-                PlaceholderAvatarView()
-            } else {
-                PlaceholderAvatarView()
-            }
+        ZStack {
+            PlaceholderAvatarView()
+            image.view?
+                .resizable()
+                .cornerRadius(10)
+                .shadow(color: friendsListGroup?.glowColor ?? .clear, radius: 7)
+                .saturation(friendsListGroup?.saturationValue ?? 1)
         }
-        .onAppear { image.startLoading() }
-        .onDisappear { image.cancelLoading() }
+        .animation(.default)
+        .onAppear(perform: image.fetch)
+        .onDisappear(perform: image.cancel)
     }
 }
 

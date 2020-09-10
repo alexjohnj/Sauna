@@ -31,8 +31,6 @@
 		FA54FED424891FBD004D21A7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FED324891FBD004D21A7 /* AppState.swift */; };
 		FA57808224A7785800ED6073 /* LibSauna in Frameworks */ = {isa = PBXBuildFile; productRef = FA57808124A7785800ED6073 /* LibSauna */; };
 		FA57808424A778AE00ED6073 /* WatchAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57808324A778AE00ED6073 /* WatchAppState.swift */; };
-		FA68D5CB24D85A99007AC163 /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68D5CA24D85A99007AC163 /* RemoteImage.swift */; };
-		FA68D5CE24D85CE1007AC163 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68D5CD24D85CE1007AC163 /* ImageLoader.swift */; };
 		FA6CC18B24A9068200D7775B /* MessageOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CC18A24A9068200D7775B /* MessageOverlay.swift */; };
 		FA6F2ECF24961B67004F02F8 /* AppEnvironment+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ECE24961B67004F02F8 /* AppEnvironment+Mock.swift */; };
 		FA6F2ED12496204D004F02F8 /* AppNotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED02496204D004F02F8 /* AppNotificationObserver.swift */; };
@@ -155,8 +153,6 @@
 		FA54FEDF24892539004D21A7 /* SaunaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaunaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA54FEE324892539004D21A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA57808324A778AE00ED6073 /* WatchAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAppState.swift; sourceTree = "<group>"; };
-		FA68D5CA24D85A99007AC163 /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
-		FA68D5CD24D85CE1007AC163 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		FA6CC18A24A9068200D7775B /* MessageOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageOverlay.swift; sourceTree = "<group>"; };
 		FA6F2ECE24961B67004F02F8 /* AppEnvironment+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Mock.swift"; sourceTree = "<group>"; };
 		FA6F2ED02496204D004F02F8 /* AppNotificationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationObserver.swift; sourceTree = "<group>"; };
@@ -342,15 +338,6 @@
 			path = SaunaTests;
 			sourceTree = "<group>";
 		};
-		FA68D5CC24D85C90007AC163 /* Image Loading */ = {
-			isa = PBXGroup;
-			children = (
-				FA68D5CA24D85A99007AC163 /* RemoteImage.swift */,
-				FA68D5CD24D85CE1007AC163 /* ImageLoader.swift */,
-			);
-			path = "Image Loading";
-			sourceTree = "<group>";
-		};
 		FA6F2ED624962526004F02F8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,7 +368,6 @@
 				FA83552124D80FD20051AC2B /* ContentView.swift */,
 				FA83551F24D80FD20051AC2B /* SaunaApp.swift */,
 				FA83553624D81B620051AC2B /* Friends List */,
-				FA68D5CC24D85C90007AC163 /* Image Loading */,
 				FA83552E24D810C50051AC2B /* Supporting Files */,
 			);
 			path = "Sauna-iOS";
@@ -798,10 +784,8 @@
 				FA83553124D812F10051AC2B /* Secrets.swift in Sources */,
 				FAE41B3C24D961FB005821D7 /* AvatarView.swift in Sources */,
 				FAE41B3E24D96674005821D7 /* PlaceholderAvatarView.swift in Sources */,
-				FA68D5CB24D85A99007AC163 /* RemoteImage.swift in Sources */,
 				FA83552024D80FD20051AC2B /* SaunaApp.swift in Sources */,
 				FAE41B4024D9A7D7005821D7 /* FriendsListGroupEnvironmentKey.swift in Sources */,
-				FA68D5CE24D85CE1007AC163 /* ImageLoader.swift in Sources */,
 				FA83552D24D810970051AC2B /* AppState.swift in Sources */,
 				FAE68EB424D9B09400FE5ED1 /* FriendsListErrorView.swift in Sources */,
 				FABA2BEC24D84C1C00DBCAB4 /* ProfileView.swift in Sources */,
