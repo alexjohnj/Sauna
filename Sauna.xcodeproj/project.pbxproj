@@ -22,6 +22,7 @@
 		FA3B4A9B24A777CE00212F1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3B4A9A24A777CE00212F1C /* Assets.xcassets */; };
 		FA3B4A9E24A777CE00212F1C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3B4A9D24A777CE00212F1C /* Preview Assets.xcassets */; };
 		FA3B4AAC24A7781D00212F1C /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = FA3B4AAB24A7781D00212F1C /* ComposableArchitecture */; };
+		FA456BD5250A81F10034B763 /* FetchImage in Frameworks */ = {isa = PBXBuildFile; productRef = FA456BD4250A81F10034B763 /* FetchImage */; };
 		FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEB824891ED8004D21A7 /* AppDelegate.swift */; };
 		FA54FEBD24891EDA004D21A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA54FEBC24891EDA004D21A7 /* Assets.xcassets */; };
 		FA54FEC024891EDA004D21A7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA54FEBF24891EDA004D21A7 /* Preview Assets.xcassets */; };
@@ -229,6 +230,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA456BD5250A81F10034B763 /* FetchImage in Frameworks */,
 				FA83553324D813620051AC2B /* ComposableArchitecture in Frameworks */,
 				FA83553024D811060051AC2B /* LibSauna in Frameworks */,
 			);
@@ -588,6 +590,7 @@
 			packageProductDependencies = (
 				FA83552F24D811060051AC2B /* LibSauna */,
 				FA83553224D813620051AC2B /* ComposableArchitecture */,
+				FA456BD4250A81F10034B763 /* FetchImage */,
 			);
 			productName = "Sauna-iOS";
 			productReference = FA83551D24D80FD20051AC2B /* Sauna-iOS.app */;
@@ -636,6 +639,7 @@
 			packageReferences = (
 				FA54FECB24891F3D004D21A7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ" */,
+				FA456BD3250A81F10034B763 /* XCRemoteSwiftPackageReference "FetchImage" */,
 			);
 			productRefGroup = FA54FEB624891ED8004D21A7 /* Products */;
 			projectDirPath = "";
@@ -1295,6 +1299,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FA456BD3250A81F10034B763 /* XCRemoteSwiftPackageReference "FetchImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/FetchImage.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.2.1;
+			};
+		};
 		FA54FECB24891F3D004D21A7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
@@ -1322,6 +1334,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FA54FECB24891F3D004D21A7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		FA456BD4250A81F10034B763 /* FetchImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA456BD3250A81F10034B763 /* XCRemoteSwiftPackageReference "FetchImage" */;
+			productName = FetchImage;
 		};
 		FA54FECC24891F3D004D21A7 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
