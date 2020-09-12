@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA0C23A5250D106E00E20F3E /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C23A4250D106E00E20F3E /* ProfileDetailsView.swift */; };
+		FA0C23A7250D132100E20F3E /* ProfileDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C23A6250D132100E20F3E /* ProfileDetailsHeaderView.swift */; };
 		FA0E7FEA2498D9BB004836EC /* SetupWindowStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E7FE92498D9BB004836EC /* SetupWindowStateTests.swift */; };
 		FA1C541624A7C51D006B1A2F /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C541524A7C51D006B1A2F /* FriendsListView.swift */; };
 		FA381E90249659EA00719ABC /* AutoRefreshReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA381E8F249659EA00719ABC /* AutoRefreshReducer.swift */; };
@@ -125,6 +127,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FA0C23A4250D106E00E20F3E /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
+		FA0C23A6250D132100E20F3E /* ProfileDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsHeaderView.swift; sourceTree = "<group>"; };
 		FA0E7FE92498D9BB004836EC /* SetupWindowStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWindowStateTests.swift; sourceTree = "<group>"; };
 		FA1C541524A7C51D006B1A2F /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		FA381E8F249659EA00719ABC /* AutoRefreshReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshReducer.swift; sourceTree = "<group>"; };
@@ -235,6 +239,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA0C23A3250D105B00E20F3E /* Profile Details */ = {
+			isa = PBXGroup;
+			children = (
+				FA0C23A4250D106E00E20F3E /* ProfileDetailsView.swift */,
+				FA0C23A6250D132100E20F3E /* ProfileDetailsHeaderView.swift */,
+			);
+			path = "Profile Details";
+			sourceTree = "<group>";
+		};
 		FA3B4A7424A76CC000212F1C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +377,7 @@
 		FA83551E24D80FD20051AC2B /* Sauna-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				FA0C23A3250D105B00E20F3E /* Profile Details */,
 				FA83552C24D810970051AC2B /* AppState.swift */,
 				FA83552124D80FD20051AC2B /* ContentView.swift */,
 				FA83551F24D80FD20051AC2B /* SaunaApp.swift */,
@@ -782,11 +796,13 @@
 				FABA2BEE24D84EB500DBCAB4 /* FriendsListGroupHeader.swift in Sources */,
 				FAE68EB224D9AE6200FE5ED1 /* FriendsListView.swift in Sources */,
 				FA83553124D812F10051AC2B /* Secrets.swift in Sources */,
+				FA0C23A5250D106E00E20F3E /* ProfileDetailsView.swift in Sources */,
 				FAE41B3C24D961FB005821D7 /* AvatarView.swift in Sources */,
 				FAE41B3E24D96674005821D7 /* PlaceholderAvatarView.swift in Sources */,
 				FA83552024D80FD20051AC2B /* SaunaApp.swift in Sources */,
 				FAE41B4024D9A7D7005821D7 /* FriendsListGroupEnvironmentKey.swift in Sources */,
 				FA83552D24D810970051AC2B /* AppState.swift in Sources */,
+				FA0C23A7250D132100E20F3E /* ProfileDetailsHeaderView.swift in Sources */,
 				FAE68EB424D9B09400FE5ED1 /* FriendsListErrorView.swift in Sources */,
 				FABA2BEC24D84C1C00DBCAB4 /* ProfileView.swift in Sources */,
 				FA83553524D818050051AC2B /* FriendsListRootView.swift in Sources */,

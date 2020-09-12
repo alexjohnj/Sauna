@@ -28,7 +28,10 @@ struct FriendsListView: View {
                         ForEach(data, id: \.group) { section in
                             Section(header: FriendsListGroupHeader(group: section.group)) {
                                 ForEach(section.profiles) { profile in
-                                    ProfileView(profile: profile)
+                                    NavigationLink(destination: ProfileDetailsView(profile: profile)) {
+                                        ProfileView(profile: profile)
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
                                 }
                             }
                             .environment(\.friendsListGroup, section.group)
