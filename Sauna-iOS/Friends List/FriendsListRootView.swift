@@ -22,7 +22,7 @@ struct FriendsListRootView: View {
         WithViewStore(store) { (vs: ViewStore<FriendsListState, FriendsListAction>) in
             FriendsListView(store: store)
                 .toolbar {
-                    ToolbarItem(placement: .bottomBar) {
+                    ToolbarItem(placement: .status) {
                         Text(vs.statusDescription)
                             .font(.caption)
                     }
