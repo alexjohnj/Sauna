@@ -15,9 +15,19 @@ struct FriendsListView: View {
 
     let store: Store<FriendsListState, FriendsListAction>
 
-    private let columns: [GridItem] = [
-        GridItem(.adaptive(minimum: 70), spacing: 24, alignment: .top)
-    ]
+    @Environment(\.horizontalSizeClass) private var sizeClass: UserInterfaceSizeClass?
+
+    private var columns: [GridItem] {
+        switch sizeClass {
+        case .compact?:
+            return [GridItem(.adaptive(minimum: 64), spacing: 16, alignment: .top)]
+        case .regular?,
+            .none:
+            return [GridItem(.adaptive(minimum: 96), spacing: 32, alignment: .top)]
+        @unknown default:
+            return [GridItem(.adaptive(minimum: 96), spacing: 32, alignment: .top)]
+        }
+    }
 
     var body: some View {
         WithViewStore(store) { (vs: ViewStore<FriendsListState, FriendsListAction>) in

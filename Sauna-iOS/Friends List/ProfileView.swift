@@ -16,13 +16,14 @@ struct ProfileView: View {
 
     var body: some View {
         VStack(alignment: .center) {
-            if let avatarURL = profile.avatarURL {
-                AvatarView(url: avatarURL)
-                    .frame(width: 64, height: 64)
-            } else {
-                PlaceholderAvatarView()
-                    .frame(width: 64, height: 64)
+            Group {
+                if let avatarURL = profile.avatarURL {
+                    AvatarView(url: avatarURL)
+                } else {
+                    PlaceholderAvatarView()
+                }
             }
+            .aspectRatio(1, contentMode: .fit)
 
             Text(profile.name)
                 .font(.caption)
@@ -33,7 +34,7 @@ struct ProfileView: View {
                     .foregroundColor(Color.secondary)
             }
         }
-        .lineLimit(2)
+        .lineLimit(4)
         .multilineTextAlignment(.center)
     }
 
