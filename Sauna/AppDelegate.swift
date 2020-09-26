@@ -72,7 +72,7 @@ private let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer.c
         action: /.`self`,
         environment: { AutoRefreshReducerEnvironment(mainScheduler: $0.mainScheduler) }
     ),
-    setupWindowReducer.optional.pullback(
+    setupWindowReducer.optional().pullback(
         state: \AppState.setupWindowState,
         action: /AppAction.setupWindowAction,
         environment: { SetupWindowEnvironment(credentialStore: $0.credentialStore) }
