@@ -28,11 +28,10 @@ struct FriendsListView: View {
                     }
                 }
             }
-            .contextMenu {
-                Button(action: { viewStore.send(.reload) }) {
-                    VStack {
-                        Image(systemName: "arrow.clockwise")
-                        Text("Refresh")
+            .toolbar {
+                ToolbarItem {
+                    Button(action: { viewStore.send(.reload) }) {
+                        Label("Refresh", systemImage: "arrow.clockwise")
                     }
                 }
             }
