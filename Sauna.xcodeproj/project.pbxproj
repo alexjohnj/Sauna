@@ -152,7 +152,7 @@
 		FA8AA4E52497814200B9924D /* SetupWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWindowController.swift; sourceTree = "<group>"; };
 		FA8AA4E62497814200B9924D /* SetupWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupWindowController.xib; sourceTree = "<group>"; };
 		FA8AA4E92497852400B9924D /* SetupWindowState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWindowState.swift; sourceTree = "<group>"; };
-		FA9F2F4B24A77CB6006C7BBF /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		FA9F2F4B24A77CB6006C7BBF /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Secrets.swift; path = ../Secrets.swift; sourceTree = "<group>"; };
 		FA9F2F4E24A77D94006C7BBF /* ProfileRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRow.swift; sourceTree = "<group>"; };
 		FA9F2F5024A77E5F006C7BBF /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 		FAA5980D249FB3A20089BC51 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
