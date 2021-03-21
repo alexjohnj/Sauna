@@ -17,7 +17,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/alexjohnj/Requests.git", .upToNextMinor(from: "0.3.0")),
-        .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", .upToNextMinor(from: "0.8.0"))
+        .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", .upToNextMinor(from: "0.16.0"))
     ],
     targets: [
         .target(
