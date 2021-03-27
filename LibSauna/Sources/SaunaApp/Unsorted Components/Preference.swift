@@ -6,26 +6,26 @@
 import Foundation
 import Combine
 
-final class Preferences: ObservableObject {
+public final class Preferences: ObservableObject {
 
     // MARK: - Nested Types
 
-    struct NotificationPreferences: Equatable {
-        let shouldNotifyWhenFriendsComeOnline: Bool
-        let shouldNotifyWhenFriendsStartGames: Bool
+    public struct NotificationPreferences: Equatable {
+        public let shouldNotifyWhenFriendsComeOnline: Bool
+        public let shouldNotifyWhenFriendsStartGames: Bool
     }
 
     // MARK: - Public Properties
     
-    static let standard = Preferences(userDefaults: .standard)
+    public static let standard = Preferences(userDefaults: .standard)
 
-    let objectWillChange: AnyPublisher<Void, Never>
+    public let objectWillChange: AnyPublisher<Void, Never>
 
-    @Preference var shouldNotifyWhenFriendsComeOnline: Bool
+    @Preference public var shouldNotifyWhenFriendsComeOnline: Bool
 
-    @Preference var shouldNotifyWhenFriendsStartGames: Bool
+    @Preference public var shouldNotifyWhenFriendsStartGames: Bool
 
-    var notificationPreferences: NotificationPreferences {
+    public var notificationPreferences: NotificationPreferences {
         NotificationPreferences(
             shouldNotifyWhenFriendsComeOnline: shouldNotifyWhenFriendsComeOnline,
             shouldNotifyWhenFriendsStartGames: shouldNotifyWhenFriendsStartGames
@@ -34,13 +34,13 @@ final class Preferences: ObservableObject {
 
     // MARK: - Public Methods
     
-    func registerDefaults() {
+    public func registerDefaults() {
         // Registration is performed when the receiver is initalized!
     }
 
     // MARK: - Initializers
 
-    init(userDefaults: UserDefaults) {
+    public init(userDefaults: UserDefaults) {
         self._shouldNotifyWhenFriendsStartGames = Preference(
             key: "AJJNotifyWhenFriendStartsGame",
             defaultValue: true,
@@ -73,11 +73,11 @@ final class Preferences: ObservableObject {
 /// - Note: `T` must be a property list object.
 ///
 @propertyWrapper
-struct Preference<T> {
+public struct Preference<T> {
 
-    let key: String
+    public let key: String
 
-    var wrappedValue: T {
+    public var wrappedValue: T {
         get {
             getThunk(key)
         }
@@ -104,7 +104,7 @@ struct Preference<T> {
     }
 }
 
-extension Preference where T: RawRepresentable {
+public extension Preference where T: RawRepresentable {
     init(key: String, defaultValue: T, userDefaults: UserDefaults = .standard) {
         self.init(
             key: key,
@@ -114,7 +114,7 @@ extension Preference where T: RawRepresentable {
     }
 }
 
-extension Preference where T == Bool {
+public extension Preference where T == Bool {
     init(key: String, defaultValue: T, userDefaults: UserDefaults = .standard) {
         self.init(
             key: key,

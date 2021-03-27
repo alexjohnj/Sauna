@@ -11,7 +11,8 @@ import XCTest
 import ComposableArchitecture
 import UserNotifications
 
-import LibSauna
+import SaunaApp
+import SaunaKit
 @testable import Sauna
 
 final class NotificationObserverTests: XCTestCase {

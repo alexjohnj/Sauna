@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import LibSauna
+import SaunaKit
 
 struct ProfileRow: View {
 

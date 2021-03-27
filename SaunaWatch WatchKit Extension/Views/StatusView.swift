@@ -6,8 +6,8 @@
 //  Copyright © 2020 Alex Jackson. All rights reserved.
 //
 
-import LibSauna
 import SwiftUI
+import SaunaKit
 
 struct StatusView: View {
 

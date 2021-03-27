@@ -12,23 +12,38 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "LibSauna",
-            targets: ["LibSauna"]),
+            name: "SaunaApp",
+            targets: ["SaunaApp"]
+        )
     ],
     dependencies: [
         .package(url: "https://github.com/alexjohnj/Requests.git", .upToNextMinor(from: "0.3.0")),
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", .upToNextMinor(from: "0.16.0"))
     ],
     targets: [
+        .target(name: "Loadable"),
         .target(
-            name: "LibSauna",
+            name: "TCAHelpers",
             dependencies: [
-                "Requests",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+
+        .target(name: "SaunaKit", dependencies: ["Requests"]),
+        .testTarget(name: "SaunaKitTests", dependencies: ["SaunaKit"]),
+
+        .target(
+            name: "SaunaApp",
+            dependencies: [
+                "Loadable",
+                "SaunaKit",
+                "TCAHelpers",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
         .testTarget(
-            name: "LibSaunaTests",
-            dependencies: ["LibSauna"]),
+            name: "SaunaAppTests",
+            dependencies: ["SaunaApp"]
+        )
     ]
 )

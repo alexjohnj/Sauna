@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FA0E7FEA2498D9BB004836EC /* SetupWindowStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E7FE92498D9BB004836EC /* SetupWindowStateTests.swift */; };
 		FA1C541624A7C51D006B1A2F /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C541524A7C51D006B1A2F /* FriendsListView.swift */; };
 		FA381E90249659EA00719ABC /* AutoRefreshReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA381E8F249659EA00719ABC /* AutoRefreshReducer.swift */; };
-		FA3B4A7624A76CC000212F1C /* LibSauna in Frameworks */ = {isa = PBXBuildFile; productRef = FA3B4A7524A76CC000212F1C /* LibSauna */; };
 		FA3B4A7A24A7749B00212F1C /* FriendsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B4A7924A7749B00212F1C /* FriendsListRow.swift */; };
 		FA3B4A8124A777CC00212F1C /* SaunaWatch WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FA3B4A8024A777CC00212F1C /* SaunaWatch WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FA3B4A8724A777CC00212F1C /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3B4A8524A777CC00212F1C /* Interface.storyboard */; };
@@ -21,19 +19,15 @@
 		FA3B4A9924A777CD00212F1C /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B4A9824A777CD00212F1C /* ExtensionDelegate.swift */; };
 		FA3B4A9B24A777CE00212F1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3B4A9A24A777CE00212F1C /* Assets.xcassets */; };
 		FA3B4A9E24A777CE00212F1C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3B4A9D24A777CE00212F1C /* Preview Assets.xcassets */; };
-		FA3B4AAC24A7781D00212F1C /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = FA3B4AAB24A7781D00212F1C /* ComposableArchitecture */; };
 		FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEB824891ED8004D21A7 /* AppDelegate.swift */; };
 		FA54FEBD24891EDA004D21A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA54FEBC24891EDA004D21A7 /* Assets.xcassets */; };
 		FA54FEC024891EDA004D21A7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA54FEBF24891EDA004D21A7 /* Preview Assets.xcassets */; };
 		FA54FEC324891EDA004D21A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA54FEC124891EDA004D21A7 /* Main.storyboard */; };
-		FA54FECD24891F3D004D21A7 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = FA54FECC24891F3D004D21A7 /* ComposableArchitecture */; };
 		FA54FED424891FBD004D21A7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FED324891FBD004D21A7 /* AppState.swift */; };
-		FA57808224A7785800ED6073 /* LibSauna in Frameworks */ = {isa = PBXBuildFile; productRef = FA57808124A7785800ED6073 /* LibSauna */; };
 		FA57808424A778AE00ED6073 /* WatchAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57808324A778AE00ED6073 /* WatchAppState.swift */; };
 		FA6CC18B24A9068200D7775B /* MessageOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CC18A24A9068200D7775B /* MessageOverlay.swift */; };
 		FA6F2ECF24961B67004F02F8 /* AppEnvironment+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ECE24961B67004F02F8 /* AppEnvironment+Mock.swift */; };
 		FA6F2ED12496204D004F02F8 /* AppNotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED02496204D004F02F8 /* AppNotificationObserver.swift */; };
-		FA6F2ED324962323004F02F8 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED224962323004F02F8 /* Observer.swift */; };
 		FA6F2ED824962532004F02F8 /* CollectionDifference.Change+Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED724962532004F02F8 /* CollectionDifference.Change+Element.swift */; };
 		FA78492E249E36BE003D5133 /* Differ in Frameworks */ = {isa = PBXBuildFile; productRef = FA78492D249E36BE003D5133 /* Differ */; };
 		FA789A54249B573C00BE3FC4 /* NotificationObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA789A53249B573C00BE3FC4 /* NotificationObserverTests.swift */; };
@@ -45,14 +39,14 @@
 		FA82C938248A46E100C5EFBE /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA82C937248A46E100C5EFBE /* FriendTableViewCell.xib */; };
 		FA8AA4E72497814200B9924D /* SetupWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AA4E52497814200B9924D /* SetupWindowController.swift */; };
 		FA8AA4E82497814200B9924D /* SetupWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8AA4E62497814200B9924D /* SetupWindowController.xib */; };
-		FA8AA4EA2497852400B9924D /* SetupWindowState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8AA4E92497852400B9924D /* SetupWindowState.swift */; };
 		FA9F2F4C24A77CB6006C7BBF /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F2F4B24A77CB6006C7BBF /* Secrets.swift */; };
 		FA9F2F4F24A77D94006C7BBF /* ProfileRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F2F4E24A77D94006C7BBF /* ProfileRow.swift */; };
 		FA9F2F5124A77E5F006C7BBF /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F2F5024A77E5F006C7BBF /* StatusView.swift */; };
 		FAA5980E249FB3A20089BC51 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5980D249FB3A20089BC51 /* PreferencesWindowController.swift */; };
-		FAA59810249FC8C90089BC51 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5980F249FC8C90089BC51 /* Preference.swift */; };
 		FAA6D81324A3480E006631E3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FAA6D81224A3480E006631E3 /* Credits.rtf */; };
 		FAB66C8B24950FDB00AC461F /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB66C8A24950FDB00AC461F /* Notifier.swift */; };
+		FAB68B5A260F45C2006949EA /* SaunaApp in Frameworks */ = {isa = PBXBuildFile; productRef = FAB68B59260F45C2006949EA /* SaunaApp */; };
+		FAB68B7A260F4DDC006949EA /* SaunaApp in Frameworks */ = {isa = PBXBuildFile; productRef = FAB68B79260F4DDC006949EA /* SaunaApp */; };
 		FAC248F4248A721D00386D70 /* MainWindowState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC248F3248A721D00386D70 /* MainWindowState.swift */; };
 		FACA4508248B852400E14C27 /* FriendTableViewGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACA4507248B852400E14C27 /* FriendTableViewGroupCell.xib */; };
 		FACA450C248BAB8700E14C27 /* FriendTableViewGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA450B248BAB8700E14C27 /* FriendTableViewGroupCell.swift */; };
@@ -109,7 +103,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FA0E7FE92498D9BB004836EC /* SetupWindowStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWindowStateTests.swift; sourceTree = "<group>"; };
 		FA1C541524A7C51D006B1A2F /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		FA381E8F249659EA00719ABC /* AutoRefreshReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshReducer.swift; sourceTree = "<group>"; };
 		FA3B4A7324A76B6D00212F1C /* LibSauna */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LibSauna; sourceTree = "<group>"; };
@@ -140,7 +133,6 @@
 		FA6CC18A24A9068200D7775B /* MessageOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageOverlay.swift; sourceTree = "<group>"; };
 		FA6F2ECE24961B67004F02F8 /* AppEnvironment+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Mock.swift"; sourceTree = "<group>"; };
 		FA6F2ED02496204D004F02F8 /* AppNotificationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationObserver.swift; sourceTree = "<group>"; };
-		FA6F2ED224962323004F02F8 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		FA6F2ED724962532004F02F8 /* CollectionDifference.Change+Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionDifference.Change+Element.swift"; sourceTree = "<group>"; };
 		FA789A53249B573C00BE3FC4 /* NotificationObserverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationObserverTests.swift; sourceTree = "<group>"; };
 		FA7AEA8A249A799200EE6860 /* TestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
@@ -151,12 +143,10 @@
 		FA82C937248A46E100C5EFBE /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		FA8AA4E52497814200B9924D /* SetupWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWindowController.swift; sourceTree = "<group>"; };
 		FA8AA4E62497814200B9924D /* SetupWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupWindowController.xib; sourceTree = "<group>"; };
-		FA8AA4E92497852400B9924D /* SetupWindowState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWindowState.swift; sourceTree = "<group>"; };
-		FA9F2F4B24A77CB6006C7BBF /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Secrets.swift; path = ../Secrets.swift; sourceTree = "<group>"; };
+		FA9F2F4B24A77CB6006C7BBF /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		FA9F2F4E24A77D94006C7BBF /* ProfileRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRow.swift; sourceTree = "<group>"; };
 		FA9F2F5024A77E5F006C7BBF /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 		FAA5980D249FB3A20089BC51 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
-		FAA5980F249FC8C90089BC51 /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		FAA6D81224A3480E006631E3 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		FAB66C8A24950FDB00AC461F /* Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		FAC248F3248A721D00386D70 /* MainWindowState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowState.swift; sourceTree = "<group>"; };
@@ -170,8 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA3B4AAC24A7781D00212F1C /* ComposableArchitecture in Frameworks */,
-				FA57808224A7785800ED6073 /* LibSauna in Frameworks */,
+				FAB68B7A260F4DDC006949EA /* SaunaApp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,8 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA78492E249E36BE003D5133 /* Differ in Frameworks */,
-				FA3B4A7624A76CC000212F1C /* LibSauna in Frameworks */,
-				FA54FECD24891F3D004D21A7 /* ComposableArchitecture in Frameworks */,
+				FAB68B5A260F45C2006949EA /* SaunaApp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +278,6 @@
 			children = (
 				FA54FEE324892539004D21A7 /* Info.plist */,
 				FA6F2ECE24961B67004F02F8 /* AppEnvironment+Mock.swift */,
-				FA0E7FE92498D9BB004836EC /* SetupWindowStateTests.swift */,
 				FA789A53249B573C00BE3FC4 /* NotificationObserverTests.swift */,
 			);
 			path = SaunaTests;
@@ -300,7 +287,6 @@
 			isa = PBXGroup;
 			children = (
 				FA6F2ED724962532004F02F8 /* CollectionDifference.Change+Element.swift */,
-				FA6F2ED224962323004F02F8 /* Observer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -335,7 +321,6 @@
 			isa = PBXGroup;
 			children = (
 				FA8AA4E52497814200B9924D /* SetupWindowController.swift */,
-				FA8AA4E92497852400B9924D /* SetupWindowState.swift */,
 				FA8AA4E62497814200B9924D /* SetupWindowController.xib */,
 			);
 			path = "Setup Window";
@@ -370,7 +355,6 @@
 			children = (
 				FAF9900D249F873F00520316 /* PreferencesWindow.xib */,
 				FAA5980D249FB3A20089BC51 /* PreferencesWindowController.swift */,
-				FAA5980F249FC8C90089BC51 /* Preference.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -426,8 +410,7 @@
 			);
 			name = "SaunaWatch WatchKit Extension";
 			packageProductDependencies = (
-				FA3B4AAB24A7781D00212F1C /* ComposableArchitecture */,
-				FA57808124A7785800ED6073 /* LibSauna */,
+				FAB68B79260F4DDC006949EA /* SaunaApp */,
 			);
 			productName = "SaunaWatch WatchKit Extension";
 			productReference = FA3B4A8F24A777CD00212F1C /* SaunaWatch WatchKit Extension.appex */;
@@ -448,9 +431,8 @@
 			);
 			name = Sauna;
 			packageProductDependencies = (
-				FA54FECC24891F3D004D21A7 /* ComposableArchitecture */,
 				FA78492D249E36BE003D5133 /* Differ */,
-				FA3B4A7524A76CC000212F1C /* LibSauna */,
+				FAB68B59260F45C2006949EA /* SaunaApp */,
 			);
 			productName = Sauna;
 			productReference = FA54FEB524891ED8004D21A7 /* Sauna.app */;
@@ -512,7 +494,6 @@
 			);
 			mainGroup = FA54FEAC24891ED8004D21A7;
 			packageReferences = (
-				FA54FECB24891F3D004D21A7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ" */,
 			);
 			productRefGroup = FA54FEB624891ED8004D21A7 /* Products */;
@@ -624,15 +605,12 @@
 			files = (
 				FA8AA4E72497814200B9924D /* SetupWindowController.swift in Sources */,
 				FA381E90249659EA00719ABC /* AutoRefreshReducer.swift in Sources */,
-				FA8AA4EA2497852400B9924D /* SetupWindowState.swift in Sources */,
-				FA6F2ED324962323004F02F8 /* Observer.swift in Sources */,
 				FACA450C248BAB8700E14C27 /* FriendTableViewGroupCell.swift in Sources */,
 				FAC248F4248A721D00386D70 /* MainWindowState.swift in Sources */,
 				FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */,
 				FA6F2ED12496204D004F02F8 /* AppNotificationObserver.swift in Sources */,
 				FA54FED424891FBD004D21A7 /* AppState.swift in Sources */,
 				FA7AEA8D249A79A800EE6860 /* main.swift in Sources */,
-				FAA59810249FC8C90089BC51 /* Preference.swift in Sources */,
 				FAA5980E249FB3A20089BC51 /* PreferencesWindowController.swift in Sources */,
 				FAB66C8B24950FDB00AC461F /* Notifier.swift in Sources */,
 				FA7AEA8E249A7B0300EE6860 /* TestAppDelegate.swift in Sources */,
@@ -647,7 +625,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA0E7FEA2498D9BB004836EC /* SetupWindowStateTests.swift in Sources */,
 				FA6F2ECF24961B67004F02F8 /* AppEnvironment+Mock.swift in Sources */,
 				FA789A54249B573C00BE3FC4 /* NotificationObserverTests.swift in Sources */,
 			);
@@ -1087,14 +1064,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FA54FECB24891F3D004D21A7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.16.0;
-			};
-		};
 		FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tonyarnold/Differ.git";
@@ -1106,28 +1075,18 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FA3B4A7524A76CC000212F1C /* LibSauna */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LibSauna;
-		};
-		FA3B4AAB24A7781D00212F1C /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FA54FECB24891F3D004D21A7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
-		};
-		FA54FECC24891F3D004D21A7 /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FA54FECB24891F3D004D21A7 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
-		};
-		FA57808124A7785800ED6073 /* LibSauna */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LibSauna;
-		};
 		FA78492D249E36BE003D5133 /* Differ */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ" */;
 			productName = Differ;
+		};
+		FAB68B59260F45C2006949EA /* SaunaApp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SaunaApp;
+		};
+		FAB68B79260F4DDC006949EA /* SaunaApp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SaunaApp;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

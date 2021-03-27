@@ -11,7 +11,6 @@ import Foundation
 import SwiftUI
 
 import ComposableArchitecture
-import LibSauna
 
 final class HostingController: WKHostingController<ContentView> {
 

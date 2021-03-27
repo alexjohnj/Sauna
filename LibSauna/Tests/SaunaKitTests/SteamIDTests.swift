@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import LibSauna
+import SaunaKit
 
 final class SteamIDTests: XCTestCase {
     func test_doesNotValidate_emptyKeys() {

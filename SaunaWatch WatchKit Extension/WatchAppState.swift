@@ -8,9 +8,9 @@
 
 import Foundation
 import ComposableArchitecture
-import LibSauna
-
 import WatchKit
+
+import SaunaApp
 
 private let kMinimumAutoRefreshInterval: TimeInterval = 60 * 2
 

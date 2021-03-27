@@ -6,8 +6,9 @@
 //  Copyright © 2020 Alex Jackson. All rights reserved.
 //
 
-import LibSauna
 import Differ
+import SaunaApp
+import SaunaKit
 
 public enum FriendsListRow {
     case groupHeader(FriendsListSection.Group)

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SaunaKit
 
 extension Profile {
     public var statusDescription: String? {

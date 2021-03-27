@@ -9,6 +9,7 @@
 import AppKit
 import Combine
 import ComposableArchitecture
+import SaunaApp
 
 final class SetupWindowController: NSWindowController {
 

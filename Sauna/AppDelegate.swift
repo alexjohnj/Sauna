@@ -10,7 +10,7 @@ import Cocoa
 import SwiftUI
 
 import ComposableArchitecture
-import LibSauna
+import SaunaApp
 
 final class AppDelegate: NSResponder, NSApplicationDelegate {
 
@@ -26,7 +26,7 @@ final class AppDelegate: NSResponder, NSApplicationDelegate {
         // Create the SwiftUI view that provides the window contents.
         store = Store(
             initialState: AppState(),
-            reducer: appReducer,
+            reducer: macAppReducer,
             environment: AppEnvironment(
                 client: .live(.shared),
                 notifier: .user(.current()),
@@ -61,7 +61,7 @@ final class AppDelegate: NSResponder, NSApplicationDelegate {
 
 // MARK: - Application Reducer
 
-private let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer.combine(
+private let macAppReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer.combine(
     appNotificationObserver.pullback(
         state: \AppState.friendsListState.loadedProfiles,
         action: /.`self`,
@@ -72,22 +72,5 @@ private let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer.c
         action: /.`self`,
         environment: { AutoRefreshReducerEnvironment(mainScheduler: $0.mainScheduler) }
     ),
-    setupWindowReducer.optional().pullback(
-        state: \AppState.setupWindowState,
-        action: /AppAction.setupWindowAction,
-        environment: { SetupWindowEnvironment(credentialStore: $0.credentialStore) }
-    ),
-    friendsListReducer.pullback(
-        state: \AppState.friendsListState,
-        action: /AppAction.friendsListAction,
-        environment: {
-            FriendsListEnvironment(
-                mainScheduler: $0.mainScheduler,
-                date: $0.date,
-                client: $0.client,
-                credentialStore: $0.credentialStore
-            )
-        }
-    ),
-    appStateReducer
+    appReducer
 )

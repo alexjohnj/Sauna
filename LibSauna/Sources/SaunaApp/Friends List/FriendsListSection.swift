@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SaunaKit
 
 public struct FriendsListSection: Equatable {
     public enum Group: Equatable {

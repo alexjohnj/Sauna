@@ -10,8 +10,8 @@ import Foundation
 import XCTest
 import ComposableArchitecture
 
-import LibSauna
-@testable import Sauna
+import SaunaApp
+import SaunaKit
 
 final class SetupWindowStateTests: XCTestCase {
 

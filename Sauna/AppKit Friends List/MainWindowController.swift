@@ -11,7 +11,7 @@ import Combine
 import ComposableArchitecture
 import Differ
 
-import LibSauna
+import SaunaApp
 
 // MARK: - Constants
 

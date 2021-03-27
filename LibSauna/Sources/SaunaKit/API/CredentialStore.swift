@@ -65,8 +65,8 @@ public extension CredentialStore {
     static var real: CredentialStore {
         CredentialStore(
             saveCredentials: saveCredentials(_:),
-            getCredentials: LibSauna.getCredentials,
-            clearCredentials: LibSauna.clearCredentials
+            getCredentials: SaunaKit.getCredentials,
+            clearCredentials: SaunaKit.clearCredentials
         )
     }
 }

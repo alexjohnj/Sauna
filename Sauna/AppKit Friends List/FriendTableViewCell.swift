@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import LibSauna
+import SaunaKit
 
 final class FriendTableViewCell: NSTableCellView {
 

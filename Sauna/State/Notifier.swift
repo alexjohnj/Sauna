@@ -6,13 +6,8 @@
 //  Copyright © 2020 Alex Jackson. All rights reserved.
 //
 
+import SaunaApp
 import UserNotifications
-
-struct Notifier {
-    var requestAuthorization: () -> Void
-    var postNotifications: ([UNNotificationRequest]) -> Void
-    var removeDeliveredNotifications: ([String]) -> Void
-}
 
 extension Notifier {
     static let user: (UNUserNotificationCenter) -> Notifier = { center in

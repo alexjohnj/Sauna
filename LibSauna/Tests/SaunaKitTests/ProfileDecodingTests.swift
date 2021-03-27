@@ -9,7 +9,7 @@
 import Foundation
 import XCTest
 
-@testable import LibSauna
+import SaunaKit
 
 final class ProfileDecodingTests: XCTestCase {
 

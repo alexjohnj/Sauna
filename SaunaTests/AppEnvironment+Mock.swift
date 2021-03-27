@@ -9,8 +9,9 @@
 import Foundation
 import Combine
 
+import SaunaApp
 import ComposableArchitecture
-import LibSauna
+import SaunaKit
 
 @testable import Sauna
 

@@ -11,7 +11,8 @@ import SwiftUI
 
 import ComposableArchitecture
 
-import LibSauna
+import SaunaApp
+import SaunaKit
 
 struct FriendsListView: View {
 

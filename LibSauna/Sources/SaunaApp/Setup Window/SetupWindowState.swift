@@ -10,17 +10,14 @@ import Foundation
 import Combine
 import ComposableArchitecture
 
-import LibSauna
+import SaunaKit
+import TCAHelpers
 
-struct SetupWindowEnvironment {
-    var credentialStore: CredentialStore
-}
+public struct SetupWindowState: Equatable {
+    public var steamID: String
+    public var apiKey: String
 
-struct SetupWindowState: Equatable {
-    var steamID: String = ""
-    var apiKey: String = ""
-
-    var isDoneButtonEnabled: Bool {
+    public var isDoneButtonEnabled: Bool {
         validatedSteamID != nil && validatedAPIKey != nil
     }
 
@@ -31,16 +28,24 @@ struct SetupWindowState: Equatable {
     fileprivate var validatedAPIKey: APIKey? {
         APIKey(rawValue: apiKey)
     }
+
+    public init(
+        steamID: String = "",
+        apiKey: String = ""
+    ) {
+        self.steamID = steamID
+        self.apiKey = apiKey
+    }
 }
 
-enum SetupWindowAction: Equatable {
+public enum SetupWindowAction: Equatable {
     case steamIDChanged(String)
     case apiKeyChanged(String)
     case doneButtonClicked
     case credentialsSaved(apiKey: APIKey, steamID: SteamID)
 }
 
-let setupWindowReducer: Reducer<SetupWindowState, SetupWindowAction, SetupWindowEnvironment> = Reducer { state, action, env in
+public let setupWindowReducer: Reducer<SetupWindowState, SetupWindowAction, SetupWindowEnvironment> = Reducer { state, action, env in
     switch action {
     case .apiKeyChanged(let newKey):
         state.apiKey = newKey
