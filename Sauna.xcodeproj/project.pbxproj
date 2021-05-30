@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DBA11E76BBF1E72BE871FCE /* SaunaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA16D57AE8EF1A8B29EA2A /* SaunaApp.swift */; };
 		FA1C541624A7C51D006B1A2F /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C541524A7C51D006B1A2F /* FriendsListView.swift */; };
 		FA381E90249659EA00719ABC /* AutoRefreshReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA381E8F249659EA00719ABC /* AutoRefreshReducer.swift */; };
 		FA3B4A7A24A7749B00212F1C /* FriendsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B4A7924A7749B00212F1C /* FriendsListRow.swift */; };
@@ -31,7 +32,6 @@
 		FA6F2ED824962532004F02F8 /* CollectionDifference.Change+Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED724962532004F02F8 /* CollectionDifference.Change+Element.swift */; };
 		FA78492E249E36BE003D5133 /* Differ in Frameworks */ = {isa = PBXBuildFile; productRef = FA78492D249E36BE003D5133 /* Differ */; };
 		FA789A54249B573C00BE3FC4 /* NotificationObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA789A53249B573C00BE3FC4 /* NotificationObserverTests.swift */; };
-		FA7AEA8D249A79A800EE6860 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7AEA8C249A79A800EE6860 /* main.swift */; };
 		FA7AEA8E249A7B0300EE6860 /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7AEA8A249A799200EE6860 /* TestAppDelegate.swift */; };
 		FA82C933248968DD00C5EFBE /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C931248968DD00C5EFBE /* MainWindowController.swift */; };
 		FA82C934248968DD00C5EFBE /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA82C932248968DD00C5EFBE /* MainWindowController.xib */; };
@@ -103,6 +103,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2DBA16D57AE8EF1A8B29EA2A /* SaunaApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaunaApp.swift; sourceTree = "<group>"; };
 		FA1C541524A7C51D006B1A2F /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		FA381E8F249659EA00719ABC /* AutoRefreshReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshReducer.swift; sourceTree = "<group>"; };
 		FA3B4A7324A76B6D00212F1C /* LibSauna */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LibSauna; sourceTree = "<group>"; };
@@ -136,7 +137,6 @@
 		FA6F2ED724962532004F02F8 /* CollectionDifference.Change+Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionDifference.Change+Element.swift"; sourceTree = "<group>"; };
 		FA789A53249B573C00BE3FC4 /* NotificationObserverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationObserverTests.swift; sourceTree = "<group>"; };
 		FA7AEA8A249A799200EE6860 /* TestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
-		FA7AEA8C249A79A800EE6860 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		FA82C931248968DD00C5EFBE /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		FA82C932248968DD00C5EFBE /* MainWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 		FA82C935248A46D200C5EFBE /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
@@ -252,7 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				FA54FEB824891ED8004D21A7 /* AppDelegate.swift */,
-				FA7AEA8C249A79A800EE6860 /* main.swift */,
+				2DBA16D57AE8EF1A8B29EA2A /* SaunaApp.swift */,
 				FA7AEA8A249A799200EE6860 /* TestAppDelegate.swift */,
 				FA82C930248968C500C5EFBE /* AppKit Friends List */,
 				FA6F2ED624962526004F02F8 /* Extensions */,
@@ -610,7 +610,6 @@
 				FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */,
 				FA6F2ED12496204D004F02F8 /* AppNotificationObserver.swift in Sources */,
 				FA54FED424891FBD004D21A7 /* AppState.swift in Sources */,
-				FA7AEA8D249A79A800EE6860 /* main.swift in Sources */,
 				FAA5980E249FB3A20089BC51 /* PreferencesWindowController.swift in Sources */,
 				FAB66C8B24950FDB00AC461F /* Notifier.swift in Sources */,
 				FA7AEA8E249A7B0300EE6860 /* TestAppDelegate.swift in Sources */,
@@ -618,6 +617,7 @@
 				FA6F2ED824962532004F02F8 /* CollectionDifference.Change+Element.swift in Sources */,
 				FA82C933248968DD00C5EFBE /* MainWindowController.swift in Sources */,
 				FA82C936248A46D200C5EFBE /* FriendTableViewCell.swift in Sources */,
+				2DBA11E76BBF1E72BE871FCE /* SaunaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -848,7 +848,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -903,7 +903,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -930,7 +930,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.alexj.Sauna;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -956,7 +955,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.alexj.Sauna;
 				PRODUCT_NAME = "$(TARGET_NAME)";
