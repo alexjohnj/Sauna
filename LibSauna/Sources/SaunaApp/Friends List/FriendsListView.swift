@@ -26,7 +26,10 @@ struct FriendsListView: View {
             ForEach(sections, id: \.group) { section in
                 Section(header: Text(section.group.localizedDescription)) {
                     ForEach(section.profiles) { profile in
-                        Text(profile.name)
+                        ProfileRowView(profile: profile)
+                            .frame(minHeight: 48)
+
+                        Divider()
                     }
                 }
             }

@@ -19,5 +19,6 @@ public struct AppView: View {
 
     public var body: some View {
         FriendsListView(store: store.scope(state: \.friendsListState, action: AppAction.friendsListAction))
+            .frame(minWidth: 320, minHeight: 568)
     }
 }
