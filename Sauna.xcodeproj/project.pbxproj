@@ -20,7 +20,6 @@
 		FA3B4A9924A777CD00212F1C /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B4A9824A777CD00212F1C /* ExtensionDelegate.swift */; };
 		FA3B4A9B24A777CE00212F1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3B4A9A24A777CE00212F1C /* Assets.xcassets */; };
 		FA3B4A9E24A777CE00212F1C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3B4A9D24A777CE00212F1C /* Preview Assets.xcassets */; };
-		FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEB824891ED8004D21A7 /* AppDelegate.swift */; };
 		FA54FEBD24891EDA004D21A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA54FEBC24891EDA004D21A7 /* Assets.xcassets */; };
 		FA54FEC024891EDA004D21A7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA54FEBF24891EDA004D21A7 /* Preview Assets.xcassets */; };
 		FA54FEC324891EDA004D21A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA54FEC124891EDA004D21A7 /* Main.storyboard */; };
@@ -32,7 +31,6 @@
 		FA6F2ED824962532004F02F8 /* CollectionDifference.Change+Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F2ED724962532004F02F8 /* CollectionDifference.Change+Element.swift */; };
 		FA78492E249E36BE003D5133 /* Differ in Frameworks */ = {isa = PBXBuildFile; productRef = FA78492D249E36BE003D5133 /* Differ */; };
 		FA789A54249B573C00BE3FC4 /* NotificationObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA789A53249B573C00BE3FC4 /* NotificationObserverTests.swift */; };
-		FA7AEA8E249A7B0300EE6860 /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7AEA8A249A799200EE6860 /* TestAppDelegate.swift */; };
 		FA82C933248968DD00C5EFBE /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C931248968DD00C5EFBE /* MainWindowController.swift */; };
 		FA82C934248968DD00C5EFBE /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA82C932248968DD00C5EFBE /* MainWindowController.xib */; };
 		FA82C936248A46D200C5EFBE /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82C935248A46D200C5EFBE /* FriendTableViewCell.swift */; };
@@ -494,7 +492,7 @@
 			);
 			mainGroup = FA54FEAC24891ED8004D21A7;
 			packageReferences = (
-				FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ" */,
+				FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ.git" */,
 			);
 			productRefGroup = FA54FEB624891ED8004D21A7 /* Products */;
 			projectDirPath = "";
@@ -607,12 +605,10 @@
 				FA381E90249659EA00719ABC /* AutoRefreshReducer.swift in Sources */,
 				FACA450C248BAB8700E14C27 /* FriendTableViewGroupCell.swift in Sources */,
 				FAC248F4248A721D00386D70 /* MainWindowState.swift in Sources */,
-				FA54FEB924891ED8004D21A7 /* AppDelegate.swift in Sources */,
 				FA6F2ED12496204D004F02F8 /* AppNotificationObserver.swift in Sources */,
 				FA54FED424891FBD004D21A7 /* AppState.swift in Sources */,
 				FAA5980E249FB3A20089BC51 /* PreferencesWindowController.swift in Sources */,
 				FAB66C8B24950FDB00AC461F /* Notifier.swift in Sources */,
-				FA7AEA8E249A7B0300EE6860 /* TestAppDelegate.swift in Sources */,
 				FA3B4A7A24A7749B00212F1C /* FriendsListRow.swift in Sources */,
 				FA6F2ED824962532004F02F8 /* CollectionDifference.Change+Element.swift in Sources */,
 				FA82C933248968DD00C5EFBE /* MainWindowController.swift in Sources */,
@@ -1062,7 +1058,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ" */ = {
+		FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tonyarnold/Differ.git";
 			requirement = {
@@ -1075,7 +1071,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		FA78492D249E36BE003D5133 /* Differ */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ" */;
+			package = FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ.git" */;
 			productName = Differ;
 		};
 		FAB68B59260F45C2006949EA /* SaunaApp */ = {
