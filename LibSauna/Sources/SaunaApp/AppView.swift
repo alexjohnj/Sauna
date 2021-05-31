@@ -23,7 +23,7 @@ public struct AppView: View {
           .sheet(
             isPresented: viewStore.binding(
               get: \.isSetupWindowPresented,
-              send: .noop
+              send: .friendsListAction(.reload)
             ),
             content: {
                 IfLetStore(

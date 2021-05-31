@@ -12,7 +12,9 @@ public struct AppState: Equatable {
     public var friendsListState: FriendsListState
     public var setupWindowState: SetupWindowState?
 
-    public var isSetupWindowPresented: Bool { setupWindowState != nil }
+    public var isSetupWindowPresented: Bool {
+        setupWindowState != nil
+    }
 
     public init(
       friendsListState: FriendsListState = FriendsListState(),
@@ -28,7 +30,6 @@ public enum AppAction: Equatable {
     case signOut
     case setupWindowAction(SetupWindowAction)
     case friendsListAction(FriendsListAction)
-    case noop
 }
 
 public let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer.combine(
@@ -74,9 +75,6 @@ public let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer.co
           return .none
 
       case .friendsListAction:
-          return .none
-
-      case .noop:
           return .none
       }
   }
