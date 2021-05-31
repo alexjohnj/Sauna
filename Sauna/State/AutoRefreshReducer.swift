@@ -11,6 +11,8 @@ import ComposableArchitecture
 import TCAHelpers
 import SaunaApp
 
+let kFriendsListRefreshInterval: TimeInterval = 2 * 60
+
 struct AutoRefreshReducerEnvironment {
     var mainScheduler: AnySchedulerOf<DispatchQueue>
 }
