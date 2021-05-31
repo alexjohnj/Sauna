@@ -17,6 +17,7 @@ struct SaunaApp: App {
         WindowGroup {
             AppView(store: appDelegate.store)
         }
+          .commands { SaunaCommands(store: appDelegate.store) }
     }
 }
 

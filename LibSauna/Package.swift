@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "LibSauna",
     platforms: [
-        .macOS(.v10_15),
+        .macOS(.v11),
         .watchOS(.v6),
         .iOS(.v13)
     ],
