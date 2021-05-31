@@ -42,6 +42,7 @@ public enum SetupWindowAction: Equatable {
     case steamIDChanged(String)
     case apiKeyChanged(String)
     case doneButtonClicked
+    case quit
     case credentialsSaved(apiKey: APIKey, steamID: SteamID)
 }
 
@@ -62,6 +63,9 @@ public let setupWindowReducer: Reducer<SetupWindowState, SetupWindowAction, Setu
             env.credentialStore.saveCredentials((steamID, apiKey))
             return SetupWindowAction.credentialsSaved(apiKey: apiKey, steamID: steamID)
         }
+
+    case .quit:
+        return env.app.terminate().fireAndForget()
 
     case .credentialsSaved:
         return .none

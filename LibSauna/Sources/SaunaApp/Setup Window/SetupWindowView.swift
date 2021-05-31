@@ -6,6 +6,10 @@ import Foundation
 import SwiftUI
 import ComposableArchitecture
 
+#if os(macOS)
+import Cocoa
+#endif
+
 struct SetupWindowView: View {
 
     private static let formLabelWidth = 140 as CGFloat
@@ -40,7 +44,7 @@ struct SetupWindowView: View {
             }
 
             HStack {
-                Button("Quit") { print("I should quit now") }
+                Button("Quit") { viewStore.send(.quit) }
 
                 Spacer()
 
@@ -49,5 +53,12 @@ struct SetupWindowView: View {
             }
         }
           .padding()
+        .onAppear {
+            #if os(macOS)
+            DispatchQueue.main.async {
+                NSApplication.shared.keyWindow?.preventsApplicationTerminationWhenModal = false
+            }
+            #endif
+        }
     }
 }

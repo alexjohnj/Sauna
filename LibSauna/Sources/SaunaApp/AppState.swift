@@ -36,7 +36,12 @@ public let appReducer: Reducer<AppState, AppAction, AppEnvironment> = Reducer.co
   setupWindowReducer.optional().pullback(
     state: \AppState.setupWindowState,
     action: /AppAction.setupWindowAction,
-    environment: { SetupWindowEnvironment(credentialStore: $0.credentialStore) }
+    environment: {
+        SetupWindowEnvironment(
+            app: $0.app,
+            credentialStore: $0.credentialStore
+        )
+    }
   ),
 
   friendsListReducer.pullback(

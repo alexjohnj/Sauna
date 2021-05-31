@@ -34,6 +34,7 @@ class TemporaryUserDefaults: UserDefaults {
 extension AppEnvironment {
     static let mock: (AnySchedulerOf<DispatchQueue>) -> AppEnvironment = { scheduler in
         AppEnvironment(
+            app: .noop,
             client: .stub,
             notifier: .stub,
             credentialStore: .stub,

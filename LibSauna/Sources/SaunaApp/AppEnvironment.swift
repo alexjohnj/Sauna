@@ -3,6 +3,7 @@ import SaunaKit
 import ComposableArchitecture
 
 public struct AppEnvironment {
+    public var app: AppClient
     public var client: SteamClient
     public var notifier: Notifier
     public var credentialStore: CredentialStore
@@ -12,6 +13,7 @@ public struct AppEnvironment {
     public var date: () -> Date
 
     public init(
+        app: AppClient,
         client: SteamClient,
         notifier: Notifier,
         credentialStore: CredentialStore,
@@ -19,6 +21,7 @@ public struct AppEnvironment {
         mainScheduler: AnySchedulerOf<DispatchQueue>,
         date: @escaping () -> Date
     ) {
+        self.app = app
         self.client = client
         self.notifier = notifier
         self.credentialStore = credentialStore

@@ -45,6 +45,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
       initialState: AppState(),
       reducer: macAppReducer.debug(),
       environment: AppEnvironment(
+        app: .live,
         client: .live(.shared),
         notifier: .user(.current()),
 //        credentialStore: .constant(steamID: kMySteamID, apiKey: kMySteamAPIKey),
