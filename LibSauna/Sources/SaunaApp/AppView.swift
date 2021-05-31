@@ -19,6 +19,18 @@ public struct AppView: View {
 
     public var body: some View {
         FriendsListView(store: store.scope(state: \.friendsListState, action: AppAction.friendsListAction))
-            .frame(minWidth: 320, minHeight: 568)
+          .frame(minWidth: 320, minHeight: 568)
+          .sheet(
+            isPresented: viewStore.binding(
+              get: \.isSetupWindowPresented,
+              send: .noop
+            ),
+            content: {
+                IfLetStore(
+                  store.scope(state: \.setupWindowState, action: AppAction.setupWindowAction),
+                  then: SetupWindowView.init(store:)
+                )
+            }
+          )
     }
 }

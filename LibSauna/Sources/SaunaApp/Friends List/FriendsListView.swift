@@ -27,13 +27,12 @@ struct FriendsListView: View {
                 Section(header: Text(section.group.localizedDescription)) {
                     ForEach(section.profiles) { profile in
                         ProfileRowView(profile: profile)
-                            .frame(minHeight: 48)
+                          .frame(minHeight: 48)
 
                         Divider()
                     }
                 }
             }
         }
-          .onAppear { viewStore.send(.reload) }
     }
 }

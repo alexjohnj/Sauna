@@ -38,11 +38,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private(set) lazy var store: Store<AppState, AppAction> = Store(
       initialState: AppState(),
-      reducer: macAppReducer,
+      reducer: macAppReducer.debug(),
       environment: AppEnvironment(
         client: .live(.shared),
         notifier: .user(.current()),
-        credentialStore: .constant(steamID: kMySteamID, apiKey: kMySteamAPIKey),
+//        credentialStore: .constant(steamID: kMySteamID, apiKey: kMySteamAPIKey),
+        credentialStore: .mock,
         preferences: .standard,
         mainScheduler: DispatchQueue.main.eraseToAnyScheduler(),
         date: Date.init
@@ -51,5 +52,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         Preferences.standard.registerDefaults()
+        ViewStore(store).send(.applicationDidFinishLaunching)
     }
 }
