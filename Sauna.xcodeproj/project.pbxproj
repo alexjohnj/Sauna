@@ -40,6 +40,7 @@
 		FA9F2F4C24A77CB6006C7BBF /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F2F4B24A77CB6006C7BBF /* Secrets.swift */; };
 		FA9F2F4F24A77D94006C7BBF /* ProfileRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F2F4E24A77D94006C7BBF /* ProfileRow.swift */; };
 		FA9F2F5124A77E5F006C7BBF /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F2F5024A77E5F006C7BBF /* StatusView.swift */; };
+		FAA07D012664D82800BC87C6 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F2F4B24A77CB6006C7BBF /* Secrets.swift */; };
 		FAA5980E249FB3A20089BC51 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5980D249FB3A20089BC51 /* PreferencesWindowController.swift */; };
 		FAA6D81324A3480E006631E3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FAA6D81224A3480E006631E3 /* Credits.rtf */; };
 		FAB66C8B24950FDB00AC461F /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB66C8A24950FDB00AC461F /* Notifier.swift */; };
@@ -492,7 +493,7 @@
 			);
 			mainGroup = FA54FEAC24891ED8004D21A7;
 			packageReferences = (
-				FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ.git" */,
+				FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ" */,
 			);
 			productRefGroup = FA54FEB624891ED8004D21A7 /* Products */;
 			projectDirPath = "";
@@ -610,6 +611,7 @@
 				FAA5980E249FB3A20089BC51 /* PreferencesWindowController.swift in Sources */,
 				FAB66C8B24950FDB00AC461F /* Notifier.swift in Sources */,
 				FA3B4A7A24A7749B00212F1C /* FriendsListRow.swift in Sources */,
+				FAA07D012664D82800BC87C6 /* Secrets.swift in Sources */,
 				FA6F2ED824962532004F02F8 /* CollectionDifference.Change+Element.swift in Sources */,
 				FA82C933248968DD00C5EFBE /* MainWindowController.swift in Sources */,
 				FA82C936248A46D200C5EFBE /* FriendTableViewCell.swift in Sources */,
@@ -1058,7 +1060,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ.git" */ = {
+		FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tonyarnold/Differ.git";
 			requirement = {
@@ -1071,7 +1073,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		FA78492D249E36BE003D5133 /* Differ */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ.git" */;
+			package = FA78492C249E36BE003D5133 /* XCRemoteSwiftPackageReference "Differ" */;
 			productName = Differ;
 		};
 		FAB68B59260F45C2006949EA /* SaunaApp */ = {

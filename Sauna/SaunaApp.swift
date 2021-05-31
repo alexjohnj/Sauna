@@ -42,7 +42,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
       environment: AppEnvironment(
         client: .live(.shared),
         notifier: .user(.current()),
-        credentialStore: .real,
+        credentialStore: .constant(steamID: kMySteamID, apiKey: kMySteamAPIKey),
         preferences: .standard,
         mainScheduler: DispatchQueue.main.eraseToAnyScheduler(),
         date: Date.init
