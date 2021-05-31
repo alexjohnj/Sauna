@@ -21,7 +21,7 @@ struct AppNotificationEnvironment {
 
 let appNotificationObserver: Observer<[Profile], AppAction, AppNotificationEnvironment> = Observer { currentFriendsList, action, env in
     switch action {
-    case .windowLoaded:
+    case .applicationDidFinishLaunching:
         return Effect.fireAndForget {
             env.notifier.requestAuthorization()
         }

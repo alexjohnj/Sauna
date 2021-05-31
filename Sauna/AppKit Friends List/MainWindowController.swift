@@ -120,8 +120,6 @@ final class MainWindowController: NSWindowController, NSMenuItemValidation {
         windowState.title
             .sink { [unowned self] title in self.window?.title = title }
             .store(in: &cancellationBag)
-
-        viewStore.send(.windowLoaded)
     }
 
     // MARK: - Actions
