@@ -18,6 +18,10 @@ struct SaunaApp: App {
             AppView(store: appDelegate.store)
         }
           .commands { SaunaCommands(store: appDelegate.store) }
+
+        Settings {
+            SettingsWindowView()
+        }
     }
 }
 
