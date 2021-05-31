@@ -51,14 +51,13 @@ struct FriendsListView: View {
     }
 
     public var body: some View {
-        List {
+        List(selection: viewStore.binding(get: \.selectedProfile, send: FriendsListAction.selectProfile)) {
             ForEach(sections, id: \.group) { section in
                 Section(header: Text(section.group.localizedDescription)) {
                     ForEach(section.profiles) { profile in
                         ProfileRowView(profile: profile)
                           .frame(minHeight: 48)
-
-                        Divider()
+                          .tag(profile.id)
                     }
                 }
             }

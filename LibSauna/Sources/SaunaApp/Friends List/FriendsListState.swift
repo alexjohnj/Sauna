@@ -35,6 +35,7 @@ public struct FriendsListEnvironment {
 public struct FriendsListState: Equatable {
     public var friendsList = Loadable<[FriendsListSection], String>()
     public var lastRefreshDate: Date?
+    public var selectedProfile: Profile.ID?
 
     public var loadedProfiles: [Profile] {
         friendsList.data?.flatMap(\.profiles) ?? []
@@ -46,6 +47,7 @@ public struct FriendsListState: Equatable {
 public enum FriendsListAction: Equatable {
     case reload
     case profilesLoaded(Result<[Profile], SteamClient.Failure>)
+    case selectProfile(Profile.ID?)
 }
 
 public let friendsListReducer: Reducer<FriendsListState, FriendsListAction, FriendsListEnvironment> = Reducer { state, action, env in
@@ -74,6 +76,10 @@ public let friendsListReducer: Reducer<FriendsListState, FriendsListAction, Frie
     case .profilesLoaded(.success(let newFriendsList)):
         state.friendsList.complete(groupAndSortProfiles(newFriendsList))
         state.lastRefreshDate = env.date()
+        return .none
+
+    case .selectProfile(let profile):
+        state.selectedProfile = profile
         return .none
 
     case .profilesLoaded(.failure(let error)):
